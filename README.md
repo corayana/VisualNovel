@@ -1,17 +1,12 @@
 # Visual Novel
-Eine interaktive Geschichte 
+Eine interaktive Geschichte ...
 
-## Pages Link
-https://corayana.github.io/VisualNovel/
+[Hier spielen](https://corayana.github.io/VisualNovel/)
 
-## Repo Link
-https://github.com/corayana/VisualNovel/
+## FUDGE Story
+Die Visual NOvel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einfache Entwicklung interaktiver Geschichten, visueller Romane und einfacher Abenteuerspiele.
 
-## Made with FUDGE_Story
-Einem FUDGE-Modul für die einfache Entwicklung interaktiver Geschichten, visueller Romane und einfacher Abenteuerspiele.
-
-## Reference
-- [APIs](https://jirkadelloro.github.io/FUDGE_Story/Documentation/Reference/#fudge-story-reference)
+[FUDGE API](https://jirkadelloro.github.io/FUDGE_Story/Documentation/Reference/#fudge-story-reference)
 
 ## Bewertungskriterien
 © Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU

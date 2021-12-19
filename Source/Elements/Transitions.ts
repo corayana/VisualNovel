@@ -1,4 +1,4 @@
-namespace Template {
+namespace Application {
 
     //define transitions
     export let transitions = {

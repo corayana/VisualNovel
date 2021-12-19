@@ -1,4 +1,4 @@
-namespace Template {
+namespace Application {
 
     export async function Introduction(): ƒS.SceneReturn {
         console.log("Intro");

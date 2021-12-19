@@ -1,4 +1,4 @@
-namespace Template {
+namespace Application {
 
   export import ƒ = FudgeCore;
   export import ƒS = FudgeStory;

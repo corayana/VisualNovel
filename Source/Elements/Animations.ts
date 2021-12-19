@@ -1,4 +1,4 @@
-namespace Template {
+namespace Application {
 
   export function fromLeftToRightAndTurnToRed(): ƒS.AnimationDefinition {
     return {

@@ -3,13 +3,13 @@
 	"tasks": [
 		{
 			"type": "typescript",
-			"tsconfig": "Template/tsconfig.json",
+			"tsconfig": "tsconfig.json",
 			"option": "watch",
 			"problemMatcher": [
 				"$tsc-watch"
 			],
 			"group": "build",
-			"label": "tsc: watch - Template/tsconfig.json"
+			"label": "tsc: watch - tsconfig.json"
 		}
 	]
 }

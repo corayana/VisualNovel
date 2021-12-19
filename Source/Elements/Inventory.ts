@@ -1,4 +1,4 @@
-namespace Template {
+namespace Application {
 
     export let items = {
         pen: {

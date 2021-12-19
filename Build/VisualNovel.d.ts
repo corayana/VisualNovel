@@ -1,15 +1,15 @@
-declare namespace Template {
+declare namespace Application {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let dataForSave: {
         nameProtagonist: string;
     };
 }
-declare namespace Template {
+declare namespace Application {
     function fromLeftToRightAndTurnToRed(): ƒS.AnimationDefinition;
     function fromCenterToLeft(): ƒS.AnimationDefinition;
 }
-declare namespace Template {
+declare namespace Application {
     let characters: {
         lara: {
             name: string;
@@ -36,7 +36,7 @@ declare namespace Template {
         };
     };
 }
-declare namespace Template {
+declare namespace Application {
     let items: {
         pen: {
             name: string;
@@ -45,7 +45,7 @@ declare namespace Template {
         };
     };
 }
-declare namespace Template {
+declare namespace Application {
     let locations: {
         club: {
             name: string;
@@ -57,7 +57,7 @@ declare namespace Template {
         };
     };
 }
-declare namespace Template {
+declare namespace Application {
     let inGameMenu: {
         save: string;
         load: string;
@@ -68,13 +68,13 @@ declare namespace Template {
     function buttonFunctionalities(_option: string): Promise<void>;
     function hndKeyPress(_event: KeyboardEvent): Promise<void>;
 }
-declare namespace Template {
+declare namespace Application {
     let sound: {
         backgroundTheme: string;
         click: string;
     };
 }
-declare namespace Template {
+declare namespace Application {
     let transitions: {
         clock: {
             duration: number;
@@ -83,9 +83,9 @@ declare namespace Template {
         };
     };
 }
-declare namespace Template {
+declare namespace Application {
     function Introduction(): ƒS.SceneReturn;
 }
-declare namespace Template {
+declare namespace Application {
     function Scene(): ƒS.SceneReturn;
 }

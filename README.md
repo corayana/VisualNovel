@@ -2,10 +2,10 @@
 Eine interaktive Geschichte 
 
 ## Pages Link
-https://corayana.github.io/VisualNovel/Template/index.html
+https://corayana.github.io/VisualNovel/
 
 ## Repo Link
-https://github.com/corayana/VisualNovel
+https://github.com/corayana/VisualNovel/
 
 ## Made with FUDGE_Story
 Einem FUDGE-Modul für die einfache Entwicklung interaktiver Geschichten, visueller Romane und einfacher Abenteuerspiele.

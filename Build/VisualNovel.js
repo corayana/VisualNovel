@@ -190,8 +190,8 @@ var Application;
     Application.transitions = {
         clock: {
             duration: 1,
-            alpha: "./FreeTransitions/puzzle.png",
-            edge: 1 // haertegrad der transition (je niedriger die Zahl, desto weicher)
+            alpha: "./Transitions/painting.jpg",
+            edge: 0.5 // haertegrad der transition (je niedriger die Zahl, desto weicher)
         }
     };
 })(Application || (Application = {}));

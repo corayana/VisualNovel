@@ -11,8 +11,8 @@ Die Visual NOvel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einf
 ## Bewertungskriterien
 © Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU
 
-| Nr | Bezeichnung           | Bezeichnung | Erfüllt |
-|---:|-----------------------|-------------|---------|
+| Nr | Bezeichnung           | Beschreibung | Erfüllt |
+|---:|:----------------------|:-------------|:--------|
 |    | Titel                 | x |
 |    | Name                  | x |
 |    | Matrikelnummer        | x |

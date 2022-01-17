@@ -9,13 +9,11 @@ namespace Application {
             }
         };
 
-        // Anzeigen von Background
+        //Background
         await ƒS.Location.show(locations.bar);
-        await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge); // transition
+        await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 
         // Anzeigen von Charakter
-        /*         await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positions.bottomcenter); 
-         */     //position alternativ in x und y Koordinate angeben: ƒS.positionPercent(x, y)
         await ƒS.Character.show(characters.uwe, characters.uwe.pose.neutral, ƒS.positionPercent(70, 100));
         await ƒS.update(1); 
 
@@ -23,12 +21,12 @@ namespace Application {
 
         await ƒS.Character.hide(characters.uwe);
 
-        await ƒS.Character.show(characters.uwe, characters.uwe.pose.pensive, ƒS.positionPercent(70, 100));
+        await ƒS.Character.show(characters.uwe, characters.uwe.pose.pensive, ƒS.positionPercent(80, 100));
         await ƒS.update(); 
 
         ƒS.Inventory.add(items.bills);
         ƒS.Inventory.add(items.letter);
-        // await ƒS.Inventory.open();
+        await ƒS.Inventory.open();
         // Item hinzufügen zum Inventar
         
 
@@ -54,23 +52,25 @@ namespace Application {
 
         await ƒS.Character.hide(characters.uwe);
 
-        await ƒS.Character.show(characters.uwe, characters.uwe.pose.friendly, ƒS.positionPercent(70, 100));
+        await ƒS.Character.show(characters.uwe, characters.uwe.pose.friendly, ƒS.positionPercent(80, 100));
         await ƒS.update(); 
 
         await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);
 
         await ƒS.Character.hide(characters.uwe);
 
-        await ƒS.Character.show(characters.uwe, characters.uwe.pose.shocked, ƒS.positionPercent(70, 100));
+        await ƒS.Character.show(characters.uwe, characters.uwe.pose.shocked, ƒS.positionPercent(80, 100));
         await ƒS.update();
 
         await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);
 
         await ƒS.Character.hide(characters.uwe);
 
-        await ƒS.Character.show(characters.uwe, characters.uwe.pose.inlove, ƒS.positionPercent(70, 100));
+        await ƒS.Character.show(characters.uwe, characters.uwe.pose.inlove, ƒS.positionPercent(80, 100));
         await ƒS.update();
 
         await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);
+
+        await ƒS.Character.hide(characters.uwe);
     }
 }

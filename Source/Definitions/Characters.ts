@@ -22,10 +22,19 @@ namespace Application {
                 pensive: "./Images/Characters/uwe_pensive.png",
                 shocked: "./Images/Characters/uwe_shocked.png",
                 inlove: "./Images/Characters/uwe_inlove.png",
-            }
-        }
+            },
+        },
+        gabi: {
+            name: "Gabi",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "./Images/Characters/gabi_neutral.png",
+                friendly: "./Images/Characters/gabi_friendly.png",
+                shocked: "./Images/Characters/gabi_shocked.png",
+                grumpy: "./Images/Characters/gabi_grumpy.png",
+            },
+        },
 
-        
 
     }
     

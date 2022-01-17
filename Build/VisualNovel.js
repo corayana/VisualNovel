@@ -15,6 +15,7 @@ var Application;
             // Scenen werden linear abgespielt
             //{ id: "Kapitel 2", scene: Scene, name: "Scene" },
             { scene: Application.Bar, name: "Kneipe" },
+            { scene: Application.Library, name: "Bücherei" },
             // non-Linear: ID an Scene geben und dadurch Reihenfolge bestimmen
         ];
         let uiElement = document.querySelector("[type=interface]");
@@ -89,8 +90,18 @@ var Application;
                 pensive: "./Images/Characters/uwe_pensive.png",
                 shocked: "./Images/Characters/uwe_shocked.png",
                 inlove: "./Images/Characters/uwe_inlove.png",
-            }
-        }
+            },
+        },
+        gabi: {
+            name: "Gabi",
+            origin: Application.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "./Images/Characters/gabi_neutral.png",
+                friendly: "./Images/Characters/gabi_friendly.png",
+                shocked: "./Images/Characters/gabi_shocked.png",
+                grumpy: "./Images/Characters/gabi_grumpy.png",
+            },
+        },
     };
 })(Application || (Application = {}));
 var Application;
@@ -247,21 +258,19 @@ var Application;
                 T0000: "hallo."
             }
         };
-        // Anzeigen von Background
+        //Background
         await Application.ƒS.Location.show(Application.locations.bar);
-        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge); // transition
+        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // Anzeigen von Charakter
-        /*         await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positions.bottomcenter);
-         */ //position alternativ in x und y Koordinate angeben: ƒS.positionPercent(x, y)
         await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.neutral, Application.ƒS.positionPercent(70, 100));
         await Application.ƒS.update(1);
         await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
         await Application.ƒS.Character.hide(Application.characters.uwe);
-        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.pensive, Application.ƒS.positionPercent(70, 100));
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.pensive, Application.ƒS.positionPercent(80, 100));
         await Application.ƒS.update();
         Application.ƒS.Inventory.add(Application.items.bills);
         Application.ƒS.Inventory.add(Application.items.letter);
-        // await ƒS.Inventory.open();
+        await Application.ƒS.Inventory.open();
         // Item hinzufügen zum Inventar
         await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
         // Auswahlmoeglichkeiten
@@ -280,18 +289,51 @@ var Application;
                 break;
         }
         await Application.ƒS.Character.hide(Application.characters.uwe);
-        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.friendly, Application.ƒS.positionPercent(70, 100));
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.friendly, Application.ƒS.positionPercent(80, 100));
         await Application.ƒS.update();
         await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
         await Application.ƒS.Character.hide(Application.characters.uwe);
-        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.shocked, Application.ƒS.positionPercent(70, 100));
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.shocked, Application.ƒS.positionPercent(80, 100));
         await Application.ƒS.update();
         await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
         await Application.ƒS.Character.hide(Application.characters.uwe);
-        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.inlove, Application.ƒS.positionPercent(70, 100));
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.inlove, Application.ƒS.positionPercent(80, 100));
         await Application.ƒS.update();
         await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
+        await Application.ƒS.Character.hide(Application.characters.uwe);
     }
     Application.Bar = Bar;
+})(Application || (Application = {}));
+var Application;
+(function (Application) {
+    async function Library() {
+        console.log("Intro");
+        let text = {
+            gabi: {
+                T0000: "hallo."
+            }
+        };
+        // Anzeigen von Background
+        await Application.ƒS.Location.show(Application.locations.library);
+        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge); // transition
+        // Anzeigen von Charakter
+        await Application.ƒS.Character.show(Application.characters.gabi, Application.characters.gabi.pose.neutral, Application.ƒS.positionPercent(80, 100));
+        await Application.ƒS.update(1);
+        await Application.ƒS.Speech.tell(Application.characters.gabi, text.gabi.T0000);
+        await Application.ƒS.Character.hide(Application.characters.gabi);
+        await Application.ƒS.Character.show(Application.characters.gabi, Application.characters.gabi.pose.grumpy, Application.ƒS.positionPercent(80, 100));
+        await Application.ƒS.update();
+        await Application.ƒS.Speech.tell(Application.characters.gabi, text.gabi.T0000);
+        await Application.ƒS.Character.hide(Application.characters.gabi);
+        await Application.ƒS.Character.show(Application.characters.gabi, Application.characters.gabi.pose.friendly, Application.ƒS.positionPercent(80, 100));
+        await Application.ƒS.update();
+        await Application.ƒS.Speech.tell(Application.characters.gabi, text.gabi.T0000);
+        await Application.ƒS.Character.hide(Application.characters.gabi);
+        await Application.ƒS.Character.show(Application.characters.gabi, Application.characters.gabi.pose.shocked, Application.ƒS.positionPercent(80, 100));
+        await Application.ƒS.update();
+        await Application.ƒS.Speech.tell(Application.characters.gabi, text.gabi.T0000);
+        await Application.ƒS.Character.hide(Application.characters.gabi);
+    }
+    Application.Library = Library;
 })(Application || (Application = {}));
 //# sourceMappingURL=VisualNovel.js.map

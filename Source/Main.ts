@@ -22,6 +22,9 @@ namespace Application {
 
       { scene: Bar, name: "Kneipe" },
 
+
+      { scene: Library, name: "Bücherei" },
+
       // non-Linear: ID an Scene geben und dadurch Reihenfolge bestimmen
 
     ];

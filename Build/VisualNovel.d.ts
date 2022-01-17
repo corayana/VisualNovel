@@ -33,6 +33,16 @@ declare namespace Application {
                 inlove: string;
             };
         };
+        gabi: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                neutral: string;
+                friendly: string;
+                shocked: string;
+                grumpy: string;
+            };
+        };
     };
 }
 declare namespace Application {
@@ -121,4 +131,7 @@ declare namespace Application {
 }
 declare namespace Application {
     function Bar(): ƒS.SceneReturn;
+}
+declare namespace Application {
+    function Library(): ƒS.SceneReturn;
 }

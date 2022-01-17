@@ -14,13 +14,13 @@ namespace Application {
   
   function start(_event: Event): void {
     // Menü
-    gameMenu = ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
+    gameMenu = ƒS.Menu.create(gameMenuOptions, buttonFunctionalities, "gameMenu");
     let scenes: ƒS.Scenes = [
       // Scenen werden linear abgespielt
 
       //{ id: "Kapitel 2", scene: Scene, name: "Scene" },
 
-      { scene: Introduction, name: "Introduction" },
+      { scene: Bar, name: "Kneipe" },
 
       // non-Linear: ID an Scene geben und dadurch Reihenfolge bestimmen
 

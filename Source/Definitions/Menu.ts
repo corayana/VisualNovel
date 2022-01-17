@@ -1,43 +1,53 @@
-namespace Application {
+namespace Application  {
 
-    export let inGameMenu = {
+    //menu variables
+    export let menuOpen: boolean = true;
+    export let inventoryOpen: boolean = false;
+    export let CreditsOpen: boolean = false; 
+
+    export let gameMenuOptions = {
         save: "Speichern",
         load: "Laden",
-        close: "Schließen"
-        // open: "Open"
+        shortcuts: "Shortcuts",
+        credits: "Credits"
     };
 
-
     export let gameMenu: ƒS.Menu;
-
-    // true = offen; false = geschlossen
-    export let menu: boolean = true;
 
     export async function buttonFunctionalities(_option: string): Promise<void> {
         console.log(_option);
         switch (_option) {
-            case inGameMenu.save:
+            case gameMenuOptions.save:
                 await ƒS.Progress.save();
                 break;
-            case inGameMenu.load:
+            case gameMenuOptions.load:
                 await ƒS.Progress.load();
                 break;
-            case inGameMenu.close:
+            /* case gameMenuOptions.close: 
                 gameMenu.close();
-                menu = false;
+                menuOpen = false;
+                break; */
+            case gameMenuOptions.credits:
+                // showCredits();
                 break;
-            // case inGameMenu.open:
-            //   gameMenu.open();
-            //   menu = true;
-            //   break;
-        }
+        };
     }
+
 
 
     // Shortcuts
     document.addEventListener("keydown", hndKeyPress);
+
     export async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
         switch (_event.code) {
+            case ƒ.KEYBOARD_CODE.I:
+                if (inventoryOpen) {
+                    ƒS.Inventory.close();
+                    inventoryOpen = false;
+                  } else {
+                    ƒS.Inventory.open();
+                  }
+                  break;
             case ƒ.KEYBOARD_CODE.F8:
                 console.log("Save");
                 await ƒS.Progress.save();
@@ -46,16 +56,16 @@ namespace Application {
                 console.log("Load");
                 await ƒS.Progress.load();
                 break;
-            case ƒ.KEYBOARD_CODE.M:
-                if (menu) {
+            case ƒ.KEYBOARD_CODE.ESC:
+                if (menuOpen) {
                     console.log("Schließen");
                     gameMenu.close();
-                    menu = false;
+                    menuOpen = false;
                 }
                 else {
                     console.log("Öffnen");
                     gameMenu.open();
-                    menu = true;
+                    menuOpen = true;
                 }
                 break;
         }

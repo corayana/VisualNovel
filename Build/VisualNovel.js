@@ -10,11 +10,11 @@ var Application;
     window.addEventListener("load", start);
     function start(_event) {
         // Menü
-        Application.gameMenu = Application.ƒS.Menu.create(Application.inGameMenu, Application.buttonFunctionalities, "gameMenu");
+        Application.gameMenu = Application.ƒS.Menu.create(Application.gameMenuOptions, Application.buttonFunctionalities, "gameMenu");
         let scenes = [
             // Scenen werden linear abgespielt
             //{ id: "Kapitel 2", scene: Scene, name: "Scene" },
-            { scene: Application.Introduction, name: "Introduction" },
+            { scene: Application.Bar, name: "Kneipe" },
             // non-Linear: ID an Scene geben und dadurch Reihenfolge bestimmen
         ];
         let uiElement = document.querySelector("[type=interface]");
@@ -68,89 +68,126 @@ var Application;
 })(Application || (Application = {}));
 var Application;
 (function (Application) {
+    /**
+   *   id of the character: {
+   *     name: "Name of the character to appear when speaking",
+   *     origin: the origin of the image, in most cases FudgeStory.ORIGIN.BOTTOMCENTER,
+   *     pose: {
+   *       id of 1st pose: "path to the image to be used for 1st pose",
+   *       id of 2nd pose: "path to the image to be used for 2nd pose",
+   *       ...
+   *     }
+   *   },
+   */
     Application.characters = {
-        lara: {
-            name: "Lara",
+        uwe: {
+            name: "Uwe",
             origin: Application.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                neutral: "./Images/Characters/lara_neutral.png",
-                happy: "./Images/Characters/lara_happy.png",
-                sad: "./Images/Characters/lara_sad.png"
-            }
-        },
-        katy: {
-            name: "Katy",
-            origin: Application.ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-                neutral: "./Images/Characters/katy_neutral.png",
-            }
-        },
-        barkeeper: {
-            name: "Barkeeper",
-            origin: Application.ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-                neutral: "./Images/Characters/barkeeper_neutral.png",
+                neutral: "./Images/Characters/uwe_neutral.png",
+                friendly: "./Images/Characters/uwe_friendly.png",
+                pensive: "./Images/Characters/uwe_pensive.png",
+                shocked: "./Images/Characters/uwe_shocked.png",
+                inlove: "./Images/Characters/uwe_inlove.png",
             }
         }
     };
 })(Application || (Application = {}));
 var Application;
 (function (Application) {
+    /**
+   *   id of the item: {
+   *     name: "Name of the item",
+   *     description: "description of the item",
+   *     image: "path to the image to be used as the item"
+   *   }
+   */
     Application.items = {
-        pen: {
-            name: "Roter Buntstift",
-            description: "Hier steht die Beschreibung",
-            image: ""
-        }
-    };
-})(Application || (Application = {}));
-var Application;
-(function (Application) {
-    Application.locations = {
-        club: {
-            name: "Disko",
-            background: "./Images/Backgrounds/club.jpg" // Pfad
+        bills: {
+            name: "Rechnungen von Wilma",
+            description: "Die Rechnungen zeigen, dass Wilma große Geldprobleme hat.",
+            image: "./Images/Items/brief_inventory.png",
         },
-        restroom: {
-            name: "Badezimmer",
-            background: "./Images/Backgrounds/restroom.png" // Pfad
+        letter: {
+            name: "Rechnungen von Uwew",
+            description: "Ein Liebesbrief von Uwe an Elise.",
+            image: "./Images/Items/liebesbrief_inventory.png",
         }
     };
 })(Application || (Application = {}));
 var Application;
 (function (Application) {
-    Application.inGameMenu = {
+    /**
+   *   id of the location: {
+   *     name: "Name of the location" (optional),
+   *     background: "path to the image to be used as the background",
+   *     foreground: "path to the image to be used as the foreground" (optional),
+   *   }
+   */
+    Application.locations = {
+        cafe: {
+            name: "Cafè",
+            background: "./Images/Backgrounds/cafe.jpg",
+        },
+        port: {
+            name: "Hafen",
+            background: "./Images/Backgrounds/port.jpg",
+        },
+        library: {
+            name: "Bücherei",
+            background: "./Images/Backgrounds/library.png",
+        },
+        bar: {
+            name: "Kneipe",
+            background: "./Images/Backgrounds/bar.png",
+        }
+    };
+})(Application || (Application = {}));
+var Application;
+(function (Application) {
+    //menu variables
+    Application.menuOpen = true;
+    Application.inventoryOpen = false;
+    Application.CreditsOpen = false;
+    Application.gameMenuOptions = {
         save: "Speichern",
         load: "Laden",
-        close: "Schließen"
-        // open: "Open"
+        shortcuts: "Shortcuts",
+        credits: "Credits"
     };
-    // true = offen; false = geschlossen
-    Application.menu = true;
     async function buttonFunctionalities(_option) {
         console.log(_option);
         switch (_option) {
-            case Application.inGameMenu.save:
+            case Application.gameMenuOptions.save:
                 await Application.ƒS.Progress.save();
                 break;
-            case Application.inGameMenu.load:
+            case Application.gameMenuOptions.load:
                 await Application.ƒS.Progress.load();
                 break;
-            case Application.inGameMenu.close:
-                Application.gameMenu.close();
-                Application.menu = false;
+            /* case gameMenuOptions.close:
+                gameMenu.close();
+                menuOpen = false;
+                break; */
+            case Application.gameMenuOptions.credits:
+                // showCredits();
                 break;
-            // case inGameMenu.open:
-            //   gameMenu.open();
-            //   menu = true;
-            //   break;
         }
+        ;
     }
     Application.buttonFunctionalities = buttonFunctionalities;
     // Shortcuts
     document.addEventListener("keydown", hndKeyPress);
     async function hndKeyPress(_event) {
         switch (_event.code) {
+            case Application.ƒ.KEYBOARD_CODE.I:
+                if (Application.inventoryOpen) {
+                    Application.ƒS.Inventory.close();
+                    Application.inventoryOpen = false;
+                }
+                else {
+                    Application.ƒS.Inventory.open();
+                }
+                break;
             case Application.ƒ.KEYBOARD_CODE.F8:
                 console.log("Save");
                 await Application.ƒS.Progress.save();
@@ -159,16 +196,16 @@ var Application;
                 console.log("Load");
                 await Application.ƒS.Progress.load();
                 break;
-            case Application.ƒ.KEYBOARD_CODE.M:
-                if (Application.menu) {
+            case Application.ƒ.KEYBOARD_CODE.ESC:
+                if (Application.menuOpen) {
                     console.log("Schließen");
                     Application.gameMenu.close();
-                    Application.menu = false;
+                    Application.menuOpen = false;
                 }
                 else {
                     console.log("Öffnen");
                     Application.gameMenu.open();
-                    Application.menu = true;
+                    Application.menuOpen = true;
                 }
                 break;
         }
@@ -186,127 +223,75 @@ var Application;
 })(Application || (Application = {}));
 var Application;
 (function (Application) {
-    //define transitions
+    /**
+   *   id of the transition: {
+   *     duration: length of transition ind seconds,
+   *     alpha: "path to the image to be used for the transition",
+   *     edge: hardness of the transition (number between x and x: the lower the number, the softer the transition)
+   *   }
+   */
     Application.transitions = {
         clock: {
-            duration: 1,
-            alpha: "./Transitions/painting.jpg",
-            edge: 0.5 // haertegrad der transition (je niedriger die Zahl, desto weicher)
+            duration: 0.5,
+            alpha: "./Images/Transitions/painting.jpg",
+            edge: 0.8,
         }
     };
 })(Application || (Application = {}));
 var Application;
 (function (Application) {
-    async function Introduction() {
+    async function Bar() {
         console.log("Intro");
         let text = {
-            lara: {
-                T0000: "Wow, was für eine Nacht! So lange war ich schon lange nicht mehr tanzen.",
-                T0001: "So langsam verabschieden sich alle.",
-                T0002: "Wo bleibt denn Katy, gerade war sie doch noch auf der Tanzfläche, aber jetzt kann ich sie nirgends sehen.",
-                T0003: "Ich warte nur noch auf meine Freundin. Sie wollte nur kurz an der Garderobe unsere Mäntel holen, ist aber noch nicht zurückgekommen. So langsam mache ich mir Sorgen!",
-                T0004: "Katy, hier bist du!",
-                T0005: "Endlich habe ich dich gefunden - ich habe mir schon Sorgen gemacht, wo du bleibst!",
-            },
-            barkeeper: {
-                T0000: "Hey, alles klar bei dir?",
-                T0001: "Möchtest du noch ein Wasser, bevor ich die Bar zumache? Geht auch aufs Haus!",
-                T0002: "Meine Schicht ist jetzt sowieso zu Ende, wenn du magst, können wir gemeinsam nach ihr suchen.",
-                T0003: "Ich würde mich freuen, wenn wir uns wiedersehen. Hier hast du meine Handynummer, melde dich doch gerne!",
-            },
-            katy: {
-                T0000: "Upss, ich habe gerade Lea vor der Toilette getroffen und mich etwas verquatscht. Tut mir wirklich leid! Hier ist Dein Mantel, ass uns jetzt nach Hause gehen.",
+            uwe: {
+                T0000: "hallo."
             }
         };
-        // await wartet auf Rueckgabe der Funktion (hier: Nutzereingabe) bevor System fortfaehrt
-        //Sound einblenden 
-        Application.ƒS.Sound.fade(Application.sound.backgroundTheme, 0.2, 30, true);
-        // Sound einfach nur spielen
-        Application.ƒS.Sound.play(Application.sound.backgroundTheme, 0.1, true);
         // Anzeigen von Background
-        await Application.ƒS.Location.show(Application.locations.club);
+        await Application.ƒS.Location.show(Application.locations.bar);
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge); // transition
-        // Anzeigen von Inventar
-        //await ƒS.Inventory.open();
-        // Item hinzufügen zum Inventar
-        //ƒS.Inventory.add(items.pen);
         // Anzeigen von Charakter
         /*         await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positions.bottomcenter);
          */ //position alternativ in x und y Koordinate angeben: ƒS.positionPercent(x, y)
-        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(50, 100));
-        await Application.ƒS.update(1); // transition fade
-        // Anzeigen von Text
-        await Application.ƒS.Speech.tell(Application.characters.lara, text.lara.T0000);
-        await Application.ƒS.Speech.tell(Application.characters.lara, text.lara.T0001);
-        await Application.ƒS.Speech.tell(Application.characters.lara, text.lara.T0002);
-        // Input-Feld
-        // dataForSave.nameProtagonist = await ƒS.Speech.getInput();
-        // console.log(dataForSave.nameProtagonist);
-        // await ƒS.Speech.tell(characters.lara, "Dein Name: " + dataForSave.nameProtagonist);
-        // //hauptcharakter spricht
-        // await ƒS.Speech.tell(dataForSave.nameProtagonist, "Hohioho", true, "cssClass");
-        // Delay
-        // let signalDelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]); //verzoegerung der scene um 1 sekunde
-        await Application.ƒS.Character.animate(Application.characters.lara, Application.characters.lara.pose.sad, Application.fromCenterToLeft());
-        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(20, 100));
-        await Application.ƒS.Character.show(Application.characters.barkeeper, Application.characters.barkeeper.pose.neutral, Application.ƒS.positionPercent(80, 100));
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.neutral, Application.ƒS.positionPercent(70, 100));
         await Application.ƒS.update(1);
-        await Application.ƒS.Speech.tell(Application.characters.barkeeper, text.barkeeper.T0000);
-        await Application.ƒS.Speech.tell(Application.characters.barkeeper, text.barkeeper.T0001);
+        await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
+        await Application.ƒS.Character.hide(Application.characters.uwe);
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.pensive, Application.ƒS.positionPercent(70, 100));
+        await Application.ƒS.update();
+        Application.ƒS.Inventory.add(Application.items.bills);
+        Application.ƒS.Inventory.add(Application.items.letter);
+        // await ƒS.Inventory.open();
+        // Item hinzufügen zum Inventar
+        await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
         // Auswahlmoeglichkeiten
         let firstDialogeElementOptions = {
             iSayYes: "Ja",
             iSayNo: "Nein"
         };
         await Application.ƒS.Speech.tell;
-        let firstDialogeElement = await Application.ƒS.Menu.getInput(firstDialogeElementOptions, "individualCSSClass");
+        let firstDialogeElement = await Application.ƒS.Menu.getInput(firstDialogeElementOptions, "choice");
         switch (firstDialogeElement) {
             case firstDialogeElementOptions.iSayYes:
-                await Application.ƒS.Speech.tell(Application.characters.lara, "Vielen Dank, das kann ich jetzt gebrauchen!");
+                await Application.ƒS.Speech.tell(Application.characters.uwe, "Vielen Dank, das kann ich jetzt gebrauchen!");
                 break;
             case firstDialogeElementOptions.iSayNo:
-                await Application.ƒS.Speech.tell(Application.characters.lara, "Nein danke.");
+                await Application.ƒS.Speech.tell(Application.characters.uwe, "Nein danke.");
                 break;
         }
-        await Application.ƒS.Speech.tell(Application.characters.lara, text.lara.T0003);
-        await Application.ƒS.Speech.tell(Application.characters.barkeeper, text.barkeeper.T0002);
-        // Auswahlmoeglichkeiten
-        let secondDialogeElementOptions = {
-            iSayYes: "Ja",
-            iSayNo: "Nein"
-        };
-        let secondDialogeElement = await Application.ƒS.Menu.getInput(secondDialogeElementOptions, "individualCSSClass");
-        switch (secondDialogeElement) {
-            case secondDialogeElementOptions.iSayYes:
-                await Application.ƒS.Speech.tell(Application.characters.lara, "Sehr gerne, 4 Augen sehen schließlich mehr als 2!");
-                await Application.ƒS.Character.show(Application.characters.barkeeper, Application.characters.barkeeper.pose.neutral, Application.ƒS.positionPercent(30, 100));
-                break;
-            case secondDialogeElementOptions.iSayNo:
-                await Application.ƒS.Speech.tell(Application.characters.lara, "Vielen Dank, aber das ist nicht nötig. Sie ist bestimmt nur noch kurz auf Toilette.");
-                await Application.ƒS.Speech.tell(Application.characters.barkeeper, "Alles klar, dann viel Erfolg.");
-                await Application.ƒS.Character.hide(Application.characters.barkeeper);
-                break;
-        }
-        await Application.ƒS.Location.show(Application.locations.restroom);
-        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge); // transition
-        await Application.ƒS.Character.show(Application.characters.katy, Application.characters.katy.pose.neutral, Application.ƒS.positionPercent(80, 100));
-        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.happy, Application.ƒS.positionPercent(20, 100));
-        await Application.ƒS.Speech.tell(Application.characters.lara, text.lara.T0004);
-        await Application.ƒS.Speech.tell(Application.characters.lara, text.lara.T0005);
-        await Application.ƒS.Speech.tell(Application.characters.katy, text.katy.T0000);
-        await Application.ƒS.Character.show(Application.characters.barkeeper, Application.characters.barkeeper.pose.neutral, Application.ƒS.positionPercent(50, 100));
-        await Application.ƒS.Speech.tell(Application.characters.barkeeper, text.barkeeper.T0003);
-        Application.ƒS.Sound.fade(Application.sound.backgroundTheme, 0, 2);
+        await Application.ƒS.Character.hide(Application.characters.uwe);
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.friendly, Application.ƒS.positionPercent(70, 100));
+        await Application.ƒS.update();
+        await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
+        await Application.ƒS.Character.hide(Application.characters.uwe);
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.shocked, Application.ƒS.positionPercent(70, 100));
+        await Application.ƒS.update();
+        await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
+        await Application.ƒS.Character.hide(Application.characters.uwe);
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.inlove, Application.ƒS.positionPercent(70, 100));
+        await Application.ƒS.update();
+        await Application.ƒS.Speech.tell(Application.characters.uwe, text.uwe.T0000);
     }
-    Application.Introduction = Introduction;
-})(Application || (Application = {}));
-var Application;
-(function (Application) {
-    async function Scene() {
-        console.log("FudgeStory Template Scene starting");
-        await Application.ƒS.Location.show(Application.locations.club);
-        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge); // transition
-    }
-    Application.Scene = Scene;
+    Application.Bar = Bar;
 })(Application || (Application = {}));
 //# sourceMappingURL=VisualNovel.js.map

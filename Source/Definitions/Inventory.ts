@@ -17,7 +17,7 @@ namespace Application {
         },
 
         letter: {
-            name: "Rechnungen von Uwew",
+            name: "Liebesbrief von Uwe",
             description: "Ein Liebesbrief von Uwe an Elise.",
             image: "./Images/Items/liebesbrief_inventory.png",
         }

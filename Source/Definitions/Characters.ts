@@ -12,7 +12,30 @@ namespace Application {
    *   },
    */
     export let characters = {
-
+        lara: {
+            name: "Lara",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "./Images/Characters/lara_neutral.png",
+                friendly: "./Images/Characters/lara_friendly.png",
+                surprised: "./Images/Characters/lara_surprised.png",
+                suspicious: "./Images/Characters/lara_suspicious.png",
+            },
+        },
+        elise: {
+            name: "Elise",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "./Images/Characters/elise_neutral.png",
+            },
+        },
+        wilma: {
+            name: "Wilma",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                neutral: "./Images/Characters/wilma_neutral.png",
+            },
+        },
         uwe: {
             name: "Uwe",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
@@ -34,8 +57,7 @@ namespace Application {
                 grumpy: "./Images/Characters/gabi_grumpy.png",
             },
         },
-
-
+        
     }
     
 }    

@@ -14,14 +14,14 @@ namespace Application {
         await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 
         // Anzeigen von Charakter
-        await ƒS.Character.show(characters.uwe, characters.uwe.pose.neutral, ƒS.positionPercent(70, 100));
+        await ƒS.Character.show(characters.uwe, characters.uwe.pose.neutral, ƒS.positionPercent(75, 100));
         await ƒS.update(1); 
 
         await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);
 
         await ƒS.Character.hide(characters.uwe);
 
-        await ƒS.Character.show(characters.uwe, characters.uwe.pose.pensive, ƒS.positionPercent(80, 100));
+        await ƒS.Character.show(characters.uwe, characters.uwe.pose.pensive, ƒS.positionPercent(75, 100));
         await ƒS.update(); 
 
         ƒS.Inventory.add(items.bills);
@@ -52,21 +52,21 @@ namespace Application {
 
         await ƒS.Character.hide(characters.uwe);
 
-        await ƒS.Character.show(characters.uwe, characters.uwe.pose.friendly, ƒS.positionPercent(80, 100));
+        await ƒS.Character.show(characters.uwe, characters.uwe.pose.friendly, ƒS.positionPercent(75, 100));
         await ƒS.update(); 
 
         await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);
 
         await ƒS.Character.hide(characters.uwe);
 
-        await ƒS.Character.show(characters.uwe, characters.uwe.pose.shocked, ƒS.positionPercent(80, 100));
+        await ƒS.Character.show(characters.uwe, characters.uwe.pose.shocked, ƒS.positionPercent(75, 100));
         await ƒS.update();
 
         await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);
 
         await ƒS.Character.hide(characters.uwe);
 
-        await ƒS.Character.show(characters.uwe, characters.uwe.pose.inlove, ƒS.positionPercent(80, 100));
+        await ƒS.Character.show(characters.uwe, characters.uwe.pose.inlove, ƒS.positionPercent(75, 100));
         await ƒS.update();
 
         await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);

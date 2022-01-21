@@ -22,6 +22,30 @@ declare namespace Application {
    *   },
    */
     let characters: {
+        lara: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                neutral: string;
+                friendly: string;
+                surprised: string;
+                suspicious: string;
+            };
+        };
+        elise: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                neutral: string;
+            };
+        };
+        wilma: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                neutral: string;
+            };
+        };
         uwe: {
             name: string;
             origin: ƒ.ORIGIN2D;
@@ -104,6 +128,8 @@ declare namespace Application {
         credits: string;
     };
     let gameMenu: ƒS.Menu;
+    function showCredits(): void;
+    function showShortcuts(): void;
     function buttonFunctionalities(_option: string): Promise<void>;
     function hndKeyPress(_event: KeyboardEvent): Promise<void>;
 }
@@ -133,5 +159,17 @@ declare namespace Application {
     function Bar(): ƒS.SceneReturn;
 }
 declare namespace Application {
+    function Cafe(): ƒS.SceneReturn;
+}
+declare namespace Application {
+    function Intro(): ƒS.SceneReturn;
+}
+declare namespace Application {
     function Library(): ƒS.SceneReturn;
+}
+declare namespace Application {
+    function Outro(): ƒS.SceneReturn;
+}
+declare namespace Application {
+    function Port(): ƒS.SceneReturn;
 }

@@ -177,6 +177,7 @@ dialog[type="inventory"] button {
   height: 60px;
   width: 200px;
   background-color: #fafafa;
+  border-color: #333333;
   border-top: none;
   border-right: none;
   border-bottom: none;

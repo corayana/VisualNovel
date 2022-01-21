@@ -19,11 +19,17 @@ namespace Application {
       // Scenen werden linear abgespielt
 
       //{ id: "Kapitel 2", scene: Scene, name: "Scene" },
+      { scene: Intro, name: "Intro" },
 
       { scene: Bar, name: "Kneipe" },
 
-
       { scene: Library, name: "Bücherei" },
+
+      { scene: Port, name: "Hafen" },
+
+      { scene: Cafe, name: "Café" },
+
+      { scene: Outro, name: "Outro" },
 
       // non-Linear: ID an Scene geben und dadurch Reihenfolge bestimmen
 

@@ -14,6 +14,16 @@ namespace Application  {
 
     export let gameMenu: ƒS.Menu;
 
+    export function showCredits(): void {
+        ƒS.Text.setClass("credits");
+        ƒS.Text.print("<p>  xyz </p>");
+    }
+
+    export function showShortcuts(): void {
+        ƒS.Text.setClass("shortcuts");
+        ƒS.Text.print("<p>  xyz </p>");
+    }
+
     export async function buttonFunctionalities(_option: string): Promise<void> {
         console.log(_option);
         switch (_option) {
@@ -28,10 +38,14 @@ namespace Application  {
                 menuOpen = false;
                 break; */
             case gameMenuOptions.credits:
-                // showCredits();
+                showCredits();
+                break;
+            case gameMenuOptions.shortcuts:
+                showShortcuts();
                 break;
         };
     }
+
 
 
 

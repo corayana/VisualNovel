@@ -11,11 +11,11 @@ namespace Application {
     export let locations = {
         cafe: {
             name: "Cafè",
-            background: "./Images/Backgrounds/cafe.jpg",
+            background: "./Images/Backgrounds/cafe.png",
         },
         port: {
             name: "Hafen",
-            background: "./Images/Backgrounds/port.jpg",
+            background: "./Images/Backgrounds/port.png",
         },
         library: {
             name: "Bücherei",

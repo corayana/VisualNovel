@@ -24,9 +24,9 @@ Die Visual NOvel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einf
 |  6 | Novel-Pages           | Novel-Pages wurden eingesetzt werden, um weitere Textelemente mit ggf. besonderen Interaktionsmöglichkeiten auszustatten und einzublenden. | :heavy_check_mark: |
 |  7 | Audio                 | Sounds sind eingebunden und unterstützen oder ermöglichen die Wahrnehmung der Aktionen. Bestimmte Ereignisse werden durch Geräusche akustisch unterstützt und durch Musik atmosphärisch untermalt. | :heavy_check_mark: |
 |  8 | GUI                   | Ein grafisches Interface gibt dem Nutzer die Möglichkeit, Einstellungen beim Programmstart oder während des Programmlaufs vorzunehmen. | :heavy_check_mark: |
-|  9 | Input-Feld(er)        | Input-Felder werden verwendet, um dem Spieler die Option zu bieten, mithilfe einer Eingabe interne Zustände zu verändern. Der Input wird im Verlauf der Story verwendet, um (?).  | :heavy_check_mark: |
-| 10 | Punkteverteilungssystem     | Ein Punktesystem kommt zum Einsatz, das entsprechend eines Schema die Punkteverteilung für das Verhalten des Spielers festlegt. | :heavy_check_mark: | 
-| 11 | Inventory- und Item-System  | Das Inventarsystem managet Items, die im Laufe des Spiels erworben werden können.  | :heavy_check_mark: |
+|  9 | Input-Feld(er)        | Input-Felder bieten dem Spieler die Option, mithilfe einer Eingabe interne Zustände zu verändern.  | :heavy_check_mark: |
+| 10 | Punkteverteilungssystem     | Ein Punktesystem kommt zum Einsatz, das entsprechend eines Schema die Punkteverteilung für das Verhalten des Spielers festlegt und verschiedene Achievements ermöglicht. | :heavy_check_mark: | 
+| 11 | Inventory- und Item-System  | Ein Inventar managet Items, die im Laufe des Spiels erworben werden können.  | :heavy_check_mark: |
 | 12 | Animation             | Animationen wurden selbst definiert und auf Objekte angewendet. | :heavy_check_mark: |
 | 13 | Styling               | Alle relevanten Elemente wurden mithilfe von CSS gestylt. | :heavy_check_mark: |          
 | 14 | Enden                 | Es wurden x verschiedene Spielenden eingebaut. | :heavy_check_mark: |

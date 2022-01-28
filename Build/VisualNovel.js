@@ -153,11 +153,13 @@ var Application;
             name: "Rechnungen von Wilma",
             description: "Die Rechnungen zeigen, dass Wilma große Geldprobleme hat.",
             image: "./Images/Items/brief_inventory.png",
+            static: true,
         },
         letter: {
             name: "Liebesbrief von Uwe",
             description: "Ein Liebesbrief von Uwe an Elise.",
             image: "./Images/Items/liebesbrief_inventory.png",
+            static: true,
         },
     };
 })(Application || (Application = {}));
@@ -476,7 +478,7 @@ var Application;
             case chooseDrinkOptions.applejuice:
                 await Application.ƒS.Speech.tell(Application.characters.elise, "Hier, dein Apfelsaft.");
                 break;
-            case chooseDrinkOptions.applejuice:
+            case chooseDrinkOptions.hotChocolate:
                 await Application.ƒS.Speech.tell(Application.characters.elise, "Hier, deine heiße Schokolade.");
                 break;
         }

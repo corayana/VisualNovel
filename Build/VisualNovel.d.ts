@@ -89,11 +89,13 @@ declare namespace Application {
             name: string;
             description: string;
             image: string;
+            static: boolean;
         };
         letter: {
             name: string;
             description: string;
             image: string;
+            static: boolean;
         };
     };
 }

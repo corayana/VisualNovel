@@ -48,7 +48,6 @@ namespace Application {
     // hide elements
     ƒS.Speech.clear();
     ƒS.Speech.hide();
-
     ƒS.Character.hideAll();
     await ƒS.update(1);
 

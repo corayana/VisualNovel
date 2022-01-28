@@ -1,69 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <script src="Fudge/FudgeCore.js"></script>
+    <script src="FudgeStory/FudgeStory.js"></script>
+    <script src="./Build/VisualNovel.js"></script>
+    <title>Visual Novel Name</title>
+    <!-- <splash src="Images/Cover.png" /> -->
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="Fudge/FudgeCore.js"></script>
-  <script src="FudgeStory/FudgeStory.js"></script>
-  <script src="./Build/VisualNovel.js"></script>
-  <title>Visual Novel Name</title>
-  <!-- <splash src="Images/Cover.png" /> -->
-</head>
+  <body>
+    <scene>
+      <canvas></canvas>
 
-<body>
-  <scene>
-    <canvas></canvas>
+      <speech>
+        <name>
+          <!-- The name of the character speaking -->
+        </name>
+        <content>
+          <!-- The text the character says-->
+        </content>
+      </speech>
 
-    <speech>
-      <name>
-        <!-- The name of the character speaking -->
-      </name>
-      <content>
-        <!-- The text the character says-->
-      </content>
-    </speech>
+      <dialog type="text">
+        <!-- The content of a page of text for reading -->
+      </dialog>
 
-    <dialog type="text">
-      <!-- The content of a page of text for reading -->
-    </dialog>
+      <dialog type="inventory">
+        <p>Inventar</p>
+        <button type="button" class="close">X</button>
+        <ul></ul>
+      </dialog>
 
-    <dialog type="inventory">
-      <p>Inventar</p>
-      <button type="button" class="close">X</button>
-      <ul></ul>
-    </dialog>
-
-    <div id="credit">
-      <div id="center">
-        <h1>Credits</h1>
-        <table>
-          <tr>
-            <td>Story</td>
-            <td>Carina Spangenberger</td>
-          </tr>
-          <tr>
-            <td>Charaktere</td>
-            <td>Carina Spangenberger</td>
-          </tr>
-          <tr>
-            <td>Hintergründe</td>
-            <td>Carina Spangenberger</td>
-          </tr>
-          <tr>
-            <td>Musik & Sounds</td>
-            <td>...</td>
-          </tr>
-          <tr>
-            <td>Programmierung</td>
-            <td>Carina Spangenberger</td>
-          </tr>
-        </table>
+      <div id="credits">
+        <div id="center">
+          <h1>Credits</h1>
+          <table>
+            <tr>
+              <td>Story</td>
+              <td>Carina Spangenberger</td>
+            </tr>
+            <tr>
+              <td>Charaktere</td>
+              <td>Carina Spangenberger</td>
+            </tr>
+            <tr>
+              <td>Hintergründe</td>
+              <td>Carina Spangenberger</td>
+            </tr>
+            <tr>
+              <td>Musik & Sounds</td>
+              <td>...</td>
+            </tr>
+            <tr>
+              <td>Programmierung</td>
+              <td>Carina Spangenberger</td>
+            </tr>
+          </table>
+        </div>
       </div>
-    </div>
-  
-  </scene>
-</body>
 
+      <div id="controls">
+        <div id="center">
+          <h1>Steuerung</h1>
+          <table>
+            <tr>
+              <th>Taste</th>
+              <th>Funktion</th>
+            </tr>
+            <tr>
+              <td>ESC</td>
+              <td>Menü</td>
+            </tr>
+            <tr>
+              <td>I</td>
+              <td>Inventar</td>
+            </tr>
+            <tr>
+              <td>T</td>
+              <td>Textbox</td>
+            </tr>
+            <tr>
+              <td>F2</td>
+              <td>Speichern</td>
+            </tr>
+            <tr>
+              <td>F9</td>
+              <td>Laden</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </scene>
+  </body>
 </html>

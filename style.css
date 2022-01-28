@@ -1,12 +1,12 @@
 /*STRG + K +C = (aus)kommentieren*/
 
-html, body {
+html,
+body {
   width: 100vw !important;
   height: 100vh !important;
   background-color: rgb(19, 20, 29);
   overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: normal;
+  font-family: "Montserrat", sans-serif;
   font-size: 2vmin;
   margin: 0;
 }
@@ -48,13 +48,13 @@ speech {
   background-size: cover;
   height: 12%;
   width: 72%;
-  padding: 40px;
+  padding: 30px;
   margin: auto;
   margin-bottom: 60px;
 }
 
 name {
-  font-size: 2.4vmin;
+  font-size: 2.2vmin;
   display: block;
   color: rgb(27, 216, 74);
   margin-bottom: 10px;
@@ -68,6 +68,9 @@ menu {
   color: #883939;
 }
 
+button {
+  font-family: "Montserrat", sans-serif;
+}
 
 /* INVENTORY */
 dialog[type="inventory"] {
@@ -78,9 +81,9 @@ dialog[type="inventory"] {
   border-width: 6px;
   width: 60%;
   color: #fafafa;
-  position: fixed;
-  top: 20px; 
-  left: 10px; 
+  position: absolute;
+  top: 10px;
+  left: 10px;
   overflow: hidden; /* Hide scrollbar */
 }
 
@@ -91,10 +94,9 @@ dialog[type="inventory"] p {
 dialog[type="inventory"] > ul {
   list-style-type: none;
   padding-left: 0px;
-
 }
 
-dialog[type="inventory"] > ul > li{
+dialog[type="inventory"] > ul > li {
   position: relative;
   background-color: #883939;
   display: flex;
@@ -135,8 +137,6 @@ dialog[type="inventory"] button {
   cursor: pointer;
 }
 
-
-
 /* GAME MENU */
 .gameMenu {
   position: absolute;
@@ -144,7 +144,7 @@ dialog[type="inventory"] button {
   border: none;
 }
 
-.gameMenu button{
+.gameMenu button {
   background-color: #333333;
   border-color: #fafafa;
   border-style: solid;
@@ -156,15 +156,13 @@ dialog[type="inventory"] button {
   font-size: 1.5vmin;
 }
 
-.gameMenu button:hover{
+.gameMenu button:hover {
   background-color: #868686;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
-
-
 /* CHOICES */
-.choice{
+.choice {
   padding: 0px;
   border-style: solid;
   border-radius: 15px;
@@ -172,28 +170,53 @@ dialog[type="inventory"] button {
   border-color: #333333;
 }
 
-.choice button{
-  font-size: 1.6vmin;
-  height: 60px;
+.choice button {
+  font-size: 1.4vmin;
+  height: 70px;
   width: 200px;
   background-color: #fafafa;
   border-color: #333333;
+  border-width: 3px;
   border-top: none;
   border-right: none;
   border-bottom: none;
+  padding: 10px;
 }
 
-.choice button:hover{
-  background-color: rgb(200,200,200);
-  cursor: pointer; 
+.choice button:hover {
+  background-color: rgb(200, 200, 200);
+  cursor: pointer;
 }
+
+.locationChoice {
+  background: none;
+  border: none;
+}
+
+.locationChoice button {
+  font-size: 1.4vmin;
+  height: 70px;
+  width: 200px;
+  background-color: #fafafa;
+  border-color: #333333;
+  border-width: 3px;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 20px
+}
+
+.locationChoice button:hover {
+  background-color: rgb(200, 200, 200);
+  cursor: pointer;
+}
+
 
 .hidden {
   visibility: hidden;
 }
 
 /* CREDITS */
-#credit{
+#credit {
   display: none;
   justify-content: center;
   position: absolute;
@@ -204,12 +227,12 @@ dialog[type="inventory"] button {
   height: 100%;
 }
 
-#credit th{
+#credit th {
   padding-right: 70px;
   text-align: left;
 }
 
-#credit td{
+#credit td {
   padding-right: 70px;
   text-align: left;
 }

@@ -3,6 +3,10 @@ declare namespace Application {
     export import ƒS = FudgeStory;
     let dataForSave: {
         nameProtagonist: string;
+        visitedBar: boolean;
+        visitedCafe: boolean;
+        visitedLibrary: boolean;
+        visitedHarbor: boolean;
     };
 }
 declare namespace Application {
@@ -11,16 +15,16 @@ declare namespace Application {
 }
 declare namespace Application {
     /**
-   *   id of the character: {
-   *     name: "Name of the character to appear when speaking",
-   *     origin: the origin of the image, in most cases FudgeStory.ORIGIN.BOTTOMCENTER,
-   *     pose: {
-   *       id of 1st pose: "path to the image to be used for 1st pose",
-   *       id of 2nd pose: "path to the image to be used for 2nd pose",
-   *       ...
-   *     }
-   *   },
-   */
+     *   id of the character: {
+     *     name: "Name of the character to appear when speaking",
+     *     origin: the origin of the image, in most cases FudgeStory.ORIGIN.BOTTOMCENTER,
+     *     pose: {
+     *       id of 1st pose: "path to the image to be used for 1st pose",
+     *       id of 2nd pose: "path to the image to be used for 2nd pose",
+     *       ...
+     *     }
+     *   },
+     */
     let characters: {
         lara: {
             name: string;
@@ -44,6 +48,9 @@ declare namespace Application {
             origin: ƒ.ORIGIN2D;
             pose: {
                 neutral: string;
+                friendly: string;
+                grumpy: string;
+                laughing: string;
             };
         };
         uwe: {
@@ -71,12 +78,12 @@ declare namespace Application {
 }
 declare namespace Application {
     /**
-   *   id of the item: {
-   *     name: "Name of the item",
-   *     description: "description of the item",
-   *     image: "path to the image to be used as the item"
-   *   }
-   */
+     *   id of the item: {
+     *     name: "Name of the item",
+     *     description: "description of the item",
+     *     image: "path to the image to be used as the item"
+     *   }
+     */
     let items: {
         bills: {
             name: string;
@@ -92,12 +99,12 @@ declare namespace Application {
 }
 declare namespace Application {
     /**
-   *   id of the location: {
-   *     name: "Name of the location" (optional),
-   *     background: "path to the image to be used as the background",
-   *     foreground: "path to the image to be used as the foreground" (optional),
-   *   }
-   */
+     *   id of the location: {
+     *     name: "Name of the location" (optional),
+     *     background: "path to the image to be used as the background",
+     *     foreground: "path to the image to be used as the foreground" (optional),
+     *   }
+     */
     let locations: {
         cafe: {
             name: string;
@@ -141,12 +148,12 @@ declare namespace Application {
 }
 declare namespace Application {
     /**
-   *   id of the transition: {
-   *     duration: length of transition ind seconds,
-   *     alpha: "path to the image to be used for the transition",
-   *     edge: hardness of the transition (number between x and x: the lower the number, the softer the transition)
-   *   }
-   */
+     *   id of the transition: {
+     *     duration: length of transition ind seconds,
+     *     alpha: "path to the image to be used for the transition",
+     *     edge: hardness of the transition (number between x and x: the lower the number, the softer the transition)
+     *   }
+     */
     let transitions: {
         clock: {
             duration: number;
@@ -162,14 +169,17 @@ declare namespace Application {
     function Cafe(): ƒS.SceneReturn;
 }
 declare namespace Application {
+    function Harbor(): ƒS.SceneReturn;
+}
+declare namespace Application {
     function Intro(): ƒS.SceneReturn;
 }
 declare namespace Application {
     function Library(): ƒS.SceneReturn;
 }
 declare namespace Application {
-    function Outro(): ƒS.SceneReturn;
+    function NextLocationChoice(): ƒS.SceneReturn;
 }
 declare namespace Application {
-    function Port(): ƒS.SceneReturn;
+    function Outro(): ƒS.SceneReturn;
 }

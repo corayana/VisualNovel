@@ -1,38 +1,47 @@
 namespace Application {
-
   export import ƒ = FudgeCore;
   export import ƒS = FudgeStory;
 
   console.log("FudgeStory template starting");
 
   export let dataForSave = {
-    nameProtagonist: ""
-  }
-
+    nameProtagonist: "",
+    visitedBar: false,
+    visitedCafe: false,
+    visitedLibrary: false,
+    visitedHarbor: false,
+  };
 
   window.addEventListener("load", start);
-  
+
   function start(_event: Event): void {
     // Menü
-    gameMenu = ƒS.Menu.create(gameMenuOptions, buttonFunctionalities, "gameMenu");
+    gameMenu = ƒS.Menu.create(
+      gameMenuOptions,
+      buttonFunctionalities,
+      "gameMenu"
+    );
+
+    // scenes (linear)
     let scenes: ƒS.Scenes = [
       // Scenen werden linear abgespielt
 
-      //{ id: "Kapitel 2", scene: Scene, name: "Scene" },
+      // { id: "Id", scene: Scene, name: "Scene" },
       { scene: Intro, name: "Intro" },
 
-      { scene: Bar, name: "Kneipe" },
+      { id: "NextLocationChoice", scene: NextLocationChoice, name: "" },
 
-      { scene: Library, name: "Bücherei" },
+      { id: "Kneipe", scene: Bar, name: "Kneipe" },
 
-      { scene: Port, name: "Hafen" },
+      { id: "Bücherei", scene: Library, name: "Bücherei" },
 
-      { scene: Cafe, name: "Café" },
+      { id: "Hafen", scene: Harbor, name: "Hafen" },
 
-      { scene: Outro, name: "Outro" },
+      { id: "Café", scene: Cafe, name: "Café" },
+
+      { id: "Outro", scene: Outro, name: "Outro" },
 
       // non-Linear: ID an Scene geben und dadurch Reihenfolge bestimmen
-
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
@@ -41,5 +50,4 @@ namespace Application {
     // start the sequence
     ƒS.Progress.go(scenes);
   }
-
 }

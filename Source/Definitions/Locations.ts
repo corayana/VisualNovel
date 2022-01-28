@@ -1,6 +1,5 @@
 namespace Application {
-
-    /**
+  /**
    *   id of the location: {
    *     name: "Name of the location" (optional),
    *     background: "path to the image to be used as the background",
@@ -8,23 +7,22 @@ namespace Application {
    *   }
    */
 
-    export let locations = {
-        cafe: {
-            name: "Cafè",
-            background: "./Images/Backgrounds/cafe.png",
-        },
-        port: {
-            name: "Hafen",
-            background: "./Images/Backgrounds/port.png",
-        },
-        library: {
-            name: "Bücherei",
-            background: "./Images/Backgrounds/library.png",
-        },
-        bar: {
-            name: "Kneipe",
-            background: "./Images/Backgrounds/bar.png",
-        }
-    }
-
+  export let locations = {
+    cafe: {
+      name: "Cafè",
+      background: "./Images/Backgrounds/cafe.png",
+    },
+    port: {
+      name: "Hafen",
+      background: "./Images/Backgrounds/harbour.png",
+    },
+    library: {
+      name: "Bücherei",
+      background: "./Images/Backgrounds/library.png",
+    },
+    bar: {
+      name: "Kneipe",
+      background: "./Images/Backgrounds/bar.png",
+    },
+  };
 }

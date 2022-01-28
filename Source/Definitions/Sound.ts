@@ -1,11 +1,9 @@
 namespace Application {
+  export let sound = {
+    // Music
+    backgroundTheme: "",
 
-    export let sound = {
-        // Music
-        backgroundTheme: "",
-
-        // Sound
-        click: ""
-    }
-
+    // Sound
+    click: "",
+  };
 }

@@ -8,14 +8,14 @@ namespace Application {
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 
     // show charakter lara
-    await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(25, 100));
+    await ƒS.Character.show(characters.lara, characters.lara.pose.friendly, ƒS.positionPercent(25, 100));
     await ƒS.update(1);
 
     // dialog
     await ƒS.Speech.tell(characters.lara, "Hallo Tante Elise!");
 
     // show character elise
-    await ƒS.Character.show(characters.elise, characters.elise.pose.neutral, ƒS.positionPercent(75, 100));
+    await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
     await ƒS.update(1);
 
     // dialog

@@ -54,23 +54,20 @@ namespace Application {
     }
 
     await ƒS.Character.hide(characters.uwe);
-
     await ƒS.Character.show(characters.uwe, characters.uwe.pose.friendly, ƒS.positionPercent(75, 100));
-    await ƒS.update();
+    await ƒS.update(0);
 
     await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);
 
     await ƒS.Character.hide(characters.uwe);
-
     await ƒS.Character.show(characters.uwe, characters.uwe.pose.shocked, ƒS.positionPercent(75, 100));
-    await ƒS.update();
+    await ƒS.update(0);
 
     await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);
 
     await ƒS.Character.hide(characters.uwe);
-
-    await ƒS.Character.show(characters.uwe, characters.uwe.pose.inlove, ƒS.positionPercent(75, 100));
-    await ƒS.update();
+    await ƒS.Character.show(characters.uwe, characters.uwe.pose.blushed, ƒS.positionPercent(75, 100));
+    await ƒS.update(0);
 
     await ƒS.Speech.tell(characters.uwe, text.uwe.T0000);
 

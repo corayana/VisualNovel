@@ -26,6 +26,9 @@ namespace Application {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         neutral: "./Images/Characters/elise_neutral.png",
+        friendly: "./Images/Characters/elise_friendly.png",
+        shocked: "./Images/Characters/elise_shocked.png",
+        blushed: "./Images/Characters/elise_blushed.png",
       },
     },
     wilma: {
@@ -46,7 +49,7 @@ namespace Application {
         friendly: "./Images/Characters/uwe_friendly.png",
         pensive: "./Images/Characters/uwe_pensive.png",
         shocked: "./Images/Characters/uwe_shocked.png",
-        inlove: "./Images/Characters/uwe_inlove.png",
+        blushed: "./Images/Characters/uwe_blushed.png",
       },
     },
     gabi: {

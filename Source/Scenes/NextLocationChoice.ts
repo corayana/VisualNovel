@@ -26,7 +26,7 @@ namespace Application {
       return "Outro";
     }
 
-    let chooseNextLocation = await ƒS.Menu.getInput(chooseNextLocationOptions, "locationChoice");
+    let chooseNextLocation = await ƒS.Menu.getInput(chooseNextLocationOptions, "choice");
 
     switch (chooseNextLocation) {
       case chooseNextLocationOptions.library:

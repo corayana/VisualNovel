@@ -8,7 +8,7 @@ namespace Application {
         color: ƒS.Color.CSS("white"),
       },
       end: {
-        translation: ƒS.positions.bottomright, //prozentuale Angabe ist besser; auf eine Variante festlegen und immer verwenden
+        translation: ƒS.positions.bottomright,
         rotation: 20,
         scaling: new ƒS.Position(1.5, 0.5),
         color: ƒS.Color.CSS("red"),
@@ -27,8 +27,7 @@ namespace Application {
         color: ƒS.Color.CSS("white"),
       },
       end: {
-        translation: ƒS.positionPercent(20, 100), //prozentuale Angabe ist besser; auf eine Variante festlegen und immer verwenden
-        rotation: 10,
+        translation: ƒS.positionPercent(20, 100),
         scaling: new ƒS.Position(0.5, 1.5),
         color: ƒS.Color.CSS("white", 0),
       },

@@ -7,8 +7,9 @@ body {
   background-color: rgb(19, 20, 29);
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
-  font-size: 2vmin;
+  font-size: 1.2vmax;
   margin: 0;
+  padding: 0;
 }
 
 scene {
@@ -18,8 +19,6 @@ scene {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
-  left: 0;
-  right: 0;
 }
 
 canvas {
@@ -54,7 +53,7 @@ speech {
 }
 
 name {
-  font-size: 2.2vmin;
+  font-size: 1.4vmax;
   display: block;
   color: rgb(27, 216, 74);
   margin-bottom: 10px;
@@ -153,7 +152,7 @@ dialog[type="inventory"] button {
   margin: 0px 25px 0 25px;
   padding: 5px 10px;
   color: #fafafa;
-  font-size: 1.5vmin;
+  font-size: 0.8vmax;
 }
 
 .gameMenu button:hover {
@@ -163,48 +162,25 @@ dialog[type="inventory"] button {
 
 /* CHOICES */
 .choice {
-  padding: 0px;
-  border-style: solid;
+  background: rgba(20, 22, 24, 0.3);;
+  border: none;  
   border-radius: 15px;
-  border-width: 5px;
-  border-color: #333333;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .choice button {
-  font-size: 1.4vmin;
-  height: 70px;
-  width: 200px;
+  font-size: 1vw;
+  height: 72px;
+  width: 216px;
   background-color: #fafafa;
-
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
-  padding: 10px;
+  border-color: #333333;
+  border-width: 4px;
+  border-radius: 15px;
+  margin: 20px;
 }
 
 .choice button:hover {
-  background-color: rgb(200, 200, 200);
-  cursor: pointer;
-}
-
-.locationChoice {
-  background: none;
-  border: none;
-}
-
-.locationChoice button {
-  font-size: 1.4vmin;
-  height: 70px;
-  width: 200px;
-  background-color: #fafafa;
-  border-color: #333333;
-  border-width: 3px;
-  border-radius: 15px;
-  padding: 10px;
-  margin: 20px
-}
-
-.locationChoice button:hover {
   background-color: rgb(200, 200, 200);
   cursor: pointer;
 }

@@ -1,4 +1,5 @@
 namespace Application {
+  
   //menu variables
   export let menuOpen: boolean = true;
   export let inventoryOpen: boolean = false;
@@ -12,17 +13,6 @@ namespace Application {
   };
 
   export let gameMenu: ƒS.Menu;
-
-  export function showCredits(): void {
-    ƒS.Text.setClass("credits");
-    ƒS.Text.print("<b>Credits</b>\
-        <p>Carina Spangenberger</p>");
-  }
-
-  export function showShortcuts(): void {
-    ƒS.Text.setClass("shortcuts");
-    ƒS.Text.print("<p>  xyz </p>");
-  }
 
   export async function buttonFunctionalities(_option: string): Promise<void> {
     console.log(_option);

@@ -59,16 +59,16 @@ namespace Application {
     // CHOICE Ergebnis
     switch (chooseDrink) {
       case chooseDrinkOptions.water:
-        await ƒS.Speech.tell(characters.elise, "Hier, dein Wasser.");
+        await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist dein Wasser.");
         break;
       case chooseDrinkOptions.tea:
-        await ƒS.Speech.tell(characters.elise, "Hier, dein Früchtetee.");
+        await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist dein Früchtetee.");
         break;
       case chooseDrinkOptions.applejuice:
-        await ƒS.Speech.tell(characters.elise, "Hier, dein Apfelsaft.");
+        await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist dein Apfelsaft.");
         break;
       case chooseDrinkOptions.hotChocolate:
-        await ƒS.Speech.tell(characters.elise, "Hier, deine heiße Schokolade.");
+        await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist deine heiße Schokolade.");
         break;
     }
 

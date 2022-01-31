@@ -18,7 +18,6 @@ namespace Application {
     await ƒS.Speech.tell(characters.lara, "Ob das Gabi ist?");
     await ƒS.Speech.tell(characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?");
 
-
     // COHICE listen to phone call
     let chooseActionOptions = {
       overhear: "Telefonat belauschen",

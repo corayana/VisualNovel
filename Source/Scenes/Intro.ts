@@ -21,6 +21,8 @@ namespace Application {
     // dialog
     await ƒS.Speech.tell(characters.elise, "Hallo Lara, schön dich zu sehen!");
 
+    /*
+
     await ƒS.Speech.tell(characters.elise, "Komm herein.");
     await ƒS.Speech.tell(characters.elise, "Stell deinen Koffer einfach an der Treppe ab und setz dich erstmal an die Theke.");
     await ƒS.Speech.tell(characters.elise, "Heute ist zum Glück nicht allzu viel los im Café, dann können wir direkt ein bisschen quatschen.");
@@ -202,7 +204,7 @@ namespace Application {
     await ƒS.update(0.2);
 
     await ƒS.Speech.tell(characters.elise, "Aber sie ist mit Abstand am Längsten auf der Insel und unser Fels in der Brandung.");
-    await ƒS.Speech.tell(characters.elise, "Sie hat für alle einen guten Rat.");
+    await ƒS.Speech.tell(characters.elise, "Wilma ist ihr ein und alles. Für sie würde sie alles tun.");
 
     // change laras pose to suspicious
     await ƒS.Character.hide(characters.lara);
@@ -277,6 +279,8 @@ namespace Application {
 
     await ƒS.Speech.tell(characters.lara, "Super, du bist die Beste!");
     await ƒS.Speech.tell(characters.lara, "Ich mache mich direkt auf den Weg.");
+
+    */
 
     // hide elements
     ƒS.Speech.clear();

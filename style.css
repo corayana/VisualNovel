@@ -15,6 +15,10 @@ body {
 scene {
   width: 1920px;
   height: 1080px;
+  /*
+  width: 1280px;
+  height: 720px;
+*/
   display: inline-block;
   position: absolute;
   margin-left: auto;

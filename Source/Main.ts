@@ -1,4 +1,16 @@
 namespace Application {
+
+  /**
+   * TODO
+   * - favicon
+   * - Transitions: screen size fix
+   * - focused buton
+   * - Vorschaubild (Köpfe in Kreisen?)
+   * - Name für VN
+   * - Sound/Musik
+   * */ 
+
+
   export import ƒ = FudgeCore;
   export import ƒS = FudgeStory;
 

@@ -1,6 +1,6 @@
 namespace Application {
   export async function Bar(): ƒS.SceneReturn {
-    console.log("Bar");
+    console.log("Visit Bar");
 
     dataForSave.visitedBar = true;
 

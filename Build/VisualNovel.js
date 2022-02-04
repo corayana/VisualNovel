@@ -372,7 +372,7 @@ var Application;
 var Application;
 (function (Application) {
     async function Bar() {
-        console.log("Bar");
+        console.log("Visit Bar");
         Application.dataForSave.visitedBar = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.bar);
@@ -487,11 +487,11 @@ var Application;
 var Application;
 (function (Application) {
     async function Cafe() {
-        console.log("Café");
+        console.log("Visit Café");
         Application.dataForSave.visitedCafe = true;
-        // Anzeigen von Background
+        // show background
         await Application.ƒS.Location.show(Application.locations.cafe);
-        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge); // transition
+        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.update(1);
@@ -511,35 +511,50 @@ var Application;
 var Application;
 (function (Application) {
     async function Harbor() {
-        console.log("Harbor");
+        console.log("Visit Harbor");
         Application.dataForSave.visitedHarbor = true;
-        let text = {
-            wilma: {
-                T0000: "Hallo.",
-            },
-        };
-        // Anzeigen von Background
+        // show background
         await Application.ƒS.Location.show(Application.locations.port);
-        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge); // transition
+        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.update(1);
         // show charakter wilma
         await Application.ƒS.Character.show(Application.characters.wilma, Application.characters.wilma.pose.neutral, Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.update(1);
-        await Application.ƒS.Speech.tell(Application.characters.wilma, text.wilma.T0000);
-        await Application.ƒS.Character.hide(Application.characters.wilma);
-        await Application.ƒS.Character.show(Application.characters.wilma, Application.characters.wilma.pose.grumpy, Application.ƒS.positionPercent(75, 100));
-        await Application.ƒS.update();
-        await Application.ƒS.Speech.tell(Application.characters.wilma, text.wilma.T0000);
-        await Application.ƒS.Character.hide(Application.characters.wilma);
-        await Application.ƒS.Character.show(Application.characters.wilma, Application.characters.wilma.pose.friendly, Application.ƒS.positionPercent(75, 100));
-        await Application.ƒS.update();
-        await Application.ƒS.Speech.tell(Application.characters.wilma, text.wilma.T0000);
-        await Application.ƒS.Character.hide(Application.characters.wilma);
-        await Application.ƒS.Character.show(Application.characters.wilma, Application.characters.wilma.pose.laughing, Application.ƒS.positionPercent(75, 100));
-        await Application.ƒS.update();
-        await Application.ƒS.Speech.tell(Application.characters.wilma, text.wilma.T0000);
+        // dialog
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        // CHOICE look at letters
+        let chooseActionOptions = {
+            look: "",
+            wait: "",
+        };
+        let chooseAction = await Application.ƒS.Menu.getInput(chooseActionOptions, "choice");
+        // CHOICE result
+        switch (chooseAction) {
+            case chooseActionOptions.look:
+                break;
+            case chooseActionOptions.wait:
+                break;
+        }
+        // dialog
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
@@ -841,7 +856,7 @@ var Application;
 var Application;
 (function (Application) {
     async function Library() {
-        console.log("Library");
+        console.log("Visit Library");
         Application.dataForSave.visitedLibrary = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.library);

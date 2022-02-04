@@ -1,12 +1,12 @@
 namespace Application {
   export async function Cafe(): ƒS.SceneReturn {
-    console.log("Café");
+    console.log("Visit Café");
 
     dataForSave.visitedCafe = true;
 
-    // Anzeigen von Background
+    // show background
     await ƒS.Location.show(locations.cafe);
-    await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge); // transition
+    await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(25, 100));

@@ -4,6 +4,7 @@ namespace Application {
 
     // show background
     await ƒS.Location.show(locations.cafe);
+    
     // transition
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 

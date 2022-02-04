@@ -1,6 +1,6 @@
 namespace Application {
   export async function Library(): ƒS.SceneReturn {
-    console.log("Library");
+    console.log("Visit Library");
 
     dataForSave.visitedLibrary = true;
 

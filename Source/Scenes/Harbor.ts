@@ -109,7 +109,7 @@ namespace Application {
         await ƒS.Speech.tell(characters.lara, ". . .");
         await ƒS.Speech.tell(characters.lara, "Ohh, Wilma scheint ihr Telefonat zu beenden.");
         await ƒS.Speech.tell(characters.lara, "Ich lege die Briefe schnell zurück.");
-        await ƒS.Speech.tell(characters.lara, "Ich lege die Briefe schnell zurück.");
+        await ƒS.Speech.tell(characters.lara, "Und jetzt nichts anmerken lassen.");
         break;
       case chooseActionOptions.wait:
         await ƒS.Speech.tell(characters.lara, "Nein, ich will nicht einfach unbemerkt in Wilmas private Sachen schauen, das gehört sich nicht.");

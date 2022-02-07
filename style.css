@@ -75,6 +75,16 @@ button {
   font-family: "Montserrat", sans-serif;
 }
 
+.novelPage {
+  width: 50%;
+  Height: 50%;
+  background-color: rgba(20, 22, 24, 0.9);
+  color: #fafafa;
+  text-align: center;
+  border-radius: 15px;
+  border-style: none;
+}
+
 /* INVENTORY */
 dialog[type="inventory"] {
   background-color: #333333;

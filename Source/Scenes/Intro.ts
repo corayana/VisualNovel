@@ -4,20 +4,22 @@ namespace Application {
 
     // show background
     await ƒS.Location.show(locations.cafe);
+
+    ƒS.Sound.fade
     
     // transition
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.friendly, ƒS.positionPercent(25, 100));
-    await ƒS.update(1);
+    await ƒS.update(0.5);
 
     // dialog
     await ƒS.Speech.tell(characters.lara, "Hallo Tante Elise!");
 
     // show character elise
     await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
-    await ƒS.update(1);
+    await ƒS.update(0.5);
 
     // dialog
     await ƒS.Speech.tell(characters.elise, "Hallo Lara, schön dich zu sehen!");
@@ -289,7 +291,10 @@ namespace Application {
     ƒS.Character.hideAll();
     await ƒS.update(1);
 
+    /*
     //choose next location
-    return "NextLocationChoice";
+    return "NextLocationChoice"; */
+
+    return "Outro";
   }
 }

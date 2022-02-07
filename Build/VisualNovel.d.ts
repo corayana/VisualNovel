@@ -139,6 +139,10 @@ declare namespace Application {
             name: string;
             background: string;
         };
+        outro: {
+            name: string;
+            background: string;
+        };
     };
 }
 declare namespace Application {
@@ -187,6 +191,9 @@ declare namespace Application {
     function Cafe(): ƒS.SceneReturn;
 }
 declare namespace Application {
+    function EndOfNovel(): ƒS.SceneReturn;
+}
+declare namespace Application {
     function Harbor(): ƒS.SceneReturn;
 }
 declare namespace Application {
@@ -200,4 +207,19 @@ declare namespace Application {
 }
 declare namespace Application {
     function Outro(): ƒS.SceneReturn;
+}
+declare namespace Application {
+    function AccusedAll(): ƒS.SceneReturn;
+}
+declare namespace Application {
+    function AccusedElise(): ƒS.SceneReturn;
+}
+declare namespace Application {
+    function AccusedGabi(): ƒS.SceneReturn;
+}
+declare namespace Application {
+    function AccusedUwe(): ƒS.SceneReturn;
+}
+declare namespace Application {
+    function AccusedWilma(): ƒS.SceneReturn;
 }

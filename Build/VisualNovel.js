@@ -21,13 +21,14 @@ var Application;
         visitedHarbor: false,
     };
     window.addEventListener("load", start);
+    // text pace: pauses used by ticker between letters and before a paragraph in milliseconds
+    Application.ƒS.Speech.setTickerDelays(25, 100);
     function start(_event) {
         // Menü
         Application.gameMenu = Application.ƒS.Menu.create(Application.gameMenuOptions, Application.buttonFunctionalities, "gameMenu");
-        // scenes (linear)
+        // scenes and ids: { id: "Id", scene: Scene, name: "Scene" }
+        // here: except for intro non-linear: order is given by id
         let scenes = [
-            // Scenen werden linear abgespielt
-            // { id: "Id", scene: Scene, name: "Scene" },
             { scene: Application.Intro, name: "Intro" },
             { id: "NextLocationChoice", scene: Application.NextLocationChoice, name: "" },
             { id: "Kneipe", scene: Application.Bar, name: "Kneipe" },
@@ -35,7 +36,11 @@ var Application;
             { id: "Hafen", scene: Application.Harbor, name: "Hafen" },
             { id: "Café", scene: Application.Cafe, name: "Café" },
             { id: "Outro", scene: Application.Outro, name: "Outro" },
-            // non-Linear: ID an Scene geben und dadurch Reihenfolge bestimmen
+            { id: "AccusedWilma", scene: Application.AccusedWilma, name: "AccusedWilma", next: "EndOfNovel" },
+            { id: "AccusedGabi", scene: Application.AccusedGabi, name: "AccusedGabi", next: "EndOfNovel" },
+            { id: "AccusedUwe", scene: Application.AccusedUwe, name: "AccusedUwe", next: "EndOfNovel" },
+            { id: "AccusedElise", scene: Application.AccusedElise, name: "AccusedElise", next: "EndOfNovel" },
+            { id: "EndOfNovel", scene: Application.EndOfNovel, name: "EndOfNovel" },
         ];
         let uiElement = document.querySelector("[type=interface]");
         Application.dataForSave = Application.ƒS.Progress.setData(Application.dataForSave, uiElement);
@@ -238,6 +243,10 @@ var Application;
             name: "Kneipe",
             background: "./Images/Backgrounds/bar.png",
         },
+        outro: {
+            name: "Outro",
+            background: "./Images/Backgrounds/outro.png",
+        }
     };
 })(Application || (Application = {}));
 var Application;
@@ -498,6 +507,35 @@ var Application;
         // show character elise
         await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.update(1);
+        // dialog
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Nochmal zu dem Abend gestern:");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ist dir etwas Verdächtiges aufgefallen?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Um ehrlich zu sein, war es ein komischer Abend.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Uwe hat öfters mit Wilma alleine getuschelt.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Die beiden scheinen ein gemeinsames Geheimnis zu haben.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber naja, das geht mich nichts an.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Soll Uwe doch machen, was er will.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber dann braucht er auch nicht erwarten, dass ich ständig alles für ihn stehen und liegen lasse.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Das habe ich ihm gestern auch so klar gemacht.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Oh, du scheinst nicht gerade gut auf ihn zu sprechen zu sein?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Auch, Uwe kann mich manchmal echt wahnsinnig machen mit seiner stillen Art.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber das ist ein anderes Thema - da brauchst du dir keine Gedanken drum zu machen.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Hat sich sonst noch etwas Ungewöhnliches ereignet?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Gabi hat mir gestern Abend aus heiterem Himmel sehr gemeine Dinge vorgeworfen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ich hätte noch nie erleben müssen, wie es ist, hartes Geld verdienen zu müssen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Das Glück käme mir nur so zugeflogen, alles würde mir in den Schoss fallen – und so weiter.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Kannst du dir vorstellen, dass sie das Preisgeld gestohlen haben könnte?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Naja, ich weiß nicht recht.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Unmöglich wäre es sicherlich nicht.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Sie hat mir immerhin offen an den Kopf geworfen, dass ich das Preisgeld nicht verdiene.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Sie hatte es nie leicht und war schon immer sehr neidisch auf mich.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber das gestern Abend – das hat wirklich jede Stichelei übertroffen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Da muss mehr dahinterstecken!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Also wenn du mich so fragst, hat Gabi das Geld an sich genommen.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Hmm, das ist ja interessant.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, ". . .");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich bin dann mal wieder unterwegs.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Bis heute Abend!");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
@@ -507,6 +545,16 @@ var Application;
         return "NextLocationChoice";
     }
     Application.Cafe = Cafe;
+})(Application || (Application = {}));
+var Application;
+(function (Application) {
+    async function EndOfNovel() {
+        // Novel Page
+        Application.ƒS.Text.setClass("novelPage");
+        Application.ƒS.Text.print("Was wohl ans Tageslicht gekommen wäre, wenn du jemanden anderen angeklagt hättest?");
+        Application.showCredits();
+    }
+    Application.EndOfNovel = EndOfNovel;
 })(Application || (Application = {}));
 var Application;
 (function (Application) {
@@ -523,24 +571,61 @@ var Application;
         await Application.ƒS.Character.show(Application.characters.wilma, Application.characters.wilma.pose.neutral, Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.update(1);
         // dialog
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Hallo Wilma!");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Moin Lara!");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Schön dich zu sehen!");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Elise hat erzählt, dass du für ein paar Tage zu Besuch kommst.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Wie geht es dir?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Danke, ich kann mich nicht beklagen!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Wie geht es dir? Was macht die Fischerei?");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ach, ich kann mich ebenfalls nicht beklagen.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Zurzeit ist natürlich ein bisschen weniger los, da die Touristen fehlen.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Aber ich komme gut über die Runden.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Hast du es schon gehört?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Gestern wurde das Preisgeld aus der Spardose von Tante Elise geklaut.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Wirklich? Das ganze Geld ist weg?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ja, wir haben die leere Spardose heute früh bei meiner Ankunft bemerkt.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Jemand muss das Geld gestern Abend an sich genommen haben.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Hast du eine Ahnung, wer es gestohlen haben könnte?");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich kann mir nicht vorstellen, dass jemand von uns ein Dieb ist.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Meine Mama Gabi braucht das Geld bestimmt nicht.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Sie lebt sehr sparsam und leistet sich nicht viel.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Obwohl sie nicht viel verdient, kommt sie alleine gut über die Runden.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Könnte Uwe das Geld genommen haben?");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Uwes Kneipe läuft sehr gut.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Er braucht das Geld bestimmt nicht.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, ". . .");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "*lacht*");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Warum lachst du?");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Oh naja, mir ist gerade eine Erklärung für den Diebstahl eingefallen:");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Elises spontane Verkündigung gestern, die Insel zu verlassen – das muss es sein!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Wie meinst du das?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Davon hat sie mir gegenüber nichts erwähnt.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Natürlich hat sie das nicht erwähnt.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich glaube auch nicht, dass sie das wirklich tun möchte.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Elise hat gestern aus heiterem Himmel verkündet, das Preisgeld zu nutzen, um die Insel zu verlassen.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich bin mir sicher, dass das nur ein Versuch von ihr ist, Uwe aus seinem Schneckenhaus zu locken.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Weißt du, die beiden sind schon lange ineinander verliebt.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Aber Uwe ist einfach viel zu schüchtern und hat regelrecht Angst davor, ihr es zu gestehen.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Elise hat den plötzlichen Umzug bestimmt nur angekündigt, damit Uwe endlich den Schritt wagt, und ihr seine Gefühle offen gesteht, um sie nicht zu verlieren.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Sie hat ihn quasi vor die Wahl gestellt: Entweder er springt, oder sie geht.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Und was hat das mit dem Diebstahl zu tun?");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich glaube, dass die Ansage eher nach hinten losgegangen ist.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Scheinbar hat Uwe noch immer keine Anstalten gemacht, ihr seine Liebe zu gestehen.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Um ihre Drohung nicht direkt wahr machen zu müssen, hat sie das Preisgeld sicherlich selbst verschwinden lassen.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "In Wirklichkeit will sie ja gar nicht weg von hier.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Aber um das zuzugeben ist sie viel zu stolz.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Für sie ist es einfacher, das Preisgeld verschwinden zu lassen, als zugeben zu müssen, dass sie überhaupt nicht wegziehen möchte.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Und obendrauf hat sie dir so direkt eine Freude bereitet, weil du in dem Fall ermitteln kannst.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Sie macht sich doch immer Sorgen, dass du dich hier langweilen könntest.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Wenn du mich fragst, ist Elise selbst die Diebin des Geldes.");
+        //Page
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Moment, den Anruf muss ich kurz annehmen. Kannst du hier kurz aufpassen?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Das wirft natürlich ein ganz anderes Licht auf die Sache.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Die Anzahl der Verdächtigen hat sich gerade von drei auf vier erhöht.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ob Tante Elise den Diebstahl wirklich nur vorgetäuscht hat?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Hmm, was für blaue Briefe sind da denn in der Tasche von Wilma?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ob ich mal einen Blick darauf werfen sollte?");
         // CHOICE look at letters
         let chooseActionOptions = {
             look: "",
@@ -550,11 +635,38 @@ var Application;
         // CHOICE result
         switch (chooseAction) {
             case chooseActionOptions.look:
+                await Application.ƒS.Speech.tell(Application.characters.lara, "Es schadet bestimmt nicht, wenn ich einen schnellen Blick auf die Papiere werfe, solange Wilma beschäftigt ist.");
+                await Application.ƒS.Speech.tell(Application.characters.lara, ". . .");
+                await Application.ƒS.Speech.tell(Application.characters.lara, "Ohha, scheinbar hat Wilma ziemliche Geldprobleme.");
+                await Application.ƒS.Speech.tell(Application.characters.lara, "Das Preisgeld von Elise wäre ihr sicher sehr gelegen gekommen.");
+                await Application.ƒS.Speech.tell(Application.characters.lara, "Ob sie das Geld aus der Spardose geklaut hat, um ihre Schulden zu begleichen?");
+                await Application.ƒS.Speech.tell(Application.characters.lara, ". . .");
+                await Application.ƒS.Speech.tell(Application.characters.lara, "Ohh, Wilma scheint ihr Telefonat zu beenden.");
+                await Application.ƒS.Speech.tell(Application.characters.lara, "Ich lege die Briefe schnell zurück.");
+                await Application.ƒS.Speech.tell(Application.characters.lara, "Und jetzt nichts anmerken lassen.");
                 break;
             case chooseActionOptions.wait:
+                await Application.ƒS.Speech.tell(Application.characters.lara, "Nein, ich will nicht einfach unbemerkt in Wilmas private Sachen schauen, das gehört sich nicht.");
+                await Application.ƒS.Speech.tell(Application.characters.lara, "Ich warte lieber bis sie wieder zurück kommt.");
+                // Page 3 min später
                 break;
         }
         // dialog
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "So, da bin ich wieder.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Meine Liebe, sei mir nicht böse, aber so langsam muss ich wieder an die Arbeit zurück.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Schön, dass du vorbeigeschaut hast.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Komm gerne jederzeit wieder vorbei.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Moment, eines noch:");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Elise kocht heute Abend. ");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich würde mich sehr freuen, wenn du auch kommst!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Um 18:30 Uhr bei ihr im Café.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Oh, wie schön!");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Da schaue ich doch sehr gerne vorbei.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Super, ich freue mich darauf!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Bis später.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ach ja, und nochmal zu dem Diebstahl des Geldes:");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich bin mir sicher, dass Elise das Geld noch hat. Kein Grund, die Sache größer zu machen, als sie ist.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Also, bis später dann.");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
@@ -571,16 +683,17 @@ var Application;
         console.log("Intro");
         // show background
         await Application.ƒS.Location.show(Application.locations.cafe);
+        Application.ƒS.Sound.fade;
         // transition
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.friendly, Application.ƒS.positionPercent(25, 100));
-        await Application.ƒS.update(1);
+        await Application.ƒS.update(0.5);
         // dialog
         await Application.ƒS.Speech.tell(Application.characters.lara, "Hallo Tante Elise!");
         // show character elise
         await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.friendly, Application.ƒS.positionPercent(75, 100));
-        await Application.ƒS.update(1);
+        await Application.ƒS.update(0.5);
         // dialog
         await Application.ƒS.Speech.tell(Application.characters.elise, "Hallo Lara, schön dich zu sehen!");
         /*
@@ -848,8 +961,10 @@ var Application;
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
+        /*
         //choose next location
-        return "NextLocationChoice";
+        return "NextLocationChoice"; */
+        return "Outro";
     }
     Application.Intro = Intro;
 })(Application || (Application = {}));
@@ -1019,25 +1134,134 @@ var Application;
 (function (Application) {
     async function Outro() {
         console.log("Outro");
-        let text = {
-            lara: {
-                T0000: "Wer wars?",
-            },
-        };
+        // show charakter lara
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(50, 100));
+        await Application.ƒS.update(1);
+        // monolog lara
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Oha, es ist ja schon fast Abend!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich habe eine Menge Informationen gesammelt.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Am besten lasse ich mir das alles noch einmal durch den Kopf gehen, bevor ich beim gemeinsamen Abendessen den Dieb des Geldes entlarve.");
+        // hide elements
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
+        Application.ƒS.Character.hideAll();
+        // Novel Page
+        Application.ƒS.Text.setClass("novelPage");
+        Application.ƒS.Text.print("Elise, Uwe, Wilma, Gabi und Lara kommen im Café zum gemeinsamen Abendessen zusammen. Die Stimmung ist angespannt und zwischen oberflächlichen Gesprächen mustern sich die Anwesenden gegenseitig mit misstrauischen Blicken.");
         // show background
-        await Application.ƒS.Location.show(Application.locations.cafe);
+        await Application.ƒS.Location.show(Application.locations.outro);
         // transition
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
-        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
-        await Application.ƒS.update(1);
-        await Application.ƒS.Speech.tell(Application.characters.lara, text.lara.T0000);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(15, 100));
+        await Application.ƒS.update(0.5);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(40, 100));
+        await Application.ƒS.update(0.5);
+        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.neutral, Application.ƒS.positionPercent(55, 100));
+        await Application.ƒS.update(0.5);
+        await Application.ƒS.Character.show(Application.characters.wilma, Application.characters.wilma.pose.neutral, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.5);
+        await Application.ƒS.Character.show(Application.characters.gabi, Application.characters.gabi.pose.neutral, Application.ƒS.positionPercent(90, 100));
+        await Application.ƒS.update(0.5);
+        // dialog
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Schön, dass ihr heute alle hierher gekommen seid!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich habe euch nicht ganz ohne Grund alle auf einmal hier eingeladen.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Wie ihr wisst, wurde gestern Abend das Preisgeld von 4000€ aus der Spardose von Tante Elise gestohlen.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich habe mit euch allen gesprochen und Motive und Beweise gesammelt.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Und nun werde ich offenbaren, wer von euch das Geld an sich genommen hat!");
+        // CHOICE accuse Somebody
+        let chooseActionOptions = {
+            wilma: "Wilma anklagen",
+            gabi: "Gabi anklagen",
+            uwe: "Uwe anklagen",
+            elise: "Elise anklagen",
+            all: "Alle anklagen",
+        };
+        let chooseAction = await Application.ƒS.Menu.getInput(chooseActionOptions, "choice");
+        // CHOICE result
+        switch (chooseAction) {
+            case chooseActionOptions.wilma:
+                return "AccusedWilma";
+            case chooseActionOptions.gabi:
+                return "AccusedGabi";
+            case chooseActionOptions.uwe:
+                return "AccusedUwe";
+            case chooseActionOptions.elise:
+                return "AccusedElise";
+            case chooseActionOptions.all:
+                return "AccusedAll";
+        }
+    }
+    Application.Outro = Outro;
+})(Application || (Application = {}));
+var Application;
+(function (Application) {
+    async function AccusedAll() {
+        console.log("Accused All");
+        // dialog
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ihr alle wart es!");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
     }
-    Application.Outro = Outro;
+    Application.AccusedAll = AccusedAll;
+})(Application || (Application = {}));
+var Application;
+(function (Application) {
+    async function AccusedElise() {
+        console.log("Accused Elise");
+        // dialog
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Elise! Du warst es!");
+        // hide elements
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
+        Application.ƒS.Character.hideAll();
+        await Application.ƒS.update(1);
+    }
+    Application.AccusedElise = AccusedElise;
+})(Application || (Application = {}));
+var Application;
+(function (Application) {
+    async function AccusedGabi() {
+        console.log("Accused Gabi");
+        // dialog
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Gabi! Du warst es!");
+        // hide elements
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
+        Application.ƒS.Character.hideAll();
+        await Application.ƒS.update(1);
+    }
+    Application.AccusedGabi = AccusedGabi;
+})(Application || (Application = {}));
+var Application;
+(function (Application) {
+    async function AccusedUwe() {
+        console.log("Accused Uwe");
+        // dialog
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Uwe! Du warst es!");
+        // hide elements
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
+        Application.ƒS.Character.hideAll();
+        await Application.ƒS.update(1);
+    }
+    Application.AccusedUwe = AccusedUwe;
+})(Application || (Application = {}));
+var Application;
+(function (Application) {
+    async function AccusedWilma() {
+        console.log("Accused Wilma");
+        // dialog
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Wilma! Du warst es!");
+        // hide elements
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
+        Application.ƒS.Character.hideAll();
+        await Application.ƒS.update(1);
+    }
+    Application.AccusedWilma = AccusedWilma;
 })(Application || (Application = {}));
 //# sourceMappingURL=VisualNovel.js.map

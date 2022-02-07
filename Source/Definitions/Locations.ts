@@ -24,5 +24,9 @@ namespace Application {
       name: "Kneipe",
       background: "./Images/Backgrounds/bar.png",
     },
+    outro: {
+      name: "Outro",
+      background: "./Images/Backgrounds/outro.png",
+    }
   };
 }

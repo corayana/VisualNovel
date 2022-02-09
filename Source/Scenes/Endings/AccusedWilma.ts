@@ -63,9 +63,9 @@ namespace Application {
       ƒS.Character.hideAll();
       await ƒS.update(1);
 
-      await ƒS.Text.print("Obwohl du falsch getippt hast, konnte der Täter letztendlich entlarvt werden.\
-      Was wohl passiert wäre, wenn du eine andere Person angeklagt hättest?\
-      Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.\
+      await ƒS.Text.print("Obwohl du falsch getippt hast, konnte der Täter letztendlich entlarvt werden.<br>\
+      Was wohl passiert wäre, wenn du eine andere Person angeklagt hättest?<br>\
+      Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.<br>\
       ");
   
     }

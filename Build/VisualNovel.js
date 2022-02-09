@@ -229,7 +229,7 @@ var Application;
     Application.locations = {
         cafe: {
             name: "Cafè",
-            background: "./Images/Backgrounds/test.png",
+            background: "./Images/Backgrounds/cafe.png",
         },
         port: {
             name: "Hafen",
@@ -246,10 +246,6 @@ var Application;
         outro: {
             name: "Outro",
             background: "./Images/Backgrounds/outro.png",
-        },
-        test: {
-            name: "Test",
-            background: "./Images/Backgrounds/hafen.svg",
         }
     };
 })(Application || (Application = {}));
@@ -359,10 +355,18 @@ var Application;
 var Application;
 (function (Application) {
     Application.sound = {
-        // Music
-        backgroundTheme: "",
-        // Sound
-        click: "",
+        // Intro
+        backgroundIntroHappy: "./Sound/bensound-littleidea.mp3",
+        backgroundIntroMysterious: "./Sound/bensound-enigmatic.mp3",
+        // Bar
+        backgroundBar: "./Sound/bensound-thelounge.mp3",
+        // Harbor
+        backgroundHarbor: "./Sound/quicksounds-HarborSeagulls2.mp3",
+        // library
+        backgroundLibrary: "./Sound/freesound-hackneycentrallibrary.wav",
+        // Cafe
+        backgroundSoundCafe: "./Sound/quicksounds-AmbienceCoffeeShopQuietLoop.mp3",
+        backgroundMusicCafe: "./Sound/bensound-adaytoremember.mp3",
     };
 })(Application || (Application = {}));
 var Application;
@@ -389,6 +393,9 @@ var Application;
         Application.dataForSave.visitedBar = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.bar);
+        // sound
+        Application.ƒS.Sound.fade(Application.sound.backgroundBar, 0.2, 3, true);
+        // background transition
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
@@ -492,6 +499,7 @@ var Application;
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
+        Application.ƒS.Sound.fade(Application.sound.backgroundBar, 0, 3, false);
         // choose next location
         return "NextLocationChoice";
     }
@@ -504,6 +512,10 @@ var Application;
         Application.dataForSave.visitedCafe = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.cafe);
+        // sound
+        Application.ƒS.Sound.fade(Application.sound.backgroundMusicCafe, 0.1, 3, true);
+        Application.ƒS.Sound.fade(Application.sound.backgroundSoundCafe, 1, 3, true);
+        // background transition
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
@@ -545,6 +557,8 @@ var Application;
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
+        Application.ƒS.Sound.fade(Application.sound.backgroundSoundCafe, 0, 3, false);
+        Application.ƒS.Sound.fade(Application.sound.backgroundMusicCafe, 0, 3, false);
         //choose next location
         return "NextLocationChoice";
     }
@@ -553,9 +567,6 @@ var Application;
 var Application;
 (function (Application) {
     async function EndOfNovel() {
-        // Novel Page
-        Application.ƒS.Text.setClass("novelPage");
-        Application.ƒS.Text.print("Was wohl ans Tageslicht gekommen wäre, wenn du jemanden anderen angeklagt hättest?");
         Application.showCredits();
     }
     Application.EndOfNovel = EndOfNovel;
@@ -567,6 +578,9 @@ var Application;
         Application.dataForSave.visitedHarbor = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.port);
+        // fade background sound
+        Application.ƒS.Sound.fade(Application.sound.backgroundHarbor, 0.8, 1, true);
+        // background transition
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
@@ -676,6 +690,7 @@ var Application;
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
+        Application.ƒS.Sound.fade(Application.sound.backgroundHarbor, 0, 3, false);
         //choose next location
         return "NextLocationChoice";
     }
@@ -687,11 +702,7 @@ var Application;
         console.log("Intro");
         // show background
         await Application.ƒS.Location.show(Application.locations.cafe);
-        // transition
-        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
-        await Application.ƒS.Speech.tell(Application.characters.elise, "Das war screen 1 ");
-        // show background
-        await Application.ƒS.Location.show(Application.locations.test);
+        Application.ƒS.Sound.fade(Application.sound.backgroundIntroHappy, 0.2, 3, true);
         // transition
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
@@ -704,275 +715,214 @@ var Application;
         await Application.ƒS.update(0.5);
         // dialog
         await Application.ƒS.Speech.tell(Application.characters.elise, "Hallo Lara, schön dich zu sehen!");
-        /*
-    
-        await ƒS.Speech.tell(characters.elise, "Komm herein.");
-        await ƒS.Speech.tell(characters.elise, "Stell deinen Koffer einfach an der Treppe ab und setz dich erstmal an die Theke.");
-        await ƒS.Speech.tell(characters.elise, "Heute ist zum Glück nicht allzu viel los im Café, dann können wir direkt ein bisschen quatschen.");
-        await ƒS.Speech.tell(characters.elise, "Was darf ich dir zu trinken anbieten?");
-        await ƒS.Speech.tell(characters.elise, "Wasser, Früchtetee, Apfelsaft oder eine heiße Schokolade?");
-    
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Komm herein.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Stell deinen Koffer einfach an der Treppe ab und setz dich erstmal an die Theke.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Heute ist zum Glück nicht allzu viel los im Café, dann können wir direkt ein bisschen quatschen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Was darf ich dir zu trinken anbieten?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wasser, Früchtetee, Apfelsaft oder eine heiße Schokolade?");
         // CHOICE
         let chooseDrinkOptions = {
-          water: "Wasser",
-          tea: "Früchtetee",
-          applejuice: "Apfelsaft",
-          hotChocolate: "Heiße Schokolade",
+            water: "Wasser",
+            tea: "Früchtetee",
+            applejuice: "Apfelsaft",
+            hotChocolate: "Heiße Schokolade",
         };
-        let chooseDrink = await ƒS.Menu.getInput(chooseDrinkOptions, "choice");
-    
+        let chooseDrink = await Application.ƒS.Menu.getInput(chooseDrinkOptions, "choice");
         // dialog
-        await ƒS.Speech.tell(characters.elise, "Kommt sofort.");
-    
-        await ƒS.Speech.tell(characters.lara, "Ich freue mich so sehr darauf die Herbstferien wieder bei dir verbringen zu dürfen!");
-    
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Kommt sofort.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich freue mich so sehr darauf die Herbstferien wieder bei dir verbringen zu dürfen!");
         // change elises pose to neutral
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.neutral, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Ich hoffe es wird dir nicht zu langweilig!");
-        await ƒS.Speech.tell(characters.elise, "Immerhin ist hier gerade nicht viel los.");
-        await ƒS.Speech.tell(characters.elise, "Die Saison ist vorbei und die meisten Bewohner der Insel sind jetzt selbst auf dem Weg in den Urlaub.");
-        await ƒS.Speech.tell(characters.elise, "Die Leute hier kann man aktuell an einer Hand abzählen.");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ich hoffe es wird dir nicht zu langweilig!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Immerhin ist hier gerade nicht viel los.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Die Saison ist vorbei und die meisten Bewohner der Insel sind jetzt selbst auf dem Weg in den Urlaub.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Die Leute hier kann man aktuell an einer Hand abzählen.");
         // change elises pose to friendly
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.friendly, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
         // CHOICE Ergebnis
         switch (chooseDrink) {
-          case chooseDrinkOptions.water:
-            await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist dein Wasser.");
-            break;
-          case chooseDrinkOptions.tea:
-            await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist dein Früchtetee.");
-            break;
-          case chooseDrinkOptions.applejuice:
-            await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist dein Apfelsaft.");
-            break;
-          case chooseDrinkOptions.hotChocolate:
-            await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist deine heiße Schokolade.");
-            break;
+            case chooseDrinkOptions.water:
+                await Application.ƒS.Speech.tell(Application.characters.elise, "Soo, bitteschön, hier ist dein Wasser.");
+                break;
+            case chooseDrinkOptions.tea:
+                await Application.ƒS.Speech.tell(Application.characters.elise, "Soo, bitteschön, hier ist dein Früchtetee.");
+                break;
+            case chooseDrinkOptions.applejuice:
+                await Application.ƒS.Speech.tell(Application.characters.elise, "Soo, bitteschön, hier ist dein Apfelsaft.");
+                break;
+            case chooseDrinkOptions.hotChocolate:
+                await Application.ƒS.Speech.tell(Application.characters.elise, "Soo, bitteschön, hier ist deine heiße Schokolade.");
+                break;
         }
-    
         // dialog
-        await ƒS.Speech.tell(characters.elise, "Möchtest du auch einen Cupcake?");
-    
-        await ƒS.Speech.tell(characters.lara, "Oh ja, sehr gerne!");
-    
-        await ƒS.Speech.tell(characters.elise, "Bitteschön.");
-    
-        await ƒS.Speech.tell(characters.lara, "Hmm, lecker!");
-        await ƒS.Speech.tell(characters.lara, "Du bist wirklich die beste Konditorin der Welt!");
-    
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Möchtest du auch einen Cupcake?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Oh ja, sehr gerne!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Bitteschön.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Hmm, lecker!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du bist wirklich die beste Konditorin der Welt!");
         // change elises pose to laughing
-    
-        await ƒS.Speech.tell(characters.elise, "Haha, das ist lieb!");
-    
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Haha, das ist lieb!");
         // change elises pose to friendly
-    
-        await ƒS.Speech.tell(characters.elise, "Stell dir vor, ich habe dafür gestern tatsächlich einen Preis auf der kleinen Nachbarsinsel gewonnen.");
-        await ƒS.Speech.tell(characters.elise, "„Bester Cupcake der Inselgruppe“ – Moment, ich hole ihn schnell.");
-        await ƒS.Speech.tell(characters.elise, "…");
-        await ƒS.Speech.tell(characters.elise, "Hier: eine Spardose in Cupcake-Form mit einem Preisgeld von stolzen 4000€.");
-        
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Stell dir vor, ich habe dafür gestern tatsächlich einen Preis auf der kleinen Nachbarsinsel gewonnen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "„Bester Cupcake der Inselgruppe“ – Moment, ich hole ihn schnell.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "…");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Hier: eine Spardose in Cupcake-Form mit einem Preisgeld von stolzen 4000€.");
         // change laras pose to surprised
-        await ƒS.Character.hide(characters.lara);
-        await ƒS.Character.show(characters.lara, characters.lara.pose.surprised, ƒS.positionPercent(25, 100));
-        await ƒS.update(0.2);
-        
-        await ƒS.Speech.tell(characters.lara, "Wow!");
-    
+        await Application.ƒS.Character.hide(Application.characters.lara);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.surprised, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Wow!");
         // change laras pose to friendly
-        await ƒS.Character.hide(characters.lara);
-        await ƒS.Character.show(characters.lara, characters.lara.pose.friendly, ƒS.positionPercent(25, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.lara, "Nicht schlecht, Tante Elise!");
-        await ƒS.Speech.tell(characters.lara, "Das ist eine Menge Geld!");
-    
+        await Application.ƒS.Character.hide(Application.characters.lara);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.friendly, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Nicht schlecht, Tante Elise!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Das ist eine Menge Geld!");
+        // stop sound
+        Application.ƒS.Sound.fade(Application.sound.backgroundIntroHappy, 0, 3, false);
+        // start mysterious sound
+        Application.ƒS.Sound.fade(Application.sound.backgroundIntroMysterious, 0.2, 5, true);
         // change laras pose to surprised
-        await ƒS.Character.hide(characters.lara);
-        await ƒS.Character.show(characters.lara, characters.lara.pose.surprised, ƒS.positionPercent(25, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.lara, "Aber huch - Die Spardose ist ja leer!");
-    
+        await Application.ƒS.Character.hide(Application.characters.lara);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.surprised, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Aber huch - Die Spardose ist ja leer!");
         // change elises pose to shocked
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.shocked, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Wie leer?");
-        await ƒS.Speech.tell(characters.elise, "Zeig mal!");
-        await ƒS.Speech.tell(characters.elise, "…");
-        await ƒS.Speech.tell(characters.elise, "Oh Schreck, du hast Recht!");
-        await ƒS.Speech.tell(characters.elise, "Das ganze Geld ist weg.");
-        await ƒS.Speech.tell(characters.elise, "Das kann doch gar nicht sein.");
-        await ƒS.Speech.tell(characters.elise, "Jemand muss es gestohlen haben!");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.shocked, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wie leer?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Zeig mal!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "…");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Oh Schreck, du hast Recht!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Das ganze Geld ist weg.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Das kann doch gar nicht sein.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Jemand muss es gestohlen haben!");
         // change laras pose to suspicious
-        await ƒS.Character.hide(characters.lara);
-        await ƒS.Character.show(characters.lara, characters.lara.pose.suspicious, ƒS.positionPercent(25, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.lara, "Wer hätte das Preisgeld denn aus der Spardose an sich nehmen können?");
-    
+        await Application.ƒS.Character.hide(Application.characters.lara);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.suspicious, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Wer hätte das Preisgeld denn aus der Spardose an sich nehmen können?");
         // change elises pose to neutral
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.neutral, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Heute hatte ich die Spardose den ganzen Morgen lang im Blick.");
-        await ƒS.Speech.tell(characters.elise, "Da hat sich ihr niemand genähert.");
-        await ƒS.Speech.tell(characters.elise, "Es muss also gestern Abend gewesen sein.");
-        await ƒS.Speech.tell(characters.elise, "Wir haben zusammen auf meinen Gewinn angestoßen.");
-        await ƒS.Speech.tell(characters.elise, "Das waren Uwe, Wilma, Gabi und ich.");
-    
-        await ƒS.Speech.tell(characters.lara, "Dann gibt es also drei Verdächtige.");
-        await ƒS.Speech.tell(characters.lara, "Die Namen sagen mir noch etwas.");
-    
-        await ƒS.Speech.tell(characters.elise, "Ja, du solltest sie alle von deinem letzten Urlaub hier auf der Insel kennen.");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Heute hatte ich die Spardose den ganzen Morgen lang im Blick.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Da hat sich ihr niemand genähert.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Es muss also gestern Abend gewesen sein.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wir haben zusammen auf meinen Gewinn angestoßen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Das waren Uwe, Wilma, Gabi und ich.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Dann gibt es also drei Verdächtige.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Die Namen sagen mir noch etwas.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ja, du solltest sie alle von deinem letzten Urlaub hier auf der Insel kennen.");
         // change laras pose to neutral
-        await ƒS.Character.hide(characters.lara);
-        await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(25, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.lara, "Das ist aber schon echt lange her!");
-        await ƒS.Speech.tell(characters.lara, "Magst du mir vielleicht nochmal eine kurze Vorstellung geben?");
-    
-        await ƒS.Speech.tell(characters.elise, "Na klar!");
-        await ƒS.Speech.tell(characters.elise, "Also, zum einen ist da Uwe.");
-        await ƒS.Speech.tell(characters.elise, "Ihm gehört die kleine Kneipe unten am Wasser.");
-        await ƒS.Speech.tell(characters.elise, "Er ist sehr schüchtern und leise.");
-    
+        await Application.ƒS.Character.hide(Application.characters.lara);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Das ist aber schon echt lange her!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Magst du mir vielleicht nochmal eine kurze Vorstellung geben?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Na klar!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Also, zum einen ist da Uwe.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ihm gehört die kleine Kneipe unten am Wasser.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Er ist sehr schüchtern und leise.");
         // change elises pose to blushed
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.blushed, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Aber er hat das Herz am richtigen Fleck.");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.blushed, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber er hat das Herz am richtigen Fleck.");
         // change elises pose to neutral
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.neutral, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Wilma sollte dir ebenfalls noch bekannt sein.");
-        await ƒS.Speech.tell(characters.elise, "Sie ist die junge Fischerin, die unten am Hafen ihren Stand hat.");
-        
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wilma sollte dir ebenfalls noch bekannt sein.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Sie ist die junge Fischerin, die unten am Hafen ihren Stand hat.");
         // change elises pose to friendly
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Sie ist immer fröhlich und gut gelaunt und ganz schön kreativ.");
-        await ƒS.Speech.tell(characters.elise, "Ein echter Wirbelwind.");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.friendly, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Sie ist immer fröhlich und gut gelaunt und ganz schön kreativ.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ein echter Wirbelwind.");
         // change elises pose to neutral
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.neutral, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Und als letztes noch Gabi, Wilmas Mama.");
-        await ƒS.Speech.tell(characters.elise, "Sie leitet unsere kleine Inselbücherei.");
-        await ƒS.Speech.tell(characters.elise, "Sie wirkt immer ein wenig distanziert und sehr streng.");
-        
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Und als letztes noch Gabi, Wilmas Mama.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Sie leitet unsere kleine Inselbücherei.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Sie wirkt immer ein wenig distanziert und sehr streng.");
         // change elises pose to friendly
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Aber sie ist mit Abstand am Längsten auf der Insel und unser Fels in der Brandung.");
-        await ƒS.Speech.tell(characters.elise, "Wilma ist ihr ein und alles. Für sie würde sie alles tun.");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.friendly, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber sie ist mit Abstand am Längsten auf der Insel und unser Fels in der Brandung.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wilma ist ihr ein und alles. Für sie würde sie alles tun.");
         // change laras pose to suspicious
-        await ƒS.Character.hide(characters.lara);
-        await ƒS.Character.show(characters.lara, characters.lara.pose.suspicious, ƒS.positionPercent(25, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.lara, "Und der Dieb muss einer von ihnen gewesen sein?");
-    
+        await Application.ƒS.Character.hide(Application.characters.lara);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.suspicious, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Und der Dieb muss einer von ihnen gewesen sein?");
         // change elises pose to shocked
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.shocked, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Ich kann es mir ehrlich gesagt nicht vorstellen.");
-        await ƒS.Speech.tell(characters.elise, "Aber eine andere Erklärung gibt es nicht.");
-        await ƒS.Speech.tell(characters.elise, "Gestern Abend hätte jeder von ihnen ganz einfach und unbemerkt das Geld aus der Spardose nehmen können.");
-        await ƒS.Speech.tell(characters.elise, "Niemand sonst war seitdem in ihrer Nähe.");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.shocked, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ich kann es mir ehrlich gesagt nicht vorstellen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber eine andere Erklärung gibt es nicht.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Gestern Abend hätte jeder von ihnen ganz einfach und unbemerkt das Geld aus der Spardose nehmen können.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Niemand sonst war seitdem in ihrer Nähe.");
         // change elises pose to neutral
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.neutral, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.lara, "Hmm, das vereinfacht die Suche nach dem Geld natürlich.");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Hmm, das vereinfacht die Suche nach dem Geld natürlich.");
         // change laras pose to friendly
-        await ƒS.Character.hide(characters.lara);
-        await ƒS.Character.show(characters.lara, characters.lara.pose.friendly, ƒS.positionPercent(25, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.lara, "Weißt du was, Tante Elise?");
-        await ƒS.Speech.tell(characters.lara, "Ich werde in dem Fall ermitteln.");
-    
+        await Application.ƒS.Character.hide(Application.characters.lara);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.friendly, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Weißt du was, Tante Elise?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich werde in dem Fall ermitteln.");
         // change elises pose to shocked
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.shocked, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Ermitteln?");
-    
-        await ƒS.Speech.tell(characters.lara, "Ich werde alle Anwesenden von gestern befragen.");
-        await ƒS.Speech.tell(characters.lara, "Und heute Abend werde ich den Fall auflösen.");
-        await ƒS.Speech.tell(characters.lara, "Bei einem gemeinsamen Abendessen heute werde ich den Täter entlarven.");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.shocked, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ermitteln?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich werde alle Anwesenden von gestern befragen.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Und heute Abend werde ich den Fall auflösen.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Bei einem gemeinsamen Abendessen heute werde ich den Täter entlarven.");
         // change elises pose to neutral
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.neutral, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Ehm.");
-        await ƒS.Speech.tell(characters.elise, "Ob das eine so gute Idee ist?");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ehm.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ob das eine so gute Idee ist?");
         // change laras pose to neutral
-        await ƒS.Character.hide(characters.lara);
-        await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(25, 100));
-        await ƒS.update(0.2);
-    
+        await Application.ƒS.Character.hide(Application.characters.lara);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.update(0.2);
         // change elises pose to friendly
-        await ƒS.Character.hide(characters.elise);
-        await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.elise, "Naja, wieso eigentlich nicht.");
-        await ƒS.Speech.tell(characters.elise, "Ich bin ja froh, wenn du dich nicht langweilen musst.");
-        await ƒS.Speech.tell(characters.elise, "Und heute Abend wollte sowieso etwas besonders zum Essen zaubern.");
-        await ƒS.Speech.tell(characters.elise, "Lade gerne alle zum Abendessen hier im Café ein!");
-    
+        await Application.ƒS.Character.hide(Application.characters.elise);
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.friendly, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Naja, wieso eigentlich nicht.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ich bin ja froh, wenn du dich nicht langweilen musst.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Und heute Abend wollte sowieso etwas besonders zum Essen zaubern.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Lade gerne alle zum Abendessen hier im Café ein!");
         // change laras pose to friendly
-        await ƒS.Character.hide(characters.lara);
-        await ƒS.Character.show(characters.lara, characters.lara.pose.friendly, ƒS.positionPercent(25, 100));
-        await ƒS.update(0.2);
-    
-        await ƒS.Speech.tell(characters.lara, "Super, du bist die Beste!");
-        await ƒS.Speech.tell(characters.lara, "Ich mache mich direkt auf den Weg.");
-    
-        */
+        await Application.ƒS.Character.hide(Application.characters.lara);
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.friendly, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.update(0.2);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Super, du bist die Beste!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich mache mich direkt auf den Weg.");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
-        /*
+        Application.ƒS.Sound.fade(Application.sound.backgroundIntroMysterious, 0, 3, false);
         //choose next location
-        return "NextLocationChoice"; */
-        return "Outro";
+        return "NextLocationChoice";
     }
     Application.Intro = Intro;
 })(Application || (Application = {}));
@@ -983,6 +933,9 @@ var Application;
         Application.dataForSave.visitedLibrary = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.library);
+        // sound
+        Application.ƒS.Sound.fade(Application.sound.backgroundLibrary, 1, 1, true);
+        // transition
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
@@ -990,7 +943,6 @@ var Application;
         //monolog
         await Application.ƒS.Speech.tell(Application.characters.lara, "Hmm, keiner da?");
         await Application.ƒS.Speech.tell(Application.characters.lara, "Im Nebenraum höre ich jemanden leise telefonieren.");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Ob das Gabi ist?");
         await Application.ƒS.Speech.tell(Application.characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?");
         // COHICE listen to phone call
         let chooseActionOptions = {
@@ -1088,12 +1040,12 @@ var Application;
         await Application.ƒS.Speech.tell(Application.characters.gabi, "Und mach dir nicht zu viele Gedanken wegen des Diebstahls.");
         await Application.ƒS.Speech.tell(Application.characters.gabi, "Vielleicht ist es besser, wenn wir es einfach ruhen lassen.");
         await Application.ƒS.Speech.tell(Application.characters.gabi, "Uwe wird schon wissen was er tut und früher oder später bringt er das Geld bestimmt zurück.");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "Machs gut und bis heute Abend!");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(0);
+        Application.ƒS.Sound.fade(Application.sound.backgroundLibrary, 0, 3, false);
         //choose next location
         return "NextLocationChoice";
     }
@@ -1212,7 +1164,10 @@ var Application;
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
-        await Application.ƒS.Text.print("Moment mal!");
+        await Application.ƒS.Text.print("Moment mal! Wir sind hier doch nicht im Orient Express!<br>\
+      Das probieren wir am besten nochmal.\
+      ");
+        return "Outro";
     }
     Application.AccusedAll = AccusedAll;
 })(Application || (Application = {}));
@@ -1253,8 +1208,8 @@ var Application;
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
-        await Application.ƒS.Text.print("Wie schön, endlich konnten sich Elise und Uwe ihre Liebe gestehen.\
-      Aber Moment - wer hat nun das Geld wirklich gestohlen?\
+        await Application.ƒS.Text.print("Wie schön, endlich konnten sich Elise und Uwe ihre Liebe gestehen.<br>\
+      Aber Moment - wer hat nun das Geld wirklich gestohlen?<br>\
       Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.\
       ");
     }
@@ -1307,9 +1262,9 @@ var Application;
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
         // novel page ending
-        await Application.ƒS.Text.print("Gut gemacht, du hast Gabi als die richtige Täterin entlarvt, auch wenn vielleicht aus einem anderen Grund als erwartet?\
-      Was wohl passiert wäre, wenn du jemand anderen angeklagt hättest?\
-      Beginne von vorne oder lade den Spielstand neu, um es zu erfahren\
+        await Application.ƒS.Text.print("Gut gemacht, du hast Gabi als die richtige Täterin entlarvt,<br>auch wenn vielleicht aus einem anderen Grund als erwartet?<br>\
+      Was wohl passiert wäre, wenn du jemand anderen angeklagt hättest?<br>\
+      Beginne von vorne oder lade einen Spielstand, um es zu erfahren.\
       ");
     }
     Application.AccusedGabi = AccusedGabi;
@@ -1319,7 +1274,7 @@ var Application;
     async function AccusedUwe() {
         console.log("Accused Uwe");
         // dialog
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Du bist der Dieb des Geldes, Uwe.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du bist der Dieb, Uwe.");
         await Application.ƒS.Speech.tell(Application.characters.uwe, "Wie bitte?");
         await Application.ƒS.Speech.tell(Application.characters.uwe, "Wieso sollte ich das Geld gestohlen haben?");
         await Application.ƒS.Speech.tell(Application.characters.uwe, "Die Bar läuft gut und ich habe bei weitem keine Geldprobleme.");
@@ -1358,8 +1313,8 @@ var Application;
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
-        await Application.ƒS.Text.print("Wer hätte damit gerechnet! Was für ein Happy End!\
-      Aber Moment - wer hat nun das Geld wirklich gestohlen?\
+        await Application.ƒS.Text.print("Wer hätte damit gerechnet! Was für ein Happy End!<br>\
+      Aber Moment - wer hat nun das Geld wirklich gestohlen?<br>\
       Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.\
       ");
     }
@@ -1371,49 +1326,52 @@ var Application;
         console.log("Accused Wilma");
         // dialog
         await Application.ƒS.Speech.tell(Application.characters.lara, "Du bist die Diebin, Wilma.");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "");
-        await Application.ƒS.Speech.tell(Application.characters.uwe, "");
-        await Application.ƒS.Speech.tell(Application.characters.elise, "");
-        await Application.ƒS.Speech.tell(Application.characters.elise, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.elise, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.elise, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
-        await Application.ƒS.Speech.tell(Application.characters.elise, "");
-        await Application.ƒS.Speech.tell(Application.characters.elise, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Was?");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Wie kommst du denn darauf?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du hast große Geldprobleme, Wilma.");
+        // if choice Harbor look: await ƒS.Speech.tell(characters.lara, "Ich habe deine Briefe mit den unbezahlten Rechnungen gesehen!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Uwe hat mir erzählt, dass du hohe Spielschulden hast.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Und dass du gestern überlegt hast, das Geld aus der Spardose mitzunehmen.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Aber Lara, du hast versprochen, dass du das für dich behältst!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Jetzt wird mir alles klar!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Das war also das Geheimnis von Uwe und dir.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Früher oder später musste es ja rauskommen.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ja, ich bin spielsüchtig und ja, ich habe große finanzielle Probleme.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Und ja, ich habe gestern ernsthaft mit dem Gedanken gespielt das Geld mitzunehmen.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Aber Uwe hat auf mich eingeredet und da habe ich gemerkt, wie dämlich die Idee ist.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ach Wilma, wieso hast du denn nie etwas gesagt?");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich wollte nicht, dass meine Mutter davon erfährt.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich wollte sie nicht enttäuschen und habe ihr schon genug Sorgen im Leben bereitet.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Das Geld habe ich aber sicher nicht geklaut!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ach meine kleine Wilma.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Du hast mir so viel Freude gebracht, viel mehr als alles andere, viel mehr als du es dir vorstellen kannst!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich . . .");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich habe gehört, wie Uwe und du gestern über deine Spielschulden geredet habt.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, ". . .");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Und dann habe ich das Geld aus der Spardose geklaut.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Was? Du Mama?");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich wollte dir unbedingt helfen!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Meine Tochter – Spielschulden!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Da musste ich doch etwas tun!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Und dann klaust du mein Preisgeld?");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Es tut mir wirklich leid, Elise!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich habe aus dem Affekt gehandelt.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Das Geld war direkt in Griffweite und ich musste doch etwas tun.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich selbst komme nur gerade so über die Runden.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Aber . . .");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Unten im Laden wollte ich mich noch auf einen Nebenjob bewerben.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Das Geld werde ich dir auf jeden Fall wieder zurückzahlen, Elise!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Also gut.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wenn ich das Geld mit der Zeit wieder zurückbekomme, soll es mir recht sein.");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
-        await Application.ƒS.Text.print("");
+        await Application.ƒS.Text.print("Obwohl du falsch getippt hast, konnte der Täter letztendlich entlarvt werden.<br>\
+      Was wohl passiert wäre, wenn du eine andere Person angeklagt hättest?<br>\
+      Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.<br>\
+      ");
     }
     Application.AccusedWilma = AccusedWilma;
 })(Application || (Application = {}));

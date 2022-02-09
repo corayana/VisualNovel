@@ -50,8 +50,8 @@ namespace Application {
       ƒS.Character.hideAll();
       await ƒS.update(1);
   
-      await ƒS.Text.print("Wer hätte damit gerechnet! Was für ein Happy End!\
-      Aber Moment - wer hat nun das Geld wirklich gestohlen?\
+      await ƒS.Text.print("Wer hätte damit gerechnet! Was für ein Happy End!<br>\
+      Aber Moment - wer hat nun das Geld wirklich gestohlen?<br>\
       Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.\
       ");
 

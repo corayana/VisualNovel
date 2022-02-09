@@ -143,10 +143,6 @@ declare namespace Application {
             name: string;
             background: string;
         };
-        test: {
-            name: string;
-            background: string;
-        };
     };
 }
 declare namespace Application {
@@ -168,8 +164,13 @@ declare namespace Application {
 }
 declare namespace Application {
     let sound: {
-        backgroundTheme: string;
-        click: string;
+        backgroundIntroHappy: string;
+        backgroundIntroMysterious: string;
+        backgroundBar: string;
+        backgroundHarbor: string;
+        backgroundLibrary: string;
+        backgroundSoundCafe: string;
+        backgroundMusicCafe: string;
     };
 }
 declare namespace Application {

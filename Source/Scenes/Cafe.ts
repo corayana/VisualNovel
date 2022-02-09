@@ -6,6 +6,12 @@ namespace Application {
 
     // show background
     await ƒS.Location.show(locations.cafe);
+
+    // sound
+    ƒS.Sound.fade(sound.backgroundMusicCafe, 0.1, 3, true);
+    ƒS.Sound.fade(sound.backgroundSoundCafe, 1, 3, true);
+
+    // background transition
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 
     // show charakter lara
@@ -59,6 +65,9 @@ namespace Application {
     ƒS.Speech.hide();
     ƒS.Character.hideAll();
     await ƒS.update(1);
+
+    ƒS.Sound.fade(sound.backgroundSoundCafe, 0, 3, false);
+    ƒS.Sound.fade(sound.backgroundMusicCafe, 0, 3, false);
 
     //choose next location
     return "NextLocationChoice";

@@ -42,8 +42,8 @@ namespace Application {
     ƒS.Character.hideAll();
     await ƒS.update(1);
 
-    await ƒS.Text.print("Wie schön, endlich konnten sich Elise und Uwe ihre Liebe gestehen.\
-      Aber Moment - wer hat nun das Geld wirklich gestohlen?\
+    await ƒS.Text.print("Wie schön, endlich konnten sich Elise und Uwe ihre Liebe gestehen.<br>\
+      Aber Moment - wer hat nun das Geld wirklich gestohlen?<br>\
       Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.\
       ");
 

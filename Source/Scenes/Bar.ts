@@ -6,6 +6,11 @@ namespace Application {
 
     // show background
     await ƒS.Location.show(locations.bar);
+
+    // sound
+    ƒS.Sound.fade(sound.backgroundBar, 0.2, 3, true);
+
+    // background transition
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 
     // show charakter lara
@@ -20,6 +25,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.lara, "Hallo Uwe!");
 
     await ƒS.Speech.tell(characters.uwe, "Hallo Lara!");
+
     await ƒS.Speech.tell(characters.uwe, "Lang nicht gesehen.");
     await ƒS.Speech.tell(characters.uwe, "Wie war deine Reise?");
 
@@ -106,7 +112,7 @@ namespace Application {
         await ƒS.Speech.tell(characters.lara, "Ich lege den Brief besser wieder zurück.");
         await ƒS.Speech.tell(characters.lara, "Und jetzt den Tresor noch verschließen.");
         await ƒS.Speech.tell(characters.lara, ". . .");
-        await ƒS.Speech.tell(characters.lara, "Ohh und da kommt Uwe auch schon wieder.");        
+        await ƒS.Speech.tell(characters.lara, "Ohh und da kommt Uwe auch schon wieder.");
         break;
       case chooseActionOptions.wait:
         await ƒS.Speech.tell(characters.lara, "Nein, ich kann nicht einfach in die Privatsphäre von Uwe eingreifen.");
@@ -136,7 +142,10 @@ namespace Application {
     ƒS.Character.hideAll();
     await ƒS.update(1);
 
+    ƒS.Sound.fade(sound.backgroundBar, 0, 3, false);
+
     // choose next location
     return "NextLocationChoice";
+
   }
 }

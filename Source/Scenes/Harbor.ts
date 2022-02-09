@@ -6,6 +6,11 @@ namespace Application {
 
     // show background
     await ƒS.Location.show(locations.port);
+
+    // fade background sound
+    ƒS.Sound.fade(sound.backgroundHarbor, 0.8, 1, true);
+
+    // background transition
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 
     // show charakter lara
@@ -20,6 +25,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.lara, "Hallo Wilma!");
 
     await ƒS.Speech.tell(characters.wilma, "Moin Lara!");
+
     await ƒS.Speech.tell(characters.wilma, "Schön dich zu sehen!");
     await ƒS.Speech.tell(characters.wilma, "Elise hat erzählt, dass du für ein paar Tage zu Besuch kommst.");
     await ƒS.Speech.tell(characters.wilma, "Wie geht es dir?");
@@ -113,7 +119,7 @@ namespace Application {
         break;
       case chooseActionOptions.wait:
         await ƒS.Speech.tell(characters.lara, "Nein, ich will nicht einfach unbemerkt in Wilmas private Sachen schauen, das gehört sich nicht.");
-        await ƒS.Speech.tell(characters.lara, "Ich warte lieber bis sie wieder zurück kommt.");        
+        await ƒS.Speech.tell(characters.lara, "Ich warte lieber bis sie wieder zurück kommt.");
         // Page 3 min später
         break;
     }
@@ -144,6 +150,8 @@ namespace Application {
     ƒS.Speech.hide();
     ƒS.Character.hideAll();
     await ƒS.update(1);
+
+    ƒS.Sound.fade(sound.backgroundHarbor, 0, 3, false);
 
     //choose next location
     return "NextLocationChoice";

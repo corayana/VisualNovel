@@ -6,16 +6,21 @@ namespace Application {
 
     // show background
     await ƒS.Location.show(locations.library);
+
+    // sound
+    ƒS.Sound.fade(sound.backgroundLibrary, 1, 1, true);
+
+    // transition
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(25, 100));
     await ƒS.update(1);
 
+
     //monolog
     await ƒS.Speech.tell(characters.lara, "Hmm, keiner da?");
     await ƒS.Speech.tell(characters.lara, "Im Nebenraum höre ich jemanden leise telefonieren.");
-    await ƒS.Speech.tell(characters.lara, "Ob das Gabi ist?");
     await ƒS.Speech.tell(characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?");
 
     // COHICE listen to phone call
@@ -45,7 +50,7 @@ namespace Application {
         await ƒS.Speech.tell(characters.lara, "HAAALLOOO! Gabi, bist du da?");
         break;
     }
-
+    
     // show character gabi
     await ƒS.Character.show(characters.gabi, characters.gabi.pose.neutral, ƒS.positionPercent(75, 100));
     await ƒS.update(1);
@@ -130,13 +135,14 @@ namespace Application {
     await ƒS.Speech.tell(characters.gabi, "Und mach dir nicht zu viele Gedanken wegen des Diebstahls.");
     await ƒS.Speech.tell(characters.gabi, "Vielleicht ist es besser, wenn wir es einfach ruhen lassen.");
     await ƒS.Speech.tell(characters.gabi, "Uwe wird schon wissen was er tut und früher oder später bringt er das Geld bestimmt zurück.");
-    await ƒS.Speech.tell(characters.gabi, "Machs gut und bis heute Abend!");
 
     // hide elements
     ƒS.Speech.clear();
     ƒS.Speech.hide();
     ƒS.Character.hideAll();
     await ƒS.update(0);
+
+    ƒS.Sound.fade(sound.backgroundLibrary, 0, 3, false);
 
     //choose next location
     return "NextLocationChoice";

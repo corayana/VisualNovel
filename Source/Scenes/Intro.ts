@@ -5,14 +5,7 @@ namespace Application {
     // show background
     await ƒS.Location.show(locations.cafe);
 
-    // transition
-    await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
-
-
-    await ƒS.Speech.tell(characters.elise, "Das war screen 1 ");
-
-    // show background
-    await ƒS.Location.show(locations.test);
+    ƒS.Sound.fade(sound.backgroundIntroHappy, 0.2, 3, true);
 
     // transition
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
@@ -30,8 +23,6 @@ namespace Application {
 
     // dialog
     await ƒS.Speech.tell(characters.elise, "Hallo Lara, schön dich zu sehen!");
-
-    /*
 
     await ƒS.Speech.tell(characters.elise, "Komm herein.");
     await ƒS.Speech.tell(characters.elise, "Stell deinen Koffer einfach an der Treppe ab und setz dich erstmal an die Theke.");
@@ -104,12 +95,12 @@ namespace Application {
     await ƒS.Speech.tell(characters.elise, "„Bester Cupcake der Inselgruppe“ – Moment, ich hole ihn schnell.");
     await ƒS.Speech.tell(characters.elise, "…");
     await ƒS.Speech.tell(characters.elise, "Hier: eine Spardose in Cupcake-Form mit einem Preisgeld von stolzen 4000€.");
-    
+
     // change laras pose to surprised
     await ƒS.Character.hide(characters.lara);
     await ƒS.Character.show(characters.lara, characters.lara.pose.surprised, ƒS.positionPercent(25, 100));
     await ƒS.update(0.2);
-    
+
     await ƒS.Speech.tell(characters.lara, "Wow!");
 
     // change laras pose to friendly
@@ -119,6 +110,11 @@ namespace Application {
 
     await ƒS.Speech.tell(characters.lara, "Nicht schlecht, Tante Elise!");
     await ƒS.Speech.tell(characters.lara, "Das ist eine Menge Geld!");
+
+    // stop sound
+    ƒS.Sound.fade(sound.backgroundIntroHappy, 0, 3, false);
+    // start mysterious sound
+    ƒS.Sound.fade(sound.backgroundIntroMysterious, 0.2, 5, true);
 
     // change laras pose to surprised
     await ƒS.Character.hide(characters.lara);
@@ -134,6 +130,7 @@ namespace Application {
 
     await ƒS.Speech.tell(characters.elise, "Wie leer?");
     await ƒS.Speech.tell(characters.elise, "Zeig mal!");
+
     await ƒS.Speech.tell(characters.elise, "…");
     await ƒS.Speech.tell(characters.elise, "Oh Schreck, du hast Recht!");
     await ƒS.Speech.tell(characters.elise, "Das ganze Geld ist weg.");
@@ -190,7 +187,7 @@ namespace Application {
 
     await ƒS.Speech.tell(characters.elise, "Wilma sollte dir ebenfalls noch bekannt sein.");
     await ƒS.Speech.tell(characters.elise, "Sie ist die junge Fischerin, die unten am Hafen ihren Stand hat.");
-    
+
     // change elises pose to friendly
     await ƒS.Character.hide(characters.elise);
     await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
@@ -207,7 +204,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.elise, "Und als letztes noch Gabi, Wilmas Mama.");
     await ƒS.Speech.tell(characters.elise, "Sie leitet unsere kleine Inselbücherei.");
     await ƒS.Speech.tell(characters.elise, "Sie wirkt immer ein wenig distanziert und sehr streng.");
-    
+
     // change elises pose to friendly
     await ƒS.Character.hide(characters.elise);
     await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
@@ -290,18 +287,16 @@ namespace Application {
     await ƒS.Speech.tell(characters.lara, "Super, du bist die Beste!");
     await ƒS.Speech.tell(characters.lara, "Ich mache mich direkt auf den Weg.");
 
-    */
-
     // hide elements
     ƒS.Speech.clear();
     ƒS.Speech.hide();
     ƒS.Character.hideAll();
     await ƒS.update(1);
 
-    /*
-    //choose next location
-    return "NextLocationChoice"; */
+    ƒS.Sound.fade(sound.backgroundIntroMysterious, 0, 3, false);
 
-    return "Outro";
+    //choose next location
+    return "NextLocationChoice";
+
   }
 }

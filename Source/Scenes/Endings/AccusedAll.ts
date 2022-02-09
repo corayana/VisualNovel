@@ -8,9 +8,11 @@ namespace Application {
       ƒS.Character.hideAll();
       await ƒS.update(1);
   
-      await ƒS.Text.print("Moment mal! Wir sind hier doch nicht im Orient Express!\
-      Wähle nochmal neu: \
+      await ƒS.Text.print("Moment mal! Wir sind hier doch nicht im Orient Express!<br>\
+      Das probieren wir am besten nochmal.\
       ");
+
+      return "Outro";
 
     }
   }

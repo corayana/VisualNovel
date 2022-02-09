@@ -60,9 +60,9 @@ namespace Application {
     await ƒS.update(1);
 
     // novel page ending
-    await ƒS.Text.print("Gut gemacht, du hast Gabi als die richtige Täterin entlarvt, auch wenn vielleicht aus einem anderen Grund als erwartet?\
-      Was wohl passiert wäre, wenn du jemand anderen angeklagt hättest?\
-      Beginne von vorne oder lade den Spielstand neu, um es zu erfahren\
+    await ƒS.Text.print("Gut gemacht, du hast Gabi als die richtige Täterin entlarvt,<br>auch wenn vielleicht aus einem anderen Grund als erwartet?<br>\
+      Was wohl passiert wäre, wenn du jemand anderen angeklagt hättest?<br>\
+      Beginne von vorne oder lade einen Spielstand, um es zu erfahren.\
       ");
   }
 }

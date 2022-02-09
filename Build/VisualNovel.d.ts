@@ -143,6 +143,10 @@ declare namespace Application {
             name: string;
             background: string;
         };
+        test: {
+            name: string;
+            background: string;
+        };
     };
 }
 declare namespace Application {

@@ -5,8 +5,15 @@ namespace Application {
     // show background
     await ƒS.Location.show(locations.cafe);
 
-    ƒS.Sound.fade
-    
+    // transition
+    await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
+
+
+    await ƒS.Speech.tell(characters.elise, "Das war screen 1 ");
+
+    // show background
+    await ƒS.Location.show(locations.test);
+
     // transition
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
 

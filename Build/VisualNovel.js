@@ -229,7 +229,7 @@ var Application;
     Application.locations = {
         cafe: {
             name: "Cafè",
-            background: "./Images/Backgrounds/cafe.png",
+            background: "./Images/Backgrounds/test.png",
         },
         port: {
             name: "Hafen",
@@ -246,6 +246,10 @@ var Application;
         outro: {
             name: "Outro",
             background: "./Images/Backgrounds/outro.png",
+        },
+        test: {
+            name: "Test",
+            background: "./Images/Backgrounds/hafen.svg",
         }
     };
 })(Application || (Application = {}));
@@ -683,7 +687,11 @@ var Application;
         console.log("Intro");
         // show background
         await Application.ƒS.Location.show(Application.locations.cafe);
-        Application.ƒS.Sound.fade;
+        // transition
+        await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Das war screen 1 ");
+        // show background
+        await Application.ƒS.Location.show(Application.locations.test);
         // transition
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
         // show charakter lara
@@ -1085,7 +1093,7 @@ var Application;
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
-        await Application.ƒS.update(1);
+        await Application.ƒS.update(0);
         //choose next location
         return "NextLocationChoice";
     }
@@ -1145,13 +1153,14 @@ var Application;
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
-        // Novel Page
-        Application.ƒS.Text.setClass("novelPage");
-        Application.ƒS.Text.print("Elise, Uwe, Wilma, Gabi und Lara kommen im Café zum gemeinsamen Abendessen zusammen. Die Stimmung ist angespannt und zwischen oberflächlichen Gesprächen mustern sich die Anwesenden gegenseitig mit misstrauischen Blicken.");
+        Application.ƒS.update(0);
         // show background
         await Application.ƒS.Location.show(Application.locations.outro);
         // transition
         await Application.ƒS.update(Application.transitions.clock.duration, Application.transitions.clock.alpha, Application.transitions.clock.edge);
+        // Novel Page
+        Application.ƒS.Text.setClass("novelPage");
+        await Application.ƒS.Text.print("Elise, Uwe, Wilma, Gabi und Lara kommen im Café zum gemeinsamen Abendessen zusammen. Die Stimmung ist angespannt und zwischen oberflächlichen Gesprächen mustern sich die Anwesenden gegenseitig mit misstrauischen Blicken.");
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(15, 100));
         await Application.ƒS.update(0.5);
@@ -1198,13 +1207,12 @@ var Application;
 (function (Application) {
     async function AccusedAll() {
         console.log("Accused All");
-        // dialog
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Ihr alle wart es!");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
+        await Application.ƒS.Text.print("Moment mal!");
     }
     Application.AccusedAll = AccusedAll;
 })(Application || (Application = {}));
@@ -1214,11 +1222,41 @@ var Application;
         console.log("Accused Elise");
         // dialog
         await Application.ƒS.Speech.tell(Application.characters.lara, "Elise! Du warst es!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ich?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Warum sollte ich mein eigenes Preisgeld stehlen?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Das ergibt doch gar keinen Sinn!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich konnte es zuerst auch nicht glauben.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Aber Wilma hat es mir recht plausibel erklärt:");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du hast gestern verkündet mit dem Geld von der Insel wegzuziehen.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Aber ich glaube nicht, dass du das wirklich willst.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du liebst das Leben hier und die Leute . . .");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du warst nur zu stolz, um einen Rückzieher zu machen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Du hast recht.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ich will nicht weg von hier.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Die Ankündigung gestern war nur eine Laune aus dem Affekt.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ich war echt eifersüchtig.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Uwe hat gestern so viel mit Wilma getuschelt.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ich wusste einfach nicht mehr, wo ich stehe.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber einen Diebstahl habe ich deswegen nicht vorgetäuscht.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ach Elise, das macht mich so froh.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ich dachte wirklich, dass du die Insel verlassen willst.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ich hätte dir gestern fast meine Liebe gestanden.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Aber dann hast du die Ankündigung gemacht und dann habe ich mich nicht mehr getraut.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Aber jetzt bin ich mir sicher.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Hier, bitte nimm diesen Liebesbrief von mir an.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ohh . . .");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wow, Uwe!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Darauf habe ich so lange gewartet.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ach wisst ihr was - Mir ist egal wer das Geld gestohlen hat, oder was damit passiert ist!");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
+        await Application.ƒS.Text.print("Wie schön, endlich konnten sich Elise und Uwe ihre Liebe gestehen.\
+      Aber Moment - wer hat nun das Geld wirklich gestohlen?\
+      Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.\
+      ");
     }
     Application.AccusedElise = AccusedElise;
 })(Application || (Application = {}));
@@ -1227,12 +1265,52 @@ var Application;
     async function AccusedGabi() {
         console.log("Accused Gabi");
         // dialog
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Gabi! Du warst es!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du hast das Geld gestohlen, Gabi!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, ". . .");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Du hast ja recht.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Es tut mir so leid, aber ich habe das Geld geklaut.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wie bitte?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Nur, weil du mir das Geld nicht gegönnt hast?");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Nein, ach Quatsch.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Entschuldige, das habe ich gestern wirklich nicht so gemeint.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich war nur so aufgeregt.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich habe gehört, wie Wilma und Uwe darüber geredet haben, dass Wilma hohe Spielschulden hat.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich . . .");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich fühle mich so schuldig, dass ich das nicht bemerkt habe.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich hätte meine Tochter doch davor beschützen müssen!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Es tut mir so leid, Wilma.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Mama, ich wollte nicht, dass du davon erfährst!");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich hätte das bestimmt wieder unter Kontrolle bekommen.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Es tut mir wirklich leid, Elise!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich habe aus dem Affekt gehandelt.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Das Geld war so nahe und ich musste doch etwas tun.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich selbst komme gerade so über die Runden.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber . . .");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ich habe doch gesagt, dass ich helfen kann!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Hätte ich das gewusst, hätte ich auch sofort geholfen!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wisst ihr was?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wir packen das gemeinsam an!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Und über deinen Diebstahl reden wir später nochmal, Gabi!");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ja, das ist eine gute Idee!");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Wir greifen dir finanziell unter die Arme, Wilma.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Und wir unterstützen dich dabei, aus der Spielsucht herauszukommen.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Oh nein, das kann ich nicht annehmen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Oh doch, das musst du!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Was für eine tolle Idee!");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich helfe auch wo ich kann.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Und das Geld bekommst du selbstverständlich zurück, Elise.");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "Ich wollte mich sowieso noch auf einen Nebenjob unten im Laden bewerben.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Woow, ich weiß gar nicht, wie ich euch allen danken soll!");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
+        // novel page ending
+        await Application.ƒS.Text.print("Gut gemacht, du hast Gabi als die richtige Täterin entlarvt, auch wenn vielleicht aus einem anderen Grund als erwartet?\
+      Was wohl passiert wäre, wenn du jemand anderen angeklagt hättest?\
+      Beginne von vorne oder lade den Spielstand neu, um es zu erfahren\
+      ");
     }
     Application.AccusedGabi = AccusedGabi;
 })(Application || (Application = {}));
@@ -1241,12 +1319,49 @@ var Application;
     async function AccusedUwe() {
         console.log("Accused Uwe");
         // dialog
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Uwe! Du warst es!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du bist der Dieb des Geldes, Uwe.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Wie bitte?");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Wieso sollte ich das Geld gestohlen haben?");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Die Bar läuft gut und ich habe bei weitem keine Geldprobleme.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Geld ist nicht der Grund.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Der wahre Grund ist die Liebe.");
+        // Wenn in Kneipe Choice look ausgewählt wurde: await ƒS.Speech.tell(characters.lara, "Das weiß ich aus sicheren Quellen: Ich habe deinen Liebesbrief gefunden!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du wolltest nicht, dass Elise mit dem Geld die Insel verlässt!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Außerdem wurde gestern gesehen, wie du an der Spardose herumgefummelt hast.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Aber . . .");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wie meinst du das?");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Uwe?");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Nein, so war es nicht.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, ". . .");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Puh okay, vielleicht ist jetzt der Zeitpunkt gekommen, um es endlich zu gestehen:");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ich liebe dich, Elise.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Seitdem du hier bist, dreht sich mein ganzes Leben nur um dich.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ich wollte es dir so gerne sagen, aber ich habe mich einfach nicht getraut.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Deshalb habe ich dir einen Liebesbrief geschrieben.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ich wollte ihn dir gestern geben.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Du warst nur so wütend auf mich, weil ich so viel Zeit mit Wilma verbracht habe.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ich dachte es wäre eine gute Idee, den Brief in die Spardose zu dem Geld zu stecken, damit du ihn in Ruhe lesen kannst.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Aber dann hast du verkündet, die Insel zu verlassen.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Und da ist mir klar geworden, dass du meine Gefühle nicht erwiderst.");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Deshalb habe ich an der Dose herumgefummelt:");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "Ich musste den Liebesbrief unbedingt wieder herausbekommen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Oh Uwe.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Du Dummerchen!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Natürlich erwidere ich deine Gefühle!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Ich bin so froh, dass du das sagst.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Du hast mich gerade zum glücklichsten Menschen gemacht!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Wer auch immer das Geld gestohlen hat: Es ist mir egal!");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Es spielt keine Rolle mehr.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Dein Geständnis ist so viel mehr wert als Geld, Uwe!");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
+        await Application.ƒS.Text.print("Wer hätte damit gerechnet! Was für ein Happy End!\
+      Aber Moment - wer hat nun das Geld wirklich gestohlen?\
+      Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.\
+      ");
     }
     Application.AccusedUwe = AccusedUwe;
 })(Application || (Application = {}));
@@ -1255,12 +1370,50 @@ var Application;
     async function AccusedWilma() {
         console.log("Accused Wilma");
         // dialog
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Wilma! Du warst es!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Du bist die Diebin, Wilma.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "");
+        await Application.ƒS.Speech.tell(Application.characters.uwe, "");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.gabi, "");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "");
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(1);
+        await Application.ƒS.Text.print("");
     }
     Application.AccusedWilma = AccusedWilma;
 })(Application || (Application = {}));

@@ -136,7 +136,7 @@ namespace Application {
     ƒS.Speech.clear();
     ƒS.Speech.hide();
     ƒS.Character.hideAll();
-    await ƒS.update(1);
+    await ƒS.update(0);
 
     //choose next location
     return "NextLocationChoice";

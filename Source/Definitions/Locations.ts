@@ -10,7 +10,7 @@ namespace Application {
   export let locations = {
     cafe: {
       name: "Cafè",
-      background: "./Images/Backgrounds/cafe.png",
+      background: "./Images/Backgrounds/test.png",
     },
     port: {
       name: "Hafen",
@@ -27,6 +27,10 @@ namespace Application {
     outro: {
       name: "Outro",
       background: "./Images/Backgrounds/outro.png",
+    },
+    test: {
+      name: "Test",
+      background: "./Images/Backgrounds/hafen.svg",
     }
   };
 }

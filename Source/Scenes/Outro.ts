@@ -15,16 +15,17 @@ namespace Application {
     ƒS.Speech.clear();
     ƒS.Speech.hide();
     ƒS.Character.hideAll();
-
-    // Novel Page
-    ƒS.Text.setClass("novelPage");
-    ƒS.Text.print("Elise, Uwe, Wilma, Gabi und Lara kommen im Café zum gemeinsamen Abendessen zusammen. Die Stimmung ist angespannt und zwischen oberflächlichen Gesprächen mustern sich die Anwesenden gegenseitig mit misstrauischen Blicken.");
+    ƒS.update(0);
 
     // show background
     await ƒS.Location.show(locations.outro);
 
     // transition
     await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
+
+    // Novel Page
+    ƒS.Text.setClass("novelPage");
+    await ƒS.Text.print("Elise, Uwe, Wilma, Gabi und Lara kommen im Café zum gemeinsamen Abendessen zusammen. Die Stimmung ist angespannt und zwischen oberflächlichen Gesprächen mustern sich die Anwesenden gegenseitig mit misstrauischen Blicken.");
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(15, 100));

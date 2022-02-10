@@ -32,8 +32,10 @@ declare namespace Application {
       *    duration: the duration of one animation-cylce in seconds,
       *    playmode: the mode to play the animation in, see ANIMATION_PLAYMODE
     */
-    function from75to90(): ƒS.AnimationDefinition;
-    function from90to75(): ƒS.AnimationDefinition;
+    function from75To90(): ƒS.AnimationDefinition;
+    function from90To75(): ƒS.AnimationDefinition;
+    function from75ToOutside(): ƒS.AnimationDefinition;
+    function fromOutsideTo75(): ƒS.AnimationDefinition;
 }
 declare namespace Application {
     /**
@@ -134,6 +136,16 @@ declare namespace Application {
             image: string;
             static: boolean;
         };
+        drink: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                hotchocolate: string;
+                water: string;
+                applejuice: string;
+                tea: string;
+            };
+        };
     };
 }
 declare namespace Application {
@@ -188,6 +200,7 @@ declare namespace Application {
     let sound: {
         backgroundIntroHappy: string;
         backgroundIntroMysterious: string;
+        shock: string;
         backgroundBar: string;
         backgroundHarbor: string;
         backgroundLibrary: string;

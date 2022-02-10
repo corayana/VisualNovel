@@ -40,7 +40,6 @@ namespace Application {
     // scenes and ids: { id: "Id", scene: Scene, name: "Scene" }
     // here: except for intro non-linear: order is given by id
     let scenes: ƒS.Scenes = [
-
       { scene: Intro, name: "Intro" },
 
       { id: "NextLocationChoice", scene: NextLocationChoice, name: "" },

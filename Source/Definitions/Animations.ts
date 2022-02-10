@@ -14,7 +14,7 @@ namespace Application {
     *    playmode: the mode to play the animation in, see ANIMATION_PLAYMODE
   */
 
-  export function from75to90(): ƒS.AnimationDefinition {
+  export function from75To90(): ƒS.AnimationDefinition {
     return {
       start: {
         translation: ƒS.positionPercent(75, 100),
@@ -27,10 +27,36 @@ namespace Application {
     };
   }
 
-  export function from90to75(): ƒS.AnimationDefinition {
+  export function from90To75(): ƒS.AnimationDefinition {
     return {
       start: {
         translation: ƒS.positionPercent(90, 100),
+      },
+      end: {
+        translation: ƒS.positionPercent(75, 100),
+      },
+      duration: 2,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+
+  export function from75ToOutside(): ƒS.AnimationDefinition {
+    return {
+      start: {
+        translation: ƒS.positionPercent(75, 100),
+      },
+      end: {
+        translation: ƒS.positionPercent(120, 100),
+      },
+      duration: 2,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+
+  export function fromOutsideTo75(): ƒS.AnimationDefinition {
+    return {
+      start: {
+        translation: ƒS.positionPercent(120, 100),
       },
       end: {
         translation: ƒS.positionPercent(75, 100),

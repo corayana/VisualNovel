@@ -21,5 +21,16 @@ namespace Application {
       image: "./Images/Items/liebesbrief_inventory.png",
       static: true,
     },
+
+    drink: {
+      name: "Getränk",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      pose: {
+        hotchocolate: "./Images/Items/hot_chocolate.png",
+        water: "./Images/Items/water.png",
+        applejuice: "./Images/Items/applejuice.png",
+        tea: "./Images/Items/tea.png",
+      }
+    }
   };
 }

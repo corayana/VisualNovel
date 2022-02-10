@@ -5,11 +5,19 @@ namespace Application {
     // show background
     await ƒS.Location.show(locations.cafe);
 
+ 
+
     // start happy background music
     ƒS.Sound.fade(sound.backgroundIntroHappy, 0.2, 3, true);
 
     // transition
     await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
+
+    await ƒS.Text.setClass("novelPage");
+    await ƒS.Text.print("Wer hätte damit gerechnet! Was für ein Happy End!<br>\
+    Aber Moment - wer hat nun das Geld wirklich gestohlen?<br>\
+    Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.\
+    ");
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.laughing, ƒS.positionPercent(25, 100));
@@ -31,20 +39,20 @@ namespace Application {
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
 
-    //dialog
+    // dialog
     await ƒS.Speech.tell(characters.elise, "Komm herein.");
     await ƒS.Speech.tell(characters.elise, "Stell deinen Koffer einfach an der Treppe ab und setz dich zu mir an die Theke.");
 
     // change elises pose to laughing
     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
 
-    //dialog
+    // dialog
     await ƒS.Speech.tell(characters.elise, "Heute ist zum Glück nicht allzu viel los im Café, dann können wir direkt ein bisschen quatschen.");
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
 
-    //dialog
+    // dialog
     await ƒS.Speech.tell(characters.elise, "Was darf ich dir zu trinken anbieten?");
     await ƒS.Speech.tell(characters.elise, "Wasser, Früchtetee, Apfelsaft oder eine heiße Schokolade?");
 
@@ -62,12 +70,12 @@ namespace Application {
 
     // animate elise going to grab a drink
     await ƒS.Character.hide(characters.elise);
-    await ƒS.Character.animate(characters.elise, characters.elise.pose.neutral, from75to90());
+    await ƒS.Character.animate(characters.elise, characters.elise.pose.neutral, from75To90());
 
     // change laras pose to laughing
     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
 
-    //dialog
+    // dialog
     await ƒS.Speech.tell(characters.lara, "Ich freue mich so sehr darauf die Herbstferien wieder bei dir verbringen zu dürfen!");
 
     // change laras pose to friendly
@@ -86,21 +94,25 @@ namespace Application {
 
     // animate elise coming back
     await ƒS.Character.hide(characters.elise);
-    await ƒS.Character.animate(characters.elise, characters.elise.pose.friendly, from90to75());
+    await ƒS.Character.animate(characters.elise, characters.elise.pose.friendly, from90To75());
 
     // CHOICE result
     switch (chooseDrink) {
       case chooseDrinkOptions.water:
         await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist dein Wasser.");
+        await ƒS.Character.show(items.drink, items.drink.pose.water, ƒS.positionPercent(40, 100));
         break;
       case chooseDrinkOptions.tea:
         await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist dein Früchtetee.");
+        await ƒS.Character.show(items.drink, items.drink.pose.tea, ƒS.positionPercent(40, 100));
         break;
       case chooseDrinkOptions.applejuice:
         await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist dein Apfelsaft.");
+        await ƒS.Character.show(items.drink, items.drink.pose.applejuice, ƒS.positionPercent(40, 100));
         break;
       case chooseDrinkOptions.hotChocolate:
         await ƒS.Speech.tell(characters.elise, "Soo, bitteschön, hier ist deine heiße Schokolade.");
+        await ƒS.Character.show(items.drink, items.drink.pose.hotchocolate, ƒS.positionPercent(40, 100));
         break;
     }
 
@@ -136,10 +148,13 @@ namespace Application {
     await ƒS.Speech.tell(characters.elise, "Stell dir vor, ich habe dafür gestern tatsächlich einen Preis auf der kleinen Nachbarsinsel gewonnen.");
     await ƒS.Speech.tell(characters.elise, "„Bester Cupcake der Inselgruppe“ – Moment, ich hole ihn schnell.");
 
-    // animation elise
+    // animate elise leaving
+    await ƒS.Character.hide(characters.elise);
+    await ƒS.Character.animate(characters.elise, characters.elise.pose.friendly, from75ToOutside());
 
-    // dialog
-    await ƒS.Speech.tell(characters.elise, "…");
+    // animate elise coming back
+    await ƒS.Character.hide(characters.elise);
+    await ƒS.Character.animate(characters.elise, characters.elise.pose.friendly, fromOutsideTo75());
 
     // change elises pose to laughing
     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
@@ -171,7 +186,10 @@ namespace Application {
 
     // dialog
     await ƒS.Speech.tell(characters.lara, "Aber huch - Die Spardose ist ja leer!");
-
+    
+    // play shock sound
+    ƒS.Sound.fade(sound.shock, 1, 0, false);
+    
     // change elises pose to shocked
     await changePose(characters.elise, "shocked", ƒS.positionPercent(75, 100));
 
@@ -302,7 +320,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.lara, "Hmm, das vereinfacht die Suche nach dem Geld natürlich.");
 
     // change laras pose to laughing
-    await changePose(characters.lara, "laughing", ƒS.positionPercent(75, 100));
+    await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
 
     // dialog
     await ƒS.Speech.tell(characters.lara, "Weißt du was, Tante Elise?");
@@ -344,7 +362,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.elise, "Lade gerne alle zum Abendessen hier im Café ein!");
 
     // change laras pose to laughing
-    await changePose(characters.lara, "laughing", ƒS.positionPercent(75, 100));
+    await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
 
     // dialog
     await ƒS.Speech.tell(characters.lara, "Super, du bist die Beste!");

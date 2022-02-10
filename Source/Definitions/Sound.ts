@@ -5,6 +5,7 @@ namespace Application {
     // Intro
     backgroundIntroHappy: "./Sound/bensound-littleidea.mp3",
     backgroundIntroMysterious: "./Sound/bensound-enigmatic.mp3",
+    shock: "./Sound/freesound-shock.wav",
 
     // Bar
     backgroundBar: "./Sound/bensound-thelounge.mp3",

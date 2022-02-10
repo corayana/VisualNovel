@@ -60,7 +60,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.wilma, "Zurzeit ist natürlich ein bisschen weniger los, da die Touristen fehlen.");
     await ƒS.Speech.tell(characters.wilma, "Aber ich komme gut über die Runden.");
 
-    // change laras pose to shocked
+    // change laras pose to surprisex
     await changePose(characters.lara, "surprised", ƒS.positionPercent(25, 100));
 
     // dialog

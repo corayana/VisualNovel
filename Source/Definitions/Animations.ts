@@ -1,38 +1,43 @@
 namespace Application {
-  export function fromLeftToRightAndTurnToRed(): ƒS.AnimationDefinition {
-    return {
-      start: {
-        translation: ƒS.positions.bottomleft,
-        rotation: -20,
-        scaling: new ƒS.Position(0.5, 1.5),
-        color: ƒS.Color.CSS("white"),
-      },
-      end: {
-        translation: ƒS.positions.bottomright,
-        rotation: 20,
-        scaling: new ƒS.Position(1.5, 0.5),
-        color: ƒS.Color.CSS("red"),
-      },
-      duration: 1,
-      playmode: ƒS.ANIMATION_PLAYMODE.LOOP,
-    };
-  }
 
-  export function fromCenterToLeft(): ƒS.AnimationDefinition {
+  /**
+    *    start: {
+    *      translation:  the position at the start of the animation,
+    *      rotation:     the angle of rotation at the start of the animation,
+    *      scaling:      the size at the start of the animation,
+    *      color:        the color at the start of the animation,
+    *    },
+    *    end: {
+    *      same as above but for the end of the animation
+    *    },
+    *    duration: the duration of one animation-cylce in seconds,
+    *    playmode: the mode to play the animation in, see ANIMATION_PLAYMODE
+  */
+
+  export function from75to90(): ƒS.AnimationDefinition {
     return {
       start: {
-        translation: ƒS.positionPercent(50, 100),
-        rotation: 10,
-        scaling: new ƒS.Position(0.5, 1.5),
-        color: ƒS.Color.CSS("white"),
+        translation: ƒS.positionPercent(75, 100),
       },
       end: {
-        translation: ƒS.positionPercent(20, 100),
-        scaling: new ƒS.Position(0.5, 1.5),
-        color: ƒS.Color.CSS("white", 0),
+        translation: ƒS.positionPercent(90, 100),
       },
-      duration: 1,
+      duration: 2,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
+
+  export function from90to75(): ƒS.AnimationDefinition {
+    return {
+      start: {
+        translation: ƒS.positionPercent(90, 100),
+      },
+      end: {
+        translation: ƒS.positionPercent(75, 100),
+      },
+      duration: 2,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+
 }

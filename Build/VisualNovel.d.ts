@@ -19,8 +19,21 @@ declare namespace Application {
     };
 }
 declare namespace Application {
-    function fromLeftToRightAndTurnToRed(): ƒS.AnimationDefinition;
-    function fromCenterToLeft(): ƒS.AnimationDefinition;
+    /**
+      *    start: {
+      *      translation:  the position at the start of the animation,
+      *      rotation:     the angle of rotation at the start of the animation,
+      *      scaling:      the size at the start of the animation,
+      *      color:        the color at the start of the animation,
+      *    },
+      *    end: {
+      *      same as above but for the end of the animation
+      *    },
+      *    duration: the duration of one animation-cylce in seconds,
+      *    playmode: the mode to play the animation in, see ANIMATION_PLAYMODE
+    */
+    function from75to90(): ƒS.AnimationDefinition;
+    function from90to75(): ƒS.AnimationDefinition;
 }
 declare namespace Application {
     /**
@@ -41,6 +54,8 @@ declare namespace Application {
             pose: {
                 neutral: string;
                 friendly: string;
+                laughing: string;
+                pensive: string;
                 surprised: string;
                 suspicious: string;
             };
@@ -51,6 +66,9 @@ declare namespace Application {
             pose: {
                 neutral: string;
                 friendly: string;
+                laughing: string;
+                grumpy: string;
+                pensive: string;
                 shocked: string;
                 blushed: string;
             };
@@ -63,6 +81,7 @@ declare namespace Application {
                 friendly: string;
                 grumpy: string;
                 laughing: string;
+                shocked: string;
             };
         };
         uwe: {
@@ -82,11 +101,14 @@ declare namespace Application {
             pose: {
                 neutral: string;
                 friendly: string;
+                sad: string;
+                pensive: string;
                 shocked: string;
                 grumpy: string;
             };
         };
     };
+    function changePose(character: ƒS.CharacterDefinition, pose: string, position: ƒ.Vector2): Promise<void>;
 }
 declare namespace Application {
     function showCredits(): void;
@@ -178,11 +200,16 @@ declare namespace Application {
      *   id of the transition: {
      *     duration: length of transition ind seconds,
      *     alpha: "path to the image to be used for the transition",
-     *     edge: hardness of the transition (number between x and x: the lower the number, the softer the transition)
+     *     edge: hardness of the transition (smooth 0 - 2 sharp: number between 0 and 2: the lower the number, the softer the transition)
      *   }
      */
     let transitions: {
-        clock: {
+        wave: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        timefiller: {
             duration: number;
             alpha: string;
             edge: number;

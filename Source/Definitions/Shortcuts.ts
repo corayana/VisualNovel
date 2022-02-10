@@ -2,7 +2,7 @@ namespace Application {
 
   export function showShortcuts(): void {
     ƒS.Text.setClass("shortcuts");
-    let credits =
+    let shortcuts =
       "<h1>Steuerung</h1>\
       <table>\
         <tr>\
@@ -27,6 +27,6 @@ namespace Application {
         </tr>\
       </table>\
       ";
-    ƒS.Text.print(credits);
+    ƒS.Text.print(shortcuts);
   }
 }

@@ -10,6 +10,7 @@ namespace Application {
    *     }
    *   },
    */
+  
   export let characters = {
     lara: {
       name: "Lara",
@@ -17,6 +18,8 @@ namespace Application {
       pose: {
         neutral: "./Images/Characters/lara_neutral.png",
         friendly: "./Images/Characters/lara_friendly.png",
+        laughing: "./Images/Characters/lara_laughing.png",
+        pensive: "./Images/Characters/lara_pensive.png",
         surprised: "./Images/Characters/lara_surprised.png",
         suspicious: "./Images/Characters/lara_suspicious.png",
       },
@@ -27,6 +30,9 @@ namespace Application {
       pose: {
         neutral: "./Images/Characters/elise_neutral.png",
         friendly: "./Images/Characters/elise_friendly.png",
+        laughing: "./Images/Characters/elise_laughing.png",
+        grumpy: "./Images/Characters/elise_grumpy.png",
+        pensive: "./Images/Characters/elise_pensive.png",
         shocked: "./Images/Characters/elise_shocked.png",
         blushed: "./Images/Characters/elise_blushed.png",
       },
@@ -39,6 +45,7 @@ namespace Application {
         friendly: "./Images/Characters/wilma_friendly.png",
         grumpy: "./Images/Characters/wilma_grumpy.png",
         laughing: "./Images/Characters/wilma_laughing.png",
+        shocked: "./Images/Characters/wilma_shocked.png",
       },
     },
     uwe: {
@@ -58,9 +65,17 @@ namespace Application {
       pose: {
         neutral: "./Images/Characters/gabi_neutral.png",
         friendly: "./Images/Characters/gabi_friendly.png",
+        sad: "./Images/Characters/gabi_sad.png",
+        pensive: "./Images/Characters/gabi_pensive.png",
         shocked: "./Images/Characters/gabi_shocked.png",
         grumpy: "./Images/Characters/gabi_grumpy.png",
       },
     },
+  };
+
+  export async function changePose(character: ƒS.CharacterDefinition, pose: string, position: ƒ.Vector2) {
+    await ƒS.Character.hide(character);
+    await ƒS.Character.show(character, character.pose[pose], position);
+    await ƒS.update(0.2);
   };
 }

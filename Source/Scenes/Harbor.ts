@@ -11,7 +11,7 @@ namespace Application {
     ƒS.Sound.fade(sound.backgroundHarbor, 0.8, 1, true);
 
     // background transition
-    await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
+    await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(25, 100));

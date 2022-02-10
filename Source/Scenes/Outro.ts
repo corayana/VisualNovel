@@ -21,7 +21,7 @@ namespace Application {
     await ƒS.Location.show(locations.outro);
 
     // transition
-    await ƒS.update(transitions.clock.duration, transitions.clock.alpha, transitions.clock.edge);
+    await ƒS.update(transitions.timefiller.duration, transitions.timefiller.alpha, transitions.timefiller.edge);
 
     // Novel Page
     ƒS.Text.setClass("novelPage");

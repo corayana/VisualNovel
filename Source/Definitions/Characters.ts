@@ -44,6 +44,7 @@ namespace Application {
         neutral: "./Images/Characters/wilma_neutral.png",
         friendly: "./Images/Characters/wilma_friendly.png",
         grumpy: "./Images/Characters/wilma_grumpy.png",
+        pensive: "./Images/Characters/wilma_pensive.png",
         laughing: "./Images/Characters/wilma_laughing.png",
         shocked: "./Images/Characters/wilma_shocked.png",
       },

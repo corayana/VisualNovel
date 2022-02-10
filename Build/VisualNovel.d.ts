@@ -36,6 +36,8 @@ declare namespace Application {
     function from90To75(): ƒS.AnimationDefinition;
     function from75ToOutside(): ƒS.AnimationDefinition;
     function fromOutsideTo75(): ƒS.AnimationDefinition;
+    function from25To40(): ƒS.AnimationDefinition;
+    function from40To25(): ƒS.AnimationDefinition;
 }
 declare namespace Application {
     /**
@@ -82,6 +84,7 @@ declare namespace Application {
                 neutral: string;
                 friendly: string;
                 grumpy: string;
+                pensive: string;
                 laughing: string;
                 shocked: string;
             };
@@ -203,6 +206,9 @@ declare namespace Application {
         shock: string;
         backgroundBar: string;
         backgroundHarbor: string;
+        harborRingtone: string;
+        harborFootstepsFadeOut: string;
+        harborFootstepsFadeIn: string;
         backgroundLibrary: string;
         backgroundSoundCafe: string;
         backgroundMusicCafe: string;

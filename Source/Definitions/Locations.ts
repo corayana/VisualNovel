@@ -14,7 +14,7 @@ namespace Application {
     },
     port: {
       name: "Hafen",
-      background: "./Images/Backgrounds/harbour.png",
+      background: "./Images/Backgrounds/harbor.png",
     },
     library: {
       name: "Bücherei",

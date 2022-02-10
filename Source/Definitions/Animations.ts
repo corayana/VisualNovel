@@ -66,4 +66,30 @@ namespace Application {
     };
   }
 
+  export function from25To40(): ƒS.AnimationDefinition {
+    return {
+      start: {
+        translation: ƒS.positionPercent(25, 100),
+      },
+      end: {
+        translation: ƒS.positionPercent(40, 100),
+      },
+      duration: 2,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+
+  export function from40To25(): ƒS.AnimationDefinition {
+    return {
+      start: {
+        translation: ƒS.positionPercent(40, 100),
+      },
+      end: {
+        translation: ƒS.positionPercent(25, 100),
+      },
+      duration: 2,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+
 }

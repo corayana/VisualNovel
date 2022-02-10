@@ -5,19 +5,11 @@ namespace Application {
     // show background
     await ƒS.Location.show(locations.cafe);
 
- 
-
     // start happy background music
     ƒS.Sound.fade(sound.backgroundIntroHappy, 0.2, 3, true);
 
     // transition
     await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
-
-    await ƒS.Text.setClass("novelPage");
-    await ƒS.Text.print("Wer hätte damit gerechnet! Was für ein Happy End!<br>\
-    Aber Moment - wer hat nun das Geld wirklich gestohlen?<br>\
-    Beginne von vorne oder lade den Spielstand neu, um es zu erfahren.\
-    ");
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.laughing, ƒS.positionPercent(25, 100));
@@ -188,7 +180,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.lara, "Aber huch - Die Spardose ist ja leer!");
     
     // play shock sound
-    ƒS.Sound.fade(sound.shock, 1, 0, false);
+    ƒS.Sound.play(sound.shock, 1, false);
     
     // change elises pose to shocked
     await changePose(characters.elise, "shocked", ƒS.positionPercent(75, 100));

@@ -12,64 +12,73 @@ namespace Application {
    */
   
   export let characters = {
+
+    narrator: {
+      name: "",
+    },
+
     lara: {
       name: "Lara",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
-        neutral: "./Images/Characters/lara_neutral.png",
-        friendly: "./Images/Characters/lara_friendly.png",
-        laughing: "./Images/Characters/lara_laughing.png",
-        pensive: "./Images/Characters/lara_pensive.png",
-        surprised: "./Images/Characters/lara_surprised.png",
-        suspicious: "./Images/Characters/lara_suspicious.png",
+        neutral: "./Assets/Characters/lara_neutral.png",
+        friendly: "./Assets/Characters/lara_friendly.png",
+        laughing: "./Assets/Characters/lara_laughing.png",
+        pensive: "./Assets/Characters/lara_pensive.png",
+        shocked: "./Assets/Characters/lara_shocked.png",
+        suspicious: "./Assets/Characters/lara_suspicious.png",
       },
     },
+
     elise: {
       name: "Elise",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
-        neutral: "./Images/Characters/elise_neutral.png",
-        friendly: "./Images/Characters/elise_friendly.png",
-        laughing: "./Images/Characters/elise_laughing.png",
-        grumpy: "./Images/Characters/elise_grumpy.png",
-        pensive: "./Images/Characters/elise_pensive.png",
-        shocked: "./Images/Characters/elise_shocked.png",
-        blushed: "./Images/Characters/elise_blushed.png",
+        neutral: "./Assets/Characters/elise_neutral.png",
+        friendly: "./Assets/Characters/elise_friendly.png",
+        laughing: "./Assets/Characters/elise_laughing.png",
+        grumpy: "./Assets/Characters/elise_grumpy.png",
+        pensive: "./Assets/Characters/elise_pensive.png",
+        shocked: "./Assets/Characters/elise_shocked.png",
+        blushed: "./Assets/Characters/elise_blushed.png",
       },
     },
+
     wilma: {
       name: "Wilma",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
-        neutral: "./Images/Characters/wilma_neutral.png",
-        friendly: "./Images/Characters/wilma_friendly.png",
-        grumpy: "./Images/Characters/wilma_grumpy.png",
-        pensive: "./Images/Characters/wilma_pensive.png",
-        laughing: "./Images/Characters/wilma_laughing.png",
-        shocked: "./Images/Characters/wilma_shocked.png",
+        neutral: "./Assets/Characters/wilma_neutral.png",
+        friendly: "./Assets/Characters/wilma_friendly.png",
+        grumpy: "./Assets/Characters/wilma_grumpy.png",
+        pensive: "./Assets/Characters/wilma_pensive.png",
+        laughing: "./Assets/Characters/wilma_laughing.png",
+        shocked: "./Assets/Characters/wilma_shocked.png",
       },
     },
+
     uwe: {
       name: "Uwe",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
-        neutral: "./Images/Characters/uwe_neutral.png",
-        friendly: "./Images/Characters/uwe_friendly.png",
-        pensive: "./Images/Characters/uwe_pensive.png",
-        shocked: "./Images/Characters/uwe_shocked.png",
-        blushed: "./Images/Characters/uwe_blushed.png",
+        neutral: "./Assets/Characters/uwe_neutral.png",
+        friendly: "./Assets/Characters/uwe_friendly.png",
+        pensive: "./Assets/Characters/uwe_pensive.png",
+        shocked: "./Assets/Characters/uwe_shocked.png",
+        blushed: "./Assets/Characters/uwe_blushed.png",
       },
     },
+    
     gabi: {
       name: "Gabi",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
-        neutral: "./Images/Characters/gabi_neutral.png",
-        friendly: "./Images/Characters/gabi_friendly.png",
-        sad: "./Images/Characters/gabi_sad.png",
-        pensive: "./Images/Characters/gabi_pensive.png",
-        shocked: "./Images/Characters/gabi_shocked.png",
-        grumpy: "./Images/Characters/gabi_grumpy.png",
+        neutral: "./Assets/Characters/gabi_neutral.png",
+        friendly: "./Assets/Characters/gabi_friendly.png",
+        sad: "./Assets/Characters/gabi_sad.png",
+        pensive: "./Assets/Characters/gabi_pensive.png",
+        shocked: "./Assets/Characters/gabi_shocked.png",
+        grumpy: "./Assets/Characters/gabi_grumpy.png",
       },
     },
   };

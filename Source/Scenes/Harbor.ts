@@ -5,7 +5,7 @@ namespace Application {
     dataForSave.visitedHarbor = true;
 
     // show background
-    await ƒS.Location.show(locations.port);
+    await ƒS.Location.show(locations.harbor);
 
     // fade background sound
     ƒS.Sound.fade(sound.backgroundHarbor, 0.8, 1, true);
@@ -28,6 +28,7 @@ namespace Application {
 
     await ƒS.Speech.tell(characters.wilma, "Schön dich zu sehen!");
 
+    /* 
     // change wilmas pose to laughing
     await changePose(characters.wilma, "laughing", ƒS.positionPercent(75, 100));
 
@@ -61,7 +62,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.wilma, "Aber ich komme gut über die Runden.");
 
     // change laras pose to surprisex
-    await changePose(characters.lara, "surprised", ƒS.positionPercent(25, 100));
+    await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
 
     // dialog
     await ƒS.Speech.tell(characters.lara, "Hast du es schon gehört?");
@@ -116,8 +117,8 @@ namespace Application {
     // dialog
     await ƒS.Speech.tell(characters.wilma, "<i>*lacht*</i>");
 
-    // change laras pose to surprised
-    await changePose(characters.lara, "surprised", ƒS.positionPercent(25, 100));
+    // change laras pose to shocked
+    await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
 
     // dialog
     await ƒS.Speech.tell(characters.lara, "Warum lachst du?");
@@ -141,7 +142,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.wilma, "Elise hat gestern aus heiterem Himmel verkündet, das Preisgeld zu nutzen, um die Insel zu verlassen.");
 
     // change laras pose to shocked
-    await changePose(characters.lara, "surprised", ƒS.positionPercent(25, 100));
+    await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
 
     // change wilmas pose to pensive
     await changePose(characters.wilma, "pensive", ƒS.positionPercent(75, 100));
@@ -206,8 +207,13 @@ namespace Application {
     // dialog
     await ƒS.Speech.tell(characters.wilma, "Wenn du mich fragst, ist Elise selbst die Diebin des Geldes.");
 
+    */
+
     // sound phone call
     ƒS.Sound.fade(sound.harborRingtone, 1, 0, false);
+
+    // change wilmas pose to neutral
+    await changePose(characters.wilma, "neutral", ƒS.positionPercent(75, 100));
 
     // dialog
     await ƒS.Speech.tell(characters.wilma, "Moment, den Anruf muss ich kurz annehmen. Kannst du hier kurz aufpassen?");
@@ -216,7 +222,6 @@ namespace Application {
     ƒS.Sound.play(sound.harborFootstepsFadeOut, 0.8, false);
 
     // animation wilma leaving
-    await ƒS.Character.hide(characters.wilma);
     await ƒS.Character.animate(characters.wilma, characters.wilma.pose.neutral, from75ToOutside());
 
     // change laras pose to suspicious
@@ -232,17 +237,19 @@ namespace Application {
     // dialog
     await ƒS.Speech.tell(characters.lara, "Ob Tante Elise den Diebstahl wirklich nur vorgetäuscht hat?");
 
-    // change laras pose to surprised
-    await changePose(characters.lara, "surprised", ƒS.positionPercent(25, 100));
+    // change laras pose to shocked
+    await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
 
     // dialog
     await ƒS.Speech.tell(characters.lara, "Hmm, was für blaue Briefe sind da denn in der Tasche von Wilma?");
     await ƒS.Speech.tell(characters.lara, "Ob ich mal einen Blick darauf werfen sollte?");
 
+
+
     // CHOICE look at letters
     let chooseActionOptions = {
       look: "Die Briefe anschauen",
-      wait: "Warten bis Wilma zurückkommt",
+      wait: "Auf Wilma warten",
     };
     let chooseAction = await ƒS.Menu.getInput(chooseActionOptions, "choice");
 
@@ -263,39 +270,28 @@ namespace Application {
         await ƒS.Speech.tell(characters.lara, ". . .");
 
         // change laras pose to shocked
-        await changePose(characters.lara, "surprised", ƒS.positionPercent(40, 100));
-
-        // dialog
+        await changePose(characters.lara, "shocked", ƒS.positionPercent(40, 100));
         await ƒS.Speech.tell(characters.lara, "Ohha, scheinbar hat Wilma ziemliche Geldprobleme.");
 
         // change laras pose to suspicious
         await changePose(characters.lara, "suspicious", ƒS.positionPercent(40, 100));
-
-        // dialog
         await ƒS.Speech.tell(characters.lara, "Das Preisgeld von Elise wäre ihr sicher sehr gelegen gekommen.");
 
         // change laras pose to pensive
         await changePose(characters.lara, "pensive", ƒS.positionPercent(40, 100));
-
-        // dialog
         await ƒS.Speech.tell(characters.lara, "Ob sie das Geld aus der Spardose geklaut hat, um ihre Schulden zu begleichen?");
         await ƒS.Speech.tell(characters.lara, ". . .");
 
-        // change laras pose to surprised
-        await changePose(characters.lara, "surprised", ƒS.positionPercent(40, 100));
-
-        // dialog
+        // change laras pose to shocked
+        await changePose(characters.lara, "shocked", ƒS.positionPercent(40, 100));
         await ƒS.Speech.tell(characters.lara, "Ohh, Wilma scheint ihr Telefonat zu beenden.");
 
         // change laras pose to neutral
         await changePose(characters.lara, "neutral", ƒS.positionPercent(40, 100));
-
-        // dialog
         await ƒS.Speech.tell(characters.lara, "Ich lege die Briefe schnell zurück.");
         await ƒS.Speech.tell(characters.lara, "Und jetzt nichts anmerken lassen.");
 
         // animation lara back to 25
-        await ƒS.Character.hide(characters.lara);
         await ƒS.Character.animate(characters.lara, characters.lara.pose.neutral, from40To25());
 
         break;
@@ -307,10 +303,13 @@ namespace Application {
         await ƒS.Speech.tell(characters.lara, "Nein, ich will nicht einfach unbemerkt in Wilmas private Sachen schauen, das gehört sich nicht.");
         await ƒS.Speech.tell(characters.lara, "Ich warte lieber bis sie wieder zurück kommt.");
 
-        // transition
-        await ƒS.Location.show(locations.port);
-        await ƒS.update(transitions.timefiller.duration, transitions.timefiller.alpha, transitions.timefiller.edge);
+        // change laras pose to neutral
+        await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
 
+        // transition //TODO
+        ƒS.Speech.clear();
+        ƒS.Speech.hide();
+        await ƒS.update(transitions.timefiller.duration, transitions.timefiller.alpha, transitions.timefiller.edge);
         break;
     }
 

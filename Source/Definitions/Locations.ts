@@ -10,23 +10,27 @@ namespace Application {
   export let locations = {
     cafe: {
       name: "Cafè",
-      background: "./Images/Backgrounds/cafe.png",
+      background: "./Assets/Backgrounds/cafe.png",
     },
-    port: {
+    harbor: {
       name: "Hafen",
-      background: "./Images/Backgrounds/harbor.png",
+      background: "./Assets/Backgrounds/harbor.png",
     },
     library: {
       name: "Bücherei",
-      background: "./Images/Backgrounds/library.png",
+      background: "./Assets/Backgrounds/library.png",
     },
     bar: {
       name: "Kneipe",
-      background: "./Images/Backgrounds/bar.png",
+      background: "./Assets/Backgrounds/bar.png",
     },
     outro: {
       name: "Outro",
-      background: "./Images/Backgrounds/outro.png",
+      background: "./Assets/Backgrounds/outro.png",
+    },
+    blend: {
+      name: "Übergang",
+      background: "./Assets/Backgrounds/blend.png",
     }
   };
 }

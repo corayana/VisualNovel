@@ -11,14 +11,14 @@ namespace Application {
     bills: {
       name: "Rechnungen von Wilma",
       description: "Die Rechnungen zeigen, dass Wilma große Geldprobleme hat.",
-      image: "./Images/Items/brief_inventory.png",
+      image: "./Assets/Items/brief_inventory.png",
       static: true,
     },
 
     letter: {
       name: "Liebesbrief von Uwe",
       description: "Ein Liebesbrief von Uwe an Elise.",
-      image: "./Images/Items/liebesbrief_inventory.png",
+      image: "./Assets/Items/liebesbrief_inventory.png",
       static: true,
     },
 
@@ -26,10 +26,10 @@ namespace Application {
       name: "Getränk",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
-        hotchocolate: "./Images/Items/hot_chocolate.png",
-        water: "./Images/Items/water.png",
-        applejuice: "./Images/Items/applejuice.png",
-        tea: "./Images/Items/tea.png",
+        hotchocolate: "./Assets/Items/hot_chocolate.png",
+        water: "./Assets/Items/water.png",
+        applejuice: "./Assets/Items/applejuice.png",
+        tea: "./Assets/Items/tea.png",
       }
     }
   };

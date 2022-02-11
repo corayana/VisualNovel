@@ -31,7 +31,6 @@ namespace Application {
         </tr>\
       </table>\
       <p>Erstellt mit FUDGE Story\
-      <br\> (a Furtwangen University Didactic Game Editor Modul)</p>\
       ";
     ƒS.Text.print(credits);
   }

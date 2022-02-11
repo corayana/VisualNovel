@@ -11,13 +11,13 @@ namespace Application {
 
     wave: {
       duration: 2,
-      alpha: "./Images/Transitions/Untitled_Artwork.png",
+      alpha: "./Assets/Transitions/Untitled_Artwork.png",
       edge: 0.2,
     },
 
     timefiller: {
       duration: 1.5,
-      alpha: "./Images/Transitions/timefiller.jpg",
+      alpha: "./Assets/Transitions/timefiller.jpg",
       edge: 1.5,
     },
   };

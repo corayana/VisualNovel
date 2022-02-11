@@ -17,7 +17,6 @@ namespace Application {
   console.log("FudgeStory template starting");
 
   export let dataForSave = {
-    nameProtagonist: "",
     visitedBar: false,
     visitedCafe: false,
     visitedLibrary: false,
@@ -40,7 +39,7 @@ namespace Application {
     // scenes and ids: { id: "Id", scene: Scene, name: "Scene" }
     // here: except for intro non-linear: order is given by id
     let scenes: ƒS.Scenes = [
-      // { scene: Intro, name: "Intro" },
+       { scene: Intro, name: "Intro" },
 
       { id: "NextLocationChoice", scene: NextLocationChoice, name: "" },
 

@@ -51,8 +51,8 @@ namespace Application {
     // change elises pose to neutral
     await changePose(characters.elise, "neutral", ƒS.positionPercent(75, 100));
 
-    // change laras pose to surprised
-    await changePose(characters.lara, "surprised", ƒS.positionPercent(25, 100));
+    // change laras pose to shocked
+    await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
 
     await ƒS.Speech.tell(characters.lara, "Oh, du scheinst nicht gerade gut auf ihn zu sprechen zu sein?");
 
@@ -85,8 +85,8 @@ namespace Application {
     await ƒS.Speech.tell(characters.elise, "Ich hätte noch nie erleben müssen, wie es ist, hartes Geld verdienen zu müssen.");
     await ƒS.Speech.tell(characters.elise, "Das Glück käme mir nur so zugeflogen, alles würde mir in den Schoss fallen – und so weiter.");
 
-    // change laras pose to surprised
-    await changePose(characters.lara, "surprised", ƒS.positionPercent(25, 100));
+    // change laras pose to shocked
+    await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
 
     await ƒS.Speech.tell(characters.lara, "Kannst du dir vorstellen, dass sie das Preisgeld gestohlen haben könnte?");
 

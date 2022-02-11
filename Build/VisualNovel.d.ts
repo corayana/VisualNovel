@@ -11,7 +11,6 @@ declare namespace Application {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let dataForSave: {
-        nameProtagonist: string;
         visitedBar: boolean;
         visitedCafe: boolean;
         visitedLibrary: boolean;
@@ -38,6 +37,8 @@ declare namespace Application {
     function fromOutsideTo75(): ƒS.AnimationDefinition;
     function from25To40(): ƒS.AnimationDefinition;
     function from40To25(): ƒS.AnimationDefinition;
+    function from25To80(): ƒS.AnimationDefinition;
+    function from80To25(): ƒS.AnimationDefinition;
 }
 declare namespace Application {
     /**
@@ -52,6 +53,9 @@ declare namespace Application {
      *   },
      */
     let characters: {
+        narrator: {
+            name: string;
+        };
         lara: {
             name: string;
             origin: ƒ.ORIGIN2D;
@@ -60,7 +64,7 @@ declare namespace Application {
                 friendly: string;
                 laughing: string;
                 pensive: string;
-                surprised: string;
+                shocked: string;
                 suspicious: string;
             };
         };
@@ -164,7 +168,7 @@ declare namespace Application {
             name: string;
             background: string;
         };
-        port: {
+        harbor: {
             name: string;
             background: string;
         };
@@ -177,6 +181,10 @@ declare namespace Application {
             background: string;
         };
         outro: {
+            name: string;
+            background: string;
+        };
+        blend: {
             name: string;
             background: string;
         };
@@ -194,7 +202,6 @@ declare namespace Application {
     };
     let gameMenu: ƒS.Menu;
     function buttonFunctionalities(_option: string): Promise<void>;
-    function hndKeyPress(_event: KeyboardEvent): Promise<void>;
 }
 declare namespace Application {
     function showShortcuts(): void;
@@ -205,11 +212,14 @@ declare namespace Application {
         backgroundIntroMysterious: string;
         shock: string;
         backgroundBar: string;
+        barFootstepsFadeOut: string;
+        barFootstepsFadeIn: string;
         backgroundHarbor: string;
         harborRingtone: string;
         harborFootstepsFadeOut: string;
         harborFootstepsFadeIn: string;
         backgroundLibrary: string;
+        libraryFootstepsFadeIn: string;
         backgroundSoundCafe: string;
         backgroundMusicCafe: string;
     };

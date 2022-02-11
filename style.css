@@ -48,7 +48,7 @@ speech {
   right: 0px;
   background-size: cover;
   height: 12%;
-  width: 72%;
+  width: 60%;
   padding: 30px;
   margin: auto;
   margin-bottom: 60px;
@@ -94,6 +94,20 @@ menu {
 button {
   font-family: "Montserrat", sans-serif;
   user-select: none;
+}
+
+input {
+  margin-left: 10px;
+  margin-top: none;
+  padding: 4px 10px;
+  color:#333333;
+  background-color: #fafafa;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1vmax;
+  font-weight: 900;
+  border-radius: 15px;
+  border-color: #fafafa;
+  border-style: solid;
 }
 
 :focus-visible { outline: none }

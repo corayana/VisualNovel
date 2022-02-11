@@ -30,21 +30,36 @@ namespace Application {
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Komm herein.");
     await ƒS.Speech.tell(characters.elise, "Stell deinen Koffer einfach an der Treppe ab und setz dich zu mir an die Theke.");
 
     // change elises pose to laughing
     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Heute ist zum Glück nicht allzu viel los im Café, dann können wir direkt ein bisschen quatschen.");
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
+    await ƒS.Speech.tell(characters.elise, "Erzähl doch mal, wie geht es dir und deinen Eltern?");
+    await ƒS.Speech.tell(characters.elise, "Und deinem Haustier – wie hieß es gleich nochmal?");
 
-    // dialog
+    // change laras pose to laughing
+    await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
+    await ƒS.Speech.tell(characters.lara, "Meine Haustier heißt: ");
+
+    // input name
+    let petName: string = await ƒS.Speech.getInput();
+    await ƒS.Speech.tell(characters.lara, "Uns geht es allen sehr gut.");
+
+    // change laras pose to friendly
+    await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
+
+    // change elises pose to laughing
+    await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
+    await ƒS.Speech.tell(characters.elise, "Stimmt, " + petName + " war der Name");
+    await ƒS.Speech.tell(characters.elise, "");
+
+    // change elises pose to friendly
+    await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.elise, "Was darf ich dir zu trinken anbieten?");
     await ƒS.Speech.tell(characters.elise, "Wasser, Früchtetee, Apfelsaft oder eine heiße Schokolade?");
 
@@ -66,20 +81,14 @@ namespace Application {
 
     // change laras pose to laughing
     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Ich freue mich so sehr darauf die Herbstferien wieder bei dir verbringen zu dürfen!");
 
     // change laras pose to friendly
     await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
-
-    //dialog
     await ƒS.Speech.tell(characters.elise, "Ich hoffe es wird dir nicht zu langweilig!");
 
     // change elises pose to pensive
     await changePose(characters.elise, "pensive", ƒS.positionPercent(90, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Immerhin ist hier gerade nicht viel los.");
     await ƒS.Speech.tell(characters.elise, "Die Saison ist vorbei und die meisten Bewohner der Insel sind jetzt selbst auf dem Weg in den Urlaub.");
     await ƒS.Speech.tell(characters.elise, "Die Leute hier kann man aktuell an einer Hand abzählen.");
@@ -117,26 +126,18 @@ namespace Application {
 
     // change laras pose to laughing
     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Hmm, lecker!");
 
     // change laras pose to friendly
     await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Du bist wirklich die beste Konditorin der Welt!");
 
     // change elises pose to laughing
     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Haha, das ist lieb!");
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Stell dir vor, ich habe dafür gestern tatsächlich einen Preis auf der kleinen Nachbarsinsel gewonnen.");
     await ƒS.Speech.tell(characters.elise, "„Bester Cupcake der Inselgruppe“ – Moment, ich hole ihn schnell.");
 
@@ -150,20 +151,14 @@ namespace Application {
 
     // change elises pose to laughing
     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Hier: eine Spardose in Cupcake-Form mit einem Preisgeld von stolzen 4000€.");
 
-    // change laras pose to surprised
-    await changePose(characters.lara, "surprised", ƒS.positionPercent(25, 100));
-
-    // dialog
+    // change laras pose to shocked
+    await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Wow!");
 
     // change laras pose to friendly
     await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Nicht schlecht, Tante Elise!");
     await ƒS.Speech.tell(characters.lara, "Das ist eine Menge Geld!");
 
@@ -173,22 +168,17 @@ namespace Application {
     // start mysterious sound
     ƒS.Sound.fade(sound.backgroundIntroMysterious, 0.2, 5, true);
 
-    // change laras pose to surprised
-    await changePose(characters.lara, "surprised", ƒS.positionPercent(25, 100));
-
-    // dialog
+    // change laras pose to shocked
+    await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Aber huch - Die Spardose ist ja leer!");
-    
+
     // play shock sound
     ƒS.Sound.play(sound.shock, 1, false);
-    
+
     // change elises pose to shocked
     await changePose(characters.elise, "shocked", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Wie leer?");
     await ƒS.Speech.tell(characters.elise, "Zeig mal!");
-
     await ƒS.Speech.tell(characters.elise, "…");
     await ƒS.Speech.tell(characters.elise, "Oh Schreck, du hast Recht!");
     await ƒS.Speech.tell(characters.elise, "Das ganze Geld ist weg.");
@@ -197,8 +187,6 @@ namespace Application {
 
     // change laras pose to suspicious
     await changePose(characters.lara, "suspicious", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Wer hätte das Preisgeld denn aus der Spardose an sich nehmen können?");
 
     // change laras pose to neutral
@@ -206,8 +194,6 @@ namespace Application {
 
     // change elises pose to pensive
     await changePose(characters.elise, "pensive", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Heute hatte ich die Spardose den ganzen Morgen lang im Blick.");
     await ƒS.Speech.tell(characters.elise, "Da hat sich ihr niemand genähert.");
     await ƒS.Speech.tell(characters.elise, "Es muss also gestern Abend gewesen sein.");
@@ -216,8 +202,6 @@ namespace Application {
 
     // change laras pose to pensive
     await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Dann gibt es also drei Verdächtige.");
     await ƒS.Speech.tell(characters.lara, "Die Namen sagen mir noch etwas.");
 
@@ -226,77 +210,55 @@ namespace Application {
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Ja, du solltest sie alle von deinem letzten Urlaub hier auf der Insel kennen.");
 
     // change laras pose to pensive
     await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Das ist aber schon echt lange her!");
 
     // change laras pose to neutral
     await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Magst du mir vielleicht nochmal eine kurze Vorstellung geben?");
 
     await ƒS.Speech.tell(characters.elise, "Na klar!");
 
     // change elises pose to neutral
     await changePose(characters.elise, "neutral", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Also, zum einen ist da Uwe.");
     await ƒS.Speech.tell(characters.elise, "Ihm gehört die kleine Kneipe der Insel.");
     await ƒS.Speech.tell(characters.elise, "Er ist sehr schüchtern und leise.");
 
     // change elises pose to blushed
     await changePose(characters.elise, "blushed", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Aber er hat das Herz am richtigen Fleck.");
 
     // change elises pose to neutral
     await changePose(characters.elise, "neutral", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Wilma sollte dir ebenfalls noch bekannt sein.");
     await ƒS.Speech.tell(characters.elise, "Sie ist die junge Fischerin, die unten am Hafen ihren Stand hat.");
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Sie ist immer fröhlich und gut gelaunt und ganz schön kreativ.");
     await ƒS.Speech.tell(characters.elise, "Ein echter Wirbelwind.");
 
     // change elises pose to neutral
     await changePose(characters.elise, "neutral", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Und als letztes noch Gabi, Wilmas Mama.");
     await ƒS.Speech.tell(characters.elise, "Sie leitet unsere kleine Inselbücherei.");
     await ƒS.Speech.tell(characters.elise, "Sie wirkt immer ein wenig distanziert und sehr streng.");
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Aber für uns alle ist sie der Fels in der Brandung.");
     await ƒS.Speech.tell(characters.elise, "Wilma ist ihr ein und alles. Für sie würde sie alles tun.");
 
     // change laras pose to suspicious
     await changePose(characters.lara, "suspicious", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Und der Dieb muss einer von ihnen gewesen sein?");
 
     // change elises pose to pensive
     await changePose(characters.elise, "pensive", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Ich kann es mir ehrlich gesagt nicht vorstellen.");
     await ƒS.Speech.tell(characters.elise, "Aber eine andere Erklärung gibt es nicht.");
     await ƒS.Speech.tell(characters.elise, "Gestern Abend hätte jeder von ihnen ganz einfach und unbemerkt das Geld aus der Spardose nehmen können.");
@@ -307,21 +269,15 @@ namespace Application {
 
     // change laras pose to pensive
     await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Hmm, das vereinfacht die Suche nach dem Geld natürlich.");
 
     // change laras pose to laughing
     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Weißt du was, Tante Elise?");
     await ƒS.Speech.tell(characters.lara, "Ich werde in dem Fall ermitteln.");
 
     // change elises pose to shocked
     await changePose(characters.elise, "shocked", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Ermitteln?");
 
     // change elises pose to neutral
@@ -329,8 +285,6 @@ namespace Application {
 
     // change laras pose to friendly
     await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Ich werde alle Anwesenden von gestern befragen.");
     await ƒS.Speech.tell(characters.lara, "Und heute Abend werde ich den Fall auflösen.");
     await ƒS.Speech.tell(characters.lara, "Bei einem gemeinsamen Abendessen heute werde ich den Täter entlarven.");
@@ -340,14 +294,11 @@ namespace Application {
 
     // change laras pose to neutral
     await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.elise, "Ehm.");
     await ƒS.Speech.tell(characters.elise, "Ob das eine so gute Idee ist?");
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
-
     await ƒS.Speech.tell(characters.elise, "Naja, wieso eigentlich nicht.");
     await ƒS.Speech.tell(characters.elise, "Ich bin ja froh, wenn du dich nicht langweilen musst.");
     await ƒS.Speech.tell(characters.elise, "Und heute Abend wollte sowieso etwas besonders zum Essen zaubern.");
@@ -355,8 +306,6 @@ namespace Application {
 
     // change laras pose to laughing
     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.lara, "Super, du bist die Beste!");
     await ƒS.Speech.tell(characters.lara, "Ich mache mich direkt auf den Weg.");
 

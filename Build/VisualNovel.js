@@ -18,6 +18,7 @@ var Application;
         visitedCafe: false,
         visitedLibrary: false,
         visitedHarbor: false,
+        triedToAccuseAll: false,
     };
     window.addEventListener("load", start);
     // text pace: pauses used by ticker between letters and before a paragraph in milliseconds
@@ -29,16 +30,17 @@ var Application;
         // here: except for intro non-linear: order is given by id
         let scenes = [
             { scene: Application.Intro, name: "Intro" },
-            { id: "NextLocationChoice", scene: Application.NextLocationChoice, name: "" },
-            { id: "Kneipe", scene: Application.Bar, name: "Kneipe" },
-            { id: "Bücherei", scene: Application.Library, name: "Bücherei" },
-            { id: "Hafen", scene: Application.Harbor, name: "Hafen" },
-            { id: "Café", scene: Application.Cafe, name: "Café" },
+            // { id: "NextLocationChoice", scene: NextLocationChoice, name: "" },
+            // { id: "Kneipe", scene: Bar, name: "Kneipe" },
+            // { id: "Bücherei", scene: Library, name: "Bücherei" },
+            // { id: "Hafen", scene: Harbor, name: "Hafen" },
+            // { id: "Café", scene: Cafe, name: "Café" },
             { id: "Outro", scene: Application.Outro, name: "Outro" },
             { id: "AccusedWilma", scene: Application.AccusedWilma, name: "AccusedWilma", next: "EndOfNovel" },
             { id: "AccusedGabi", scene: Application.AccusedGabi, name: "AccusedGabi", next: "EndOfNovel" },
             { id: "AccusedUwe", scene: Application.AccusedUwe, name: "AccusedUwe", next: "EndOfNovel" },
             { id: "AccusedElise", scene: Application.AccusedElise, name: "AccusedElise", next: "EndOfNovel" },
+            { id: "AccusedAll", scene: Application.AccusedAll, name: "AccusedAll", next: "EndOfNovel" },
             { id: "EndOfNovel", scene: Application.EndOfNovel, name: "EndOfNovel" },
         ];
         let uiElement = document.querySelector("[type=interface]");
@@ -381,10 +383,6 @@ var Application;
             case Application.gameMenuOptions.load:
                 await Application.ƒS.Progress.load();
                 break;
-            /* case gameMenuOptions.close:
-                      gameMenu.close();
-                      menuOpen = false;
-                      break; */
             case Application.gameMenuOptions.credits:
                 Application.showCredits();
                 break;
@@ -394,7 +392,7 @@ var Application;
         }
     }
     Application.buttonFunctionalities = buttonFunctionalities;
-    // Shortcuts
+    // shortcuts
     document.addEventListener("keydown", hndKeyPress);
     async function hndKeyPress(_event) {
         switch (_event.code) {
@@ -405,6 +403,7 @@ var Application;
                 }
                 else {
                     Application.ƒS.Inventory.open();
+                    Application.inventoryOpen = true;
                 }
                 break;
             case Application.ƒ.KEYBOARD_CODE.F8:
@@ -417,7 +416,7 @@ var Application;
                 break;
             case Application.ƒ.KEYBOARD_CODE.ESC:
                 if (Application.menuOpen) {
-                    console.log("Schließen");
+                    console.log("open menu");
                     Application.gameMenu.close();
                     Application.menuOpen = false;
                 }
@@ -645,6 +644,9 @@ var Application;
         // change laras pose to shocked
         await Application.changePose(Application.characters.lara, "shocked", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Vielleicht finde ich dort das Preisgeld?");
+        // hide elements
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
         // COHICE look into safe
         let chooseActionOptions = {
             look: "Den Tresor öffnen",
@@ -1091,6 +1093,9 @@ var Application;
         // dialog
         await Application.ƒS.Speech.tell(Application.characters.lara, "Hmm, was für blaue Briefe sind da denn in der Tasche von Wilma?");
         await Application.ƒS.Speech.tell(Application.characters.lara, "Ob ich mal einen Blick darauf werfen sollte?");
+        // hide elements
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
         // CHOICE look at letters
         let chooseActionOptions = {
             look: "Die Briefe anschauen",
@@ -1248,6 +1253,9 @@ var Application;
         await Application.changePose(Application.characters.elise, "friendly", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Was darf ich dir zu trinken anbieten?");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Wasser, Früchtetee, Apfelsaft oder eine heiße Schokolade?");
+        // hide elements
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
         // CHOICE drink
         let chooseDrinkOptions = {
             water: "Wasser",
@@ -1476,6 +1484,9 @@ var Application;
         // change laras pose to pensive
         await Application.changePose(Application.characters.lara, "pensive", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?");
+        // hide elements
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
         // COHICE listen to phone call
         let chooseActionOptions = {
             overhear: "Das Telefonat belauschen",
@@ -1736,49 +1747,54 @@ var Application;
 (function (Application) {
     async function Outro() {
         console.log("Outro");
-        // show charakter lara
-        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(50, 100));
-        await Application.ƒS.update(1);
-        // monolog lara
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Oha, es ist ja schon fast Abend!");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich habe eine Menge Informationen gesammelt.");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Am besten lasse ich mir das alles noch einmal durch den Kopf gehen, bevor ich beim gemeinsamen Abendessen den Dieb des Geldes entlarve.");
+        if (Application.dataForSave.triedToAccuseAll == false) {
+            // show charakter lara
+            await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(50, 100));
+            await Application.ƒS.update(1);
+            // monolog lara
+            await Application.ƒS.Speech.tell(Application.characters.lara, "Oha, es ist ja schon fast Abend!");
+            await Application.ƒS.Speech.tell(Application.characters.lara, "Ich habe eine Menge Informationen gesammelt.");
+            await Application.ƒS.Speech.tell(Application.characters.lara, "Am besten lasse ich mir das alles noch einmal durch den Kopf gehen, bevor ich beim gemeinsamen Abendessen den Dieb des Geldes entlarve.");
+            // hide elements
+            Application.ƒS.Speech.clear();
+            Application.ƒS.Speech.hide();
+            Application.ƒS.Character.hideAll();
+            Application.ƒS.update(0);
+            // show background
+            await Application.ƒS.Location.show(Application.locations.outro);
+            await Application.ƒS.update(Application.transitions.timefiller.duration, Application.transitions.timefiller.alpha, Application.transitions.timefiller.edge);
+            // Novel Page
+            Application.ƒS.Text.setClass("novelPage");
+            await Application.ƒS.Text.print("Elise, Uwe, Wilma, Gabi und Lara kommen im Café zum gemeinsamen Abendessen zusammen. Die Stimmung ist angespannt und zwischen oberflächlichen Gesprächen mustern sich die Anwesenden gegenseitig mit misstrauischen Blicken.");
+            // show charakter lara
+            await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(15, 100));
+            await Application.ƒS.update(0.5);
+            await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(40, 100));
+            await Application.ƒS.update(0.5);
+            await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.neutral, Application.ƒS.positionPercent(55, 100));
+            await Application.ƒS.update(0.5);
+            await Application.ƒS.Character.show(Application.characters.wilma, Application.characters.wilma.pose.neutral, Application.ƒS.positionPercent(75, 100));
+            await Application.ƒS.update(0.5);
+            await Application.ƒS.Character.show(Application.characters.gabi, Application.characters.gabi.pose.neutral, Application.ƒS.positionPercent(90, 100));
+            await Application.ƒS.update(0.5);
+            // dialog
+            await Application.ƒS.Speech.tell(Application.characters.lara, "Schön, dass ihr heute alle hierher gekommen seid!");
+            await Application.ƒS.Speech.tell(Application.characters.lara, "Ich habe euch nicht ganz ohne Grund alle auf einmal hier eingeladen.");
+            await Application.ƒS.Speech.tell(Application.characters.lara, "Wie ihr wisst, wurde gestern Abend das Preisgeld von 4000€ aus der Spardose von Tante Elise gestohlen.");
+            await Application.ƒS.Speech.tell(Application.characters.lara, "Ich habe mit euch allen gesprochen und Motive und Beweise gesammelt.");
+            await Application.ƒS.Speech.tell(Application.characters.lara, "Und nun werde ich offenbaren, wer von euch das Geld an sich genommen hat!");
+        }
+        else { }
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
-        Application.ƒS.Character.hideAll();
-        Application.ƒS.update(0);
-        // show background
-        await Application.ƒS.Location.show(Application.locations.outro);
-        // transition
-        await Application.ƒS.update(Application.transitions.timefiller.duration, Application.transitions.timefiller.alpha, Application.transitions.timefiller.edge);
-        // Novel Page
-        Application.ƒS.Text.setClass("novelPage");
-        await Application.ƒS.Text.print("Elise, Uwe, Wilma, Gabi und Lara kommen im Café zum gemeinsamen Abendessen zusammen. Die Stimmung ist angespannt und zwischen oberflächlichen Gesprächen mustern sich die Anwesenden gegenseitig mit misstrauischen Blicken.");
-        // show charakter lara
-        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(15, 100));
-        await Application.ƒS.update(0.5);
-        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.neutral, Application.ƒS.positionPercent(40, 100));
-        await Application.ƒS.update(0.5);
-        await Application.ƒS.Character.show(Application.characters.uwe, Application.characters.uwe.pose.neutral, Application.ƒS.positionPercent(55, 100));
-        await Application.ƒS.update(0.5);
-        await Application.ƒS.Character.show(Application.characters.wilma, Application.characters.wilma.pose.neutral, Application.ƒS.positionPercent(75, 100));
-        await Application.ƒS.update(0.5);
-        await Application.ƒS.Character.show(Application.characters.gabi, Application.characters.gabi.pose.neutral, Application.ƒS.positionPercent(90, 100));
-        await Application.ƒS.update(0.5);
-        // dialog
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Schön, dass ihr heute alle hierher gekommen seid!");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich habe euch nicht ganz ohne Grund alle auf einmal hier eingeladen.");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Wie ihr wisst, wurde gestern Abend das Preisgeld von 4000€ aus der Spardose von Tante Elise gestohlen.");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Ich habe mit euch allen gesprochen und Motive und Beweise gesammelt.");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Und nun werde ich offenbaren, wer von euch das Geld an sich genommen hat!");
         // CHOICE accuse Somebody
         let chooseActionOptions = {
-            wilma: "Wilma anklagen",
-            gabi: "Gabi anklagen",
-            uwe: "Uwe anklagen",
-            elise: "Elise anklagen",
-            all: "Alle anklagen",
+            wilma: "Wilma beschuldigen",
+            gabi: "Gabi beschuldigen",
+            uwe: "Uwe beschuldigen",
+            elise: "Elise beschuldigen",
+            all: "Alle beschuldigen",
         };
         let chooseAction = await Application.ƒS.Menu.getInput(chooseActionOptions, "choice");
         // CHOICE result
@@ -1801,13 +1817,11 @@ var Application;
 (function (Application) {
     async function AccusedAll() {
         console.log("Accused All");
-        // hide elements
-        Application.ƒS.Speech.clear();
-        Application.ƒS.Speech.hide();
-        Application.ƒS.Character.hideAll();
-        await Application.ƒS.update(1);
-        await Application.ƒS.Text.print("Moment mal! Wir sind hier doch nicht im Orient Express!<br>\
-      Das probieren wir am besten nochmal.\
+        Application.dataForSave.triedToAccuseAll = true;
+        await Application.ƒS.Text.print("Moment mal!<br>\
+      Wir sind hier doch nicht im Orient Express!<br>\
+      Diese Anschuldigung ist doch etwas weit her geholt.<br>\
+      Probiere dass besser noch einmal.\
       ");
         return "Outro";
     }

@@ -15,6 +15,7 @@ declare namespace Application {
         visitedCafe: boolean;
         visitedLibrary: boolean;
         visitedHarbor: boolean;
+        triedToAccuseAll: boolean;
     };
 }
 declare namespace Application {

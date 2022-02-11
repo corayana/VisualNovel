@@ -63,6 +63,10 @@ namespace Application {
     await ƒS.Speech.tell(characters.elise, "Was darf ich dir zu trinken anbieten?");
     await ƒS.Speech.tell(characters.elise, "Wasser, Früchtetee, Apfelsaft oder eine heiße Schokolade?");
 
+    // hide elements
+    ƒS.Speech.clear();
+    ƒS.Speech.hide();
+
     // CHOICE drink
     let chooseDrinkOptions = {
       water: "Wasser",

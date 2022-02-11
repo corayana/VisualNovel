@@ -2,14 +2,12 @@ namespace Application {
     export async function AccusedAll(): ƒS.SceneReturn {
       console.log("Accused All");
 
-      // hide elements
-      ƒS.Speech.clear();
-      ƒS.Speech.hide();
-      ƒS.Character.hideAll();
-      await ƒS.update(1);
+      dataForSave.triedToAccuseAll = true;
   
-      await ƒS.Text.print("Moment mal! Wir sind hier doch nicht im Orient Express!<br>\
-      Das probieren wir am besten nochmal.\
+      await ƒS.Text.print("Moment mal!<br>\
+      Wir sind hier doch nicht im Orient Express!<br>\
+      Diese Anschuldigung ist doch etwas weit her geholt.<br>\
+      Probiere dass besser noch einmal.\
       ");
 
       return "Outro";

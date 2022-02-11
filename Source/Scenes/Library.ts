@@ -29,6 +29,10 @@ namespace Application {
     await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?");
 
+     // hide elements
+     ƒS.Speech.clear();
+     ƒS.Speech.hide();
+
     // COHICE listen to phone call
     let chooseActionOptions = {
       overhear: "Das Telefonat belauschen",

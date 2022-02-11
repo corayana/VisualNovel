@@ -1,12 +1,14 @@
 # Visual Novel
 
-Eine interaktive Geschichte ...
+"Titel" ist eine interaktive Geschichte für Kinder. 
+Die aufgeweckte Lara verbringt ihre Herbstferien auf einer kleiner Insel bei ihrer Tante Elise. Als Elise bemerkt, dass ihr eine große Menge Geld geklaut wurde, macht sich Lara auf den Weg, um den Dingen auf den Grund zu gehen. Nach und nach befragt sie die Verdächtigen und sammelt Hinweise. Doch schnell zeigt sich, dass sich unter dem oberflächlichen Schein mehr Geheimnisse verstecken, als auf den ersten Blick erkennbar. 
+Hilfst du ihr, denn Fall aufzuklären und den Dieb zu überführen?
 
 [Hier spielen](https://corayana.github.io/VisualNovel/)
 
 ## FUDGE Story
 
-Die Visual NOvel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einfache Entwicklung interaktiver Geschichten, visueller Romane und einfacher Abenteuerspiele.
+Die Visual Novel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einfache Entwicklung interaktiver Geschichten, visueller Romane und einfacher Abenteuerspiele.
 
 [FUDGE API](https://jirkadelloro.github.io/FUDGE_Story/Documentation/Reference/#fudge-story-reference)
 
@@ -16,9 +18,6 @@ Die Visual NOvel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einf
 
 | Nr | Bezeichnung           | Beschreibung | Erfüllt |
 |---:|:----------------------|:-------------|:--------|
-|    | Titel                 | x |
-|    | Name                  | x |
-|    | Matrikelnummer        | x |
 |  1 | Konzeption            | Die Story der Visual Novel wurde in einer kurzen Inhaltsangabe beschrieben und der Konzeption beigefügt. In dieser sind jegliche Diagramme, Scribbles sowie ein Drehbuch enthalten.  | :heavy_check_mark: |
 |  2 | Charakter-Konzept     | Die Charaktere wurden in Steckbriefen festgehalten und nach dem Archetypenmodell erstellt. | :heavy_check_mark: |
 |  3 | Auswahlmöglichkeiten  | Dialogoptionen stellen _branching plots_ zur Verfügung und lassen den Spieler zu einem gewissen Grad selbstbestimmt handeln. Der Dialog unterscheidet sich je nach getätigter Auswahl. | :heavy_check_mark: |

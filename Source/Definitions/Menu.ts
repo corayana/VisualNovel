@@ -23,10 +23,6 @@ namespace Application {
       case gameMenuOptions.load:
         await ƒS.Progress.load();
         break;
-      /* case gameMenuOptions.close: 
-                gameMenu.close();
-                menuOpen = false;
-                break; */
       case gameMenuOptions.credits:
         showCredits();
         break;
@@ -36,7 +32,7 @@ namespace Application {
     }
   }
 
-  // Shortcuts
+  // shortcuts
   document.addEventListener("keydown", hndKeyPress);
 
   async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
@@ -47,6 +43,7 @@ namespace Application {
           inventoryOpen = false;
         } else {
           ƒS.Inventory.open();
+          inventoryOpen = true; 
         }
         break;
       case ƒ.KEYBOARD_CODE.F8:
@@ -59,7 +56,7 @@ namespace Application {
         break;
       case ƒ.KEYBOARD_CODE.ESC:
         if (menuOpen) {
-          console.log("Schließen");
+          console.log("open menu");
           gameMenu.close();
           menuOpen = false;
         } else {

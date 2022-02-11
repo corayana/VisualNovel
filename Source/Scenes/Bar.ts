@@ -180,6 +180,10 @@ namespace Application {
     await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Vielleicht finde ich dort das Preisgeld?");
 
+    // hide elements
+    ƒS.Speech.clear();
+    ƒS.Speech.hide();
+
     // COHICE look into safe
     let chooseActionOptions = {
       look: "Den Tresor öffnen",

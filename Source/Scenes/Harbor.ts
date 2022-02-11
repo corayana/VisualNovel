@@ -244,7 +244,9 @@ namespace Application {
     await ƒS.Speech.tell(characters.lara, "Hmm, was für blaue Briefe sind da denn in der Tasche von Wilma?");
     await ƒS.Speech.tell(characters.lara, "Ob ich mal einen Blick darauf werfen sollte?");
 
-
+     // hide elements
+     ƒS.Speech.clear();
+     ƒS.Speech.hide();
 
     // CHOICE look at letters
     let chooseActionOptions = {

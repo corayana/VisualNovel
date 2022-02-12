@@ -147,6 +147,13 @@ declare namespace Application {
                 default: string;
             };
         };
+        cupcake: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
+        };
         drink: {
             name: string;
             origin: ƒ.ORIGIN2D;
@@ -232,6 +239,7 @@ declare namespace Application {
         backgroundBar: string;
         barFootstepsFadeOut: string;
         barFootstepsFadeIn: string;
+        barOpenSafe: string;
         backgroundHarbor: string;
         harborRingtone: string;
         harborFootstepsFadeOut: string;

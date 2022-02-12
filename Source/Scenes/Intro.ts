@@ -37,27 +37,27 @@ namespace Application {
     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.elise, "Heute ist zum Glück nicht allzu viel los im Café, dann können wir direkt ein bisschen quatschen.");
 
-    // change elises pose to friendly
-    await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
-    await ƒS.Speech.tell(characters.elise, "Erzähl doch mal, wie geht es dir und deinen Eltern?");
-    await ƒS.Speech.tell(characters.elise, "Und deinem Haustier – wie hieß es gleich nochmal?");
-
-    // change laras pose to laughing
-    await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
-    await ƒS.Speech.tell(characters.lara, "Meine Haustier heißt ", false);
-
-    // input name
-    let petName: string = await ƒS.Speech.getInput();
-    
-    await ƒS.Speech.tell(characters.lara, "Uns geht es allen sehr gut.");
-
-    // change laras pose to friendly
-    await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
-
-    // change elises pose to laughing
-    await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
-    await ƒS.Speech.tell(characters.elise, "Stimmt, " + petName + " war der Name.");
-    await ƒS.Speech.tell(characters.elise, "");
+    /*  // change elises pose to friendly
+     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
+     await ƒS.Speech.tell(characters.elise, "Erzähl doch mal, wie geht es dir und deinen Eltern?");
+     await ƒS.Speech.tell(characters.elise, "Und deinem Haustier – wie hieß es gleich nochmal?");
+ 
+     // change laras pose to laughing
+     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
+     await ƒS.Speech.tell(characters.lara, "Meine Haustier heißt ", false);
+ 
+     // input name
+     let petName: string = await ƒS.Speech.getInput();
+ 
+     await ƒS.Speech.tell(characters.lara, "Uns geht es allen sehr gut.");
+ 
+     // change laras pose to friendly
+     await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
+ 
+     // change elises pose to laughing
+     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
+     await ƒS.Speech.tell(characters.elise, "Stimmt, " + petName + " war der Name.");
+     await ƒS.Speech.tell(characters.elise, ""); */
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
@@ -146,6 +146,10 @@ namespace Application {
     await ƒS.Speech.tell(characters.elise, "Stell dir vor, ich habe dafür gestern tatsächlich einen Preis auf der kleinen Nachbarsinsel gewonnen.");
     await ƒS.Speech.tell(characters.elise, "„Bester Cupcake der Inselgruppe“ – Moment, ich hole ihn schnell.");
 
+    // hide elements
+    ƒS.Speech.clear();
+    ƒS.Speech.hide();
+
     // animate elise leaving
     await ƒS.Character.hide(characters.elise);
     await ƒS.Character.animate(characters.elise, characters.elise.pose.friendly, from75ToOutside());
@@ -157,6 +161,27 @@ namespace Application {
     // change elises pose to laughing
     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.elise, "Hier: eine Spardose in Cupcake-Form mit einem Preisgeld von stolzen 4000€.");
+
+    // hide elements
+    ƒS.Speech.clear();
+    ƒS.Speech.hide();
+    ƒS.Character.hideAll();
+    await ƒS.update(0.5);
+
+    // show cupcake money box 
+    await ƒS.Character.show(items.cupcake, items.cupcake.pose.default, ƒS.positionPercent(50, 50));
+    await ƒS.update(1);
+
+    await new Promise(resolve => setTimeout(resolve, 3000));
+
+    // hide cupcake money box
+    await ƒS.Character.hide(items.cupcake);
+    await ƒS.update(0.5);
+
+    // show charakter lara
+    await ƒS.Character.show(characters.lara, characters.lara.pose.shocked, ƒS.positionPercent(25, 100));
+    await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
+    await ƒS.update(0.5);
 
     // change laras pose to shocked
     await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));

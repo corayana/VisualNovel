@@ -11,6 +11,7 @@ namespace Application {
     backgroundBar: "./Assets/Sound/bensound-thelounge.mp3",
     barFootstepsFadeOut: "./Assets/Sound/quicksounds-footstepsInteriorCementFadeOut.mp3",
     barFootstepsFadeIn: "./Assets/Sound/quicksounds-footstepsInteriorCementFadeIn.mp3",
+    barOpenSafe: "./Assets/Sound/quicksounds-doorOpen.mp3",
 
     // harbor
     backgroundHarbor: "./Assets/Sound/quicksounds-harborSeagulls2.mp3",

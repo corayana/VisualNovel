@@ -158,6 +158,10 @@ namespace Application {
     await ƒS.Speech.tell(characters.uwe, "Wenn du magst, hole ich dir noch ein Eis von hinten aus der Kühltruhe.");
     await ƒS.Speech.tell(characters.uwe, "Ich bin gleich zurück!");
 
+    // hide speech
+    ƒS.Speech.clear();
+    ƒS.Speech.hide();
+
     // sound footsteps
     ƒS.Sound.play(sound.barFootstepsFadeOut, 0.8, false);
 
@@ -245,6 +249,7 @@ namespace Application {
           await ƒS.Speech.tell(characters.narrator, "Code eingeben: ", false);
           let code: string = await ƒS.Speech.getInput();
           if (code == "1469") {
+            await ƒS.Sound.play(sound.barOpenSafe, 0.5, false);
             await ƒS.Speech.tell(characters.lara, "Na also.");
           } else {
             await ƒS.Speech.tell(characters.lara, "Das war der falsche Code.");

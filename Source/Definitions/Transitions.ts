@@ -17,7 +17,7 @@ namespace Application {
 
     timefiller: {
       duration: 1.5,
-      alpha: "./Assets/Transitions/timefiller.jpg",
+      alpha: "./Assets/Transitions/timefiller.png",
       edge: 1.5,
     },
   };

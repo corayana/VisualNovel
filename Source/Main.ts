@@ -10,11 +10,8 @@ namespace Application {
    * - Sound/Musik
    * */ 
 
-
   export import ƒ = FudgeCore;
   export import ƒS = FudgeStory;
-
-  console.log("FudgeStory template starting");
 
   export let dataForSave = {
     visitedBar: false,
@@ -30,23 +27,23 @@ namespace Application {
   ƒS.Speech.setTickerDelays(25, 100);
 
   function start(_event: Event): void {
-    // Menü
+    
+    // create menu
     gameMenu = ƒS.Menu.create(
       gameMenuOptions,
       buttonFunctionalities,
       "gameMenu"
     );
 
-    // scenes and ids: { id: "Id", scene: Scene, name: "Scene" }
-    // here: except for intro non-linear: order is given by id
+    // scenes and ids: { id: "Id", scene: Scene, name: "Scene" } -> here: except for intro non-linear: order is given by id
     let scenes: ƒS.Scenes = [
-      { scene: Intro, name: "Intro" },
+      //{ scene: Intro, name: "Intro" },
 
       // { id: "NextLocationChoice", scene: NextLocationChoice, name: "" },
 
       // { id: "Kneipe", scene: Bar, name: "Kneipe" },
       // { id: "Bücherei", scene: Library, name: "Bücherei" },
-      // { id: "Hafen", scene: Harbor, name: "Hafen" },
+      { id: "Hafen", scene: Harbor, name: "Hafen" },
       // { id: "Café", scene: Cafe, name: "Café" },
 
       { id: "Outro", scene: Outro, name: "Outro" },

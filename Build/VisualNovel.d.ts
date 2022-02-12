@@ -126,23 +126,26 @@ declare namespace Application {
 declare namespace Application {
     /**
      *   id of the item: {
-     *     name: "Name of the item",
-     *     description: "description of the item",
-     *     image: "path to the image to be used as the item"
+       *    name: "Name of the item", // also used to identify it,
+       *    description: "Short description to show in the inventory",
+       *    image: "path to the image to be used as icon",
+       *    static: true // if the item can't be consumed
      *   }
      */
     let items: {
         bills: {
             name: string;
-            description: string;
-            image: string;
-            static: boolean;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
         };
-        letter: {
+        code: {
             name: string;
-            description: string;
-            image: string;
-            static: boolean;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
         };
         drink: {
             name: string;
@@ -152,6 +155,20 @@ declare namespace Application {
                 water: string;
                 applejuice: string;
                 tea: string;
+            };
+        };
+        loveletter: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
+        };
+        safe: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
             };
         };
     };

@@ -221,38 +221,55 @@ namespace Application {
         await changePose(characters.lara, "friendly", ƒS.positionPercent(40, 100));
         await ƒS.Speech.tell(characters.lara, "Tatsächlich, da ist er ja.");
 
-        // Seee code
+        // hide lara
+        ƒS.Character.hideAll();
+        await ƒS.update(1);
 
-        // change laras pose to neutral
-        await changePose(characters.lara, "neutral", ƒS.positionPercent(40, 100));
+        // show code
+        await ƒS.Character.show(items.code, items.code.pose.default, ƒS.positionPercent(50, 50));
+        await ƒS.update(1);
+
+        await ƒS.Speech.tell(characters.lara, "Okay, den sollte ich mir kurz merken.");
         await ƒS.Speech.tell(characters.lara, "So, mal schauen, ob das funktioniert.");
+
+        // hide code
+        await ƒS.Character.hide(items.code);
+
+        // show safe
+        await ƒS.Character.show(items.safe, items.safe.pose.default, ƒS.positionPercent(50, 50));
+        await ƒS.update(1);
 
         // input field for code
         await codeInput();
         async function codeInput(): Promise<void> {
-          await ƒS.Speech.tell(characters.narrator, "Code eingeben: ");
+          await ƒS.Speech.tell(characters.narrator, "Code eingeben: ", false);
           let code: string = await ƒS.Speech.getInput();
           if (code == "1469") {
             await ƒS.Speech.tell(characters.lara, "Na also.");
           } else {
             await ƒS.Speech.tell(characters.lara, "Das war der falsche Code.");
-            await ƒS.Speech.tell(characters.lara, "Der Code ist 1469.");
+            await ƒS.Speech.tell(characters.lara, "Auf der Notiz von Uwe standen die Zahlen 1469.");
             await codeInput();
           }
         }
 
-        // change laras pose to shocked
-        await changePose(characters.lara, "shocked", ƒS.positionPercent(40, 100));
+        // hide safe
+        await ƒS.Character.hide(items.safe);
+
+        // show loveletter
+        await ƒS.Character.show(items.loveletter, items.loveletter.pose.default, ƒS.positionPercent(50, 50));
+        await ƒS.update(1);
+
         await ƒS.Speech.tell(characters.lara, "Das ist ja interessant.");
         await ƒS.Speech.tell(characters.lara, "Uwe wollte Elise wohl seine Liebe mit diesem Liebesbrief gestehen.");
-
-        // change laras pose to suspicious
-        await changePose(characters.lara, "suspicious", ƒS.positionPercent(40, 100));
         await ƒS.Speech.tell(characters.lara, "Wieso er wohl so zerknittert ist? Ich frage mich, was damit passiert ist.");
+        await ƒS.Speech.tell(characters.lara, "Ich lege den Brief besser wieder zurück.");
+
+        await ƒS.Character.hide(items.loveletter);
 
         // change laras pose to neutral
         await changePose(characters.lara, "neutral", ƒS.positionPercent(40, 100));
-        await ƒS.Speech.tell(characters.lara, "Ich lege den Brief besser wieder zurück.");
+
         await ƒS.Speech.tell(characters.lara, "Und jetzt den Tresor noch verschließen.");
         await ƒS.Speech.tell(characters.lara, ". . .");
         await ƒS.Speech.tell(characters.lara, "Ohh und da kommt Uwe auch schon wieder.");

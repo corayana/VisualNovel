@@ -226,7 +226,7 @@ namespace Application {
         await ƒS.Speech.tell(characters.lara, "Tatsächlich, da ist er ja.");
 
         // hide lara
-        ƒS.Character.hideAll();
+        ƒS.Character.hide(characters.lara);
         await ƒS.update(1);
 
         // show code

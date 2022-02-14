@@ -43,6 +43,13 @@ var Application;
         ];
         let uiElement = document.querySelector("[type=interface]");
         Application.dataForSave = Application.ƒS.Progress.setData(Application.dataForSave, uiElement);
+        Object.keys(Application.characters).forEach(characterName => {
+            if (typeof Application.characters[characterName].pose !== "undefined") {
+                Object.keys(Application.characters[characterName].pose).forEach(characterPose => {
+                    Application.ƒS.Character.get(Application.characters[characterName]).getPose(Application.characters[characterName].pose[characterPose]);
+                });
+            }
+        });
         // start the sequence
         Application.ƒS.Progress.go(scenes);
     }
@@ -716,7 +723,7 @@ var Application;
                 await Application.changePose(Application.characters.lara, "friendly", Application.ƒS.positionPercent(40, 100));
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Tatsächlich, da ist er ja.");
                 // hide lara
-                Application.ƒS.Character.hideAll();
+                Application.ƒS.Character.hide(Application.characters.lara);
                 await Application.ƒS.update(1);
                 // show code
                 await Application.ƒS.Character.show(Application.items.code, Application.items.code.pose.default, Application.ƒS.positionPercent(50, 50));
@@ -1215,6 +1222,7 @@ var Application;
         // show character elise
         await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.friendly, Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.update(0.5);
+        await Application.ƒS.Character.get(Application.characters.elise).getPose(Application.characters.elise.pose.pensive);
         await Application.ƒS.Speech.tell(Application.characters.lara, "Hallo Tante Elise!");
         // change laras pose to friendly
         await Application.changePose(Application.characters.lara, "friendly", Application.ƒS.positionPercent(25, 100));

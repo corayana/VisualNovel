@@ -94,8 +94,8 @@ menu {
 button {
   font-family: "Montserrat", sans-serif;
   user-select: none;
+  align-content: center;
 }
-
 input {
   margin-left: 10px;
   margin-top: none;
@@ -231,6 +231,8 @@ dialog[type="inventory"] button {
   border-width: 4px;
   border-radius: 15px;
   margin: 20px;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .choice button:hover {

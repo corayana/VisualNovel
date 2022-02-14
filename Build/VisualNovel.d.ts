@@ -248,6 +248,13 @@ declare namespace Application {
         libraryFootstepsFadeIn: string;
         backgroundSoundCafe: string;
         backgroundMusicCafe: string;
+        tickingClockShort: string;
+        tickingClockLong: string;
+        backgroundOutro: string;
+        backgroundEndingElise: string;
+        backgroundEndingUwe: string;
+        backgroundEndingGabi: string;
+        backgroundEndingWilma: string;
     };
 }
 declare namespace Application {

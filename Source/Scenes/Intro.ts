@@ -2,6 +2,11 @@ namespace Application {
   export async function Intro(): ƒS.SceneReturn {
     console.log("Intro");
 
+    dataForSave.visitedBar = false;
+    dataForSave.visitedCafe = false;
+    dataForSave.visitedHarbor = false; 
+    dataForSave.visitedLibrary = false; 
+
     // show background
     await ƒS.Location.show(locations.cafe);
 
@@ -36,28 +41,6 @@ namespace Application {
     // change elises pose to laughing
     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.elise, "Heute ist zum Glück nicht allzu viel los im Café, dann können wir direkt ein bisschen quatschen.");
-
-    /*  // change elises pose to friendly
-     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
-     await ƒS.Speech.tell(characters.elise, "Erzähl doch mal, wie geht es dir und deinen Eltern?");
-     await ƒS.Speech.tell(characters.elise, "Und deinem Haustier – wie hieß es gleich nochmal?");
- 
-     // change laras pose to laughing
-     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
-     await ƒS.Speech.tell(characters.lara, "Meine Haustier heißt ", false);
- 
-     // input name
-     let petName: string = await ƒS.Speech.getInput();
- 
-     await ƒS.Speech.tell(characters.lara, "Uns geht es allen sehr gut.");
- 
-     // change laras pose to friendly
-     await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
- 
-     // change elises pose to laughing
-     await changePose(characters.elise, "laughing", ƒS.positionPercent(75, 100));
-     await ƒS.Speech.tell(characters.elise, "Stimmt, " + petName + " war der Name.");
-     await ƒS.Speech.tell(characters.elise, ""); */
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));

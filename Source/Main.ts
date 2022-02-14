@@ -41,7 +41,7 @@ namespace Application {
 
       // { id: "NextLocationChoice", scene: NextLocationChoice, name: "" },
 
-      { id: "Kneipe", scene: Bar, name: "Kneipe" },
+      // { id: "Kneipe", scene: Bar, name: "Kneipe" },
       // { id: "Bücherei", scene: Library, name: "Bücherei" },
       // { id: "Hafen", scene: Harbor, name: "Hafen" },
       // { id: "Café", scene: Cafe, name: "Café" },

@@ -26,5 +26,23 @@ namespace Application {
     // cafe
     backgroundSoundCafe: "./Assets/Sound/quicksounds-ambienceCoffeeShopQuietLoop.mp3",
     backgroundMusicCafe: "./Assets/Sound/bensound-adaytoremember.mp3",
+
+    // outro 
+    tickingClockShort: "./Assets/Sound/quicksounds-tickingClock1.5s.mp3",
+    tickingClockLong: "./Assets/Sound/quicksounds-tickingClock3s.mp3",
+    backgroundOutro: "./Assets/Sound/bensound-theduel.mp3",
+
+    // ending elise
+    backgroundEndingElise: "./Assets/Sound/bensound-november.mp3",
+
+    // ending uwe
+    backgroundEndingUwe: "./Assets/Sound/bensound-photoalbum.mp3",
+
+    // ending gabi
+    backgroundEndingGabi: "./Assets/Sound/bensound-sadday.mp3",
+
+    // ending wilma
+    backgroundEndingWilma: "./Assets/Sound/bensound-ofeliasdream.mp3",
+
   };
 }

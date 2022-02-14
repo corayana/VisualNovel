@@ -3,6 +3,10 @@ namespace Application {
     console.log("Outro");
 
     if (dataForSave.triedToAccuseAll == false) {
+
+      // start mysterious music
+      ƒS.Sound.fade(sound.backgroundIntroMysterious, 0.2, 1, true);
+
       // show charakter lara
       await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(50, 100));
       await ƒS.update(1);
@@ -19,6 +23,11 @@ namespace Application {
       await changePose(characters.lara, "friendly", ƒS.positionPercent(50, 100));
       await ƒS.Speech.tell(characters.lara, "Am besten lasse ich mir das alles noch einmal durch den Kopf gehen, bevor ich beim gemeinsamen Abendessen den Dieb des Geldes entlarve.");
 
+      ƒS.Sound.fade(sound.backgroundIntroMysterious, 0, 3, false);
+
+      // sound ticking clock
+      ƒS.Sound.play(sound.tickingClockLong, 1, false);
+
       // hide elements
       ƒS.Speech.clear();
       ƒS.Speech.hide();
@@ -28,6 +37,9 @@ namespace Application {
       // show background
       await ƒS.Location.show(locations.outro);
       await ƒS.update(transitions.timefiller.duration, transitions.timefiller.alpha, transitions.timefiller.edge);
+
+      // start exiting music
+      ƒS.Sound.fade(sound.backgroundOutro, 0.2, 3, true);
 
       // novel page
       ƒS.Text.setClass("novelPage");
@@ -40,9 +52,9 @@ namespace Application {
       await ƒS.update(0.5);
       await ƒS.Character.show(characters.uwe, characters.uwe.pose.neutral, ƒS.positionPercent(55, 100));
       await ƒS.update(0.5);
-      await ƒS.Character.show(characters.wilma, characters.wilma.pose.neutral, ƒS.positionPercent(75, 100));
+      await ƒS.Character.show(characters.wilma, characters.wilma.pose.neutral, ƒS.positionPercent(72, 100));
       await ƒS.update(0.5);
-      await ƒS.Character.show(characters.gabi, characters.gabi.pose.neutral, ƒS.positionPercent(90, 100));
+      await ƒS.Character.show(characters.gabi, characters.gabi.pose.neutral, ƒS.positionPercent(88, 100));
       await ƒS.update(0.5);
 
       // change laras pose to friendly
@@ -82,6 +94,9 @@ namespace Application {
       delete chooseActionOptions.all;
     }
 
+    // stop background music
+    ƒS.Sound.fade(sound.backgroundOutro, 0, 3, false);
+
     let chooseAction = await ƒS.Menu.getInput(chooseActionOptions, "choice");
 
     // CHOICE result
@@ -98,4 +113,5 @@ namespace Application {
         return "AccusedAll";
     }
   }
+
 }

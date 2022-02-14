@@ -665,8 +665,8 @@ var FudgeStory;
                 FudgeStory.Sound.deserialize(json.sound);
                 index = parseInt(json.sceneDescriptor.index);
             }
-            else
-                await Progress.splash(document.title);
+            else{
+                await Progress.splash(document.title.replace(": ", ":<br>"));}
             do {
                 let descriptor = Progress.scenes[index];
                 let next = await Progress.start(index);

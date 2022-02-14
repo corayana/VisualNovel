@@ -37,14 +37,14 @@ namespace Application {
 
     // scenes and ids: { id: "Id", scene: Scene, name: "Scene" } -> here: except for intro non-linear: order is given by id
     let scenes: ƒS.Scenes = [
-      // { scene: Intro, name: "Intro" },
+      { scene: Intro, name: "Intro" },
 
-      // { id: "NextLocationChoice", scene: NextLocationChoice, name: "" },
+      { id: "NextLocationChoice", scene: NextLocationChoice, name: "" },
 
-      // { id: "Kneipe", scene: Bar, name: "Kneipe" },
-      // { id: "Bücherei", scene: Library, name: "Bücherei" },
-      // { id: "Hafen", scene: Harbor, name: "Hafen" },
-      // { id: "Café", scene: Cafe, name: "Café" },
+      { id: "Kneipe", scene: Bar, name: "Kneipe" },
+      { id: "Bücherei", scene: Library, name: "Bücherei" },
+      { id: "Hafen", scene: Harbor, name: "Hafen" },
+      { id: "Café", scene: Cafe, name: "Café" },
 
       { id: "Outro", scene: Outro, name: "Outro" },
 

@@ -14,7 +14,7 @@ namespace Application {
     barOpenSafe: "./Assets/Sound/quicksounds-doorOpen.mp3",
 
     // harbor
-    backgroundHarbor: "./Assets/Sound/quicksounds-harborSeagulls2.mp3",
+    backgroundHarbor: "./Assets/Sound/quicksounds-harborSeagulls.mp3",
     harborRingtone: "./Assets/Sound/zapsplat-ringtone.mp3",
     harborFootstepsFadeOut: "./Assets/Sound/quicksounds-footstepsOutsideFadeOut.mp3",
     harborFootstepsFadeIn: "./Assets/Sound/quicksounds-footstepsOutsideFadeIn.mp3",

@@ -27,12 +27,12 @@ var Application;
         Application.gameMenu = Application.ƒS.Menu.create(Application.gameMenuOptions, Application.buttonFunctionalities, "gameMenu");
         // scenes and ids: { id: "Id", scene: Scene, name: "Scene" } -> here: except for intro non-linear: order is given by id
         let scenes = [
-            // { scene: Intro, name: "Intro" },
-            // { id: "NextLocationChoice", scene: NextLocationChoice, name: "" },
-            // { id: "Kneipe", scene: Bar, name: "Kneipe" },
-            // { id: "Bücherei", scene: Library, name: "Bücherei" },
-            // { id: "Hafen", scene: Harbor, name: "Hafen" },
-            // { id: "Café", scene: Cafe, name: "Café" },
+            { scene: Application.Intro, name: "Intro" },
+            { id: "NextLocationChoice", scene: Application.NextLocationChoice, name: "" },
+            { id: "Kneipe", scene: Application.Bar, name: "Kneipe" },
+            { id: "Bücherei", scene: Application.Library, name: "Bücherei" },
+            { id: "Hafen", scene: Application.Harbor, name: "Hafen" },
+            { id: "Café", scene: Application.Cafe, name: "Café" },
             { id: "Outro", scene: Application.Outro, name: "Outro" },
             { id: "AccusedWilma", scene: Application.AccusedWilma, name: "AccusedWilma", next: "EndOfNovel" },
             { id: "AccusedGabi", scene: Application.AccusedGabi, name: "AccusedGabi", next: "EndOfNovel" },
@@ -272,19 +272,19 @@ var Application;
           <td>Carina Spangenberger</td>\
         </tr>\
         <tr>\
-          <td>Musik & Sounds</td>\
-          <td>. . .</td>\
+          <td>Musik</td>\
+          <td>www.bensound.com</td>\
         </tr>\
         <tr>\
-          <td>Transition-Bilder</td>\
-          <td>. . .</td>\
+          <td>Soundeffekte</td>\
+          <td>www.quicksounds.com, www.zapsplat.com</td>\
         </tr>\
         <tr>\
           <td>Programmierung</td>\
           <td>Carina Spangenberger</td>\
         </tr>\
       </table>\
-      <p>Erstellt mit FUDGE Story\
+      <p><br>Erstellt mit FUDGE Story\
       ";
         Application.ƒS.Text.print(credits);
     }
@@ -496,7 +496,7 @@ var Application;
         barFootstepsFadeIn: "./Assets/Sound/quicksounds-footstepsInteriorCementFadeIn.mp3",
         barOpenSafe: "./Assets/Sound/quicksounds-doorOpen.mp3",
         // harbor
-        backgroundHarbor: "./Assets/Sound/quicksounds-harborSeagulls2.mp3",
+        backgroundHarbor: "./Assets/Sound/quicksounds-harborSeagulls.mp3",
         harborRingtone: "./Assets/Sound/zapsplat-ringtone.mp3",
         harborFootstepsFadeOut: "./Assets/Sound/quicksounds-footstepsOutsideFadeOut.mp3",
         harborFootstepsFadeIn: "./Assets/Sound/quicksounds-footstepsOutsideFadeIn.mp3",
@@ -930,53 +930,76 @@ var Application;
         // background transition
         await Application.ƒS.update(Application.transitions.wave.duration, Application.transitions.wave.alpha, Application.transitions.wave.edge);
         // show charakter lara
-        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.laughing, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.friendly, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.update(1);
         // show charakter wilma
         await Application.ƒS.Character.show(Application.characters.wilma, Application.characters.wilma.pose.friendly, Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.update(1);
-        // dialog
+        // change laras pose to laughing
+        await Application.changePose(Application.characters.lara, "laughing", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Hallo Wilma!");
+        // change wilmas pose to laughing
+        await Application.changePose(Application.characters.wilma, "laughing", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Moin Lara!");
+        // change wilmas pose to friendly
+        await Application.changePose(Application.characters.wilma, "friendly", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Schön dich zu sehen!");
         // change wilmas pose to laughing
         await Application.changePose(Application.characters.wilma, "laughing", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Elise hat erzählt, dass du für ein paar Tage zu Besuch kommst.");
+        // change wilmas pose to friendly
+        await Application.changePose(Application.characters.wilma, "friendly", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Wie geht es dir?");
         // change wilmas pose to neutral
         await Application.changePose(Application.characters.wilma, "neutral", Application.ƒS.positionPercent(75, 100));
+        // change laras pose to laughing
+        await Application.changePose(Application.characters.lara, "laughing", Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Danke, ich kann mich nicht beklagen!");
         // change laras pose to friendly
         await Application.changePose(Application.characters.lara, "friendly", Application.ƒS.positionPercent(25, 100));
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Danke, ich kann mich nicht beklagen!");
         await Application.ƒS.Speech.tell(Application.characters.lara, "Wie geht es dir? Was macht die Fischerei?");
         // change laras pose to neutral
         await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
         // change wilmas pose to friendly
         await Application.changePose(Application.characters.wilma, "friendly", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Ach, ich kann mich ebenfalls nicht beklagen.");
+        // change wilmas pose to pensive
+        await Application.changePose(Application.characters.wilma, "pensive", Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Zurzeit ist natürlich ein bisschen weniger los, da die Touristen fehlen.");
         // change wilmas pose to neutral
         await Application.changePose(Application.characters.wilma, "neutral", Application.ƒS.positionPercent(75, 100));
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "Zurzeit ist natürlich ein bisschen weniger los, da die Touristen fehlen.");
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Aber ich komme gut über die Runden.");
-        // change laras pose to surprisex
+        // change laras pose to shocked
         await Application.changePose(Application.characters.lara, "shocked", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Hast du es schon gehört?");
         await Application.ƒS.Speech.tell(Application.characters.lara, "Gestern wurde das Preisgeld aus der Spardose von Tante Elise geklaut.");
+        // change laras pose to neutral
+        await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
         // change wilmas pose to shocked
         await Application.changePose(Application.characters.wilma, "shocked", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Wirklich? Das ganze Geld ist weg?");
+        // change laras pose to shocked
+        await Application.changePose(Application.characters.lara, "shocked", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Ja, wir haben die leere Spardose heute früh bei meiner Ankunft bemerkt.");
+        // change laras pose to pensive
+        await Application.changePose(Application.characters.lara, "pensive", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Jemand muss das Geld gestern Abend an sich genommen haben.");
         // change laras pose to suspicious
         await Application.changePose(Application.characters.lara, "suspicious", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Hast du eine Ahnung, wer es gestohlen haben könnte?");
+        // change laras pose to neutral
+        await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
         // change wilmas pose to pensive
         await Application.changePose(Application.characters.wilma, "pensive", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich kann mir nicht vorstellen, dass jemand von uns ein Dieb ist.");
         // change wilmas pose to neutral
         await Application.changePose(Application.characters.wilma, "neutral", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Meine Mama Gabi braucht das Geld bestimmt nicht.");
+        // change wilmas pose to pensive
+        await Application.changePose(Application.characters.wilma, "pensive", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Sie lebt sehr sparsam und leistet sich nicht viel.");
+        // change wilmas pose to friendly
+        await Application.changePose(Application.characters.wilma, "friendly", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Obwohl sie nicht viel verdient, kommt sie alleine gut über die Runden.");
         // change laras pose to pensive
         await Application.changePose(Application.characters.lara, "pensive", Application.ƒS.positionPercent(25, 100));
@@ -1002,7 +1025,11 @@ var Application;
         await Application.changePose(Application.characters.wilma, "neutral", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Natürlich hat sie das nicht erwähnt.");
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich glaube auch nicht, dass sie das wirklich tun möchte.");
+        // change wilmas pose to shocked
+        await Application.changePose(Application.characters.wilma, "shocked", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Elise hat gestern aus heiterem Himmel verkündet, das Preisgeld zu nutzen, um die Insel zu verlassen.");
+        // change wilmas pose to neutral
+        await Application.changePose(Application.characters.wilma, "neutral", Application.ƒS.positionPercent(75, 100));
         // change laras pose to shocked
         await Application.changePose(Application.characters.lara, "shocked", Application.ƒS.positionPercent(25, 100));
         // change wilmas pose to pensive
@@ -1011,6 +1038,8 @@ var Application;
         // change wilmas pose to friendly
         await Application.changePose(Application.characters.wilma, "friendly", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Weißt du, die beiden sind schon lange ineinander verliebt.");
+        // change wilmas pose to grumpy
+        await Application.changePose(Application.characters.wilma, "grumpy", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Aber Uwe ist einfach viel zu schüchtern und hat regelrecht Angst davor, ihr es zu gestehen.");
         // change wilmas pose to pensive
         await Application.changePose(Application.characters.wilma, "pensive", Application.ƒS.positionPercent(75, 100));
@@ -1021,6 +1050,8 @@ var Application;
         // change laras pose to suspicious
         await Application.changePose(Application.characters.lara, "suspicious", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Und was hat das mit dem Diebstahl zu tun?");
+        // change wilmas pose to shocked
+        await Application.changePose(Application.characters.wilma, "shocked", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich glaube, dass die Ansage eher nach hinten losgegangen ist.");
         // change wilmas pose to pensive
         await Application.changePose(Application.characters.wilma, "pensive", Application.ƒS.positionPercent(75, 100));
@@ -1035,7 +1066,6 @@ var Application;
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Für sie ist es einfacher, das Preisgeld verschwinden zu lassen, als zugeben zu müssen, dass sie überhaupt nicht wegziehen möchte.");
         // change wilmas pose to laughing
         await Application.changePose(Application.characters.wilma, "laughing", Application.ƒS.positionPercent(75, 100));
-        // dialog
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Und obendrauf hat sie dir so direkt eine Freude bereitet, weil du in dem Fall ermitteln kannst.");
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Sie macht sich doch immer Sorgen, dass du dich hier langweilen könntest.");
         // change wilmas pose to shocked
@@ -1112,6 +1142,8 @@ var Application;
                 // transition //TODO
                 Application.ƒS.Speech.clear();
                 Application.ƒS.Speech.hide();
+                // sound ticking clock
+                Application.ƒS.Sound.play(Application.sound.tickingClockShort, 1, false);
                 await Application.ƒS.update(Application.transitions.timefiller.duration, Application.transitions.timefiller.alpha, Application.transitions.timefiller.edge);
                 break;
         }
@@ -1178,16 +1210,16 @@ var Application;
         // transition
         await Application.ƒS.update(Application.transitions.wave.duration, Application.transitions.wave.alpha, Application.transitions.wave.edge);
         // show charakter lara
-        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.laughing, Application.ƒS.positionPercent(25, 100));
+        await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.friendly, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.update(0.5);
-        // dialog
+        // show character elise
+        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.friendly, Application.ƒS.positionPercent(75, 100));
+        await Application.ƒS.update(0.5);
         await Application.ƒS.Speech.tell(Application.characters.lara, "Hallo Tante Elise!");
         // change laras pose to friendly
         await Application.changePose(Application.characters.lara, "friendly", Application.ƒS.positionPercent(25, 100));
-        // show character elise
-        await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.laughing, Application.ƒS.positionPercent(75, 100));
-        await Application.ƒS.update(0.5);
-        // dialog
+        // change elises pose to laughing
+        await Application.changePose(Application.characters.elise, "laughing", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Hallo Lara, schön dich zu sehen!");
         // change elises pose to friendly
         await Application.changePose(Application.characters.elise, "friendly", Application.ƒS.positionPercent(75, 100));
@@ -1307,18 +1339,26 @@ var Application;
         Application.ƒS.Sound.fade(Application.sound.backgroundIntroMysterious, 0.2, 5, true);
         // change laras pose to shocked
         await Application.changePose(Application.characters.lara, "shocked", Application.ƒS.positionPercent(25, 100));
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Aber huch - Die Spardose ist ja leer!");
         // play shock sound
-        Application.ƒS.Sound.play(Application.sound.shock, 1, false);
+        Application.ƒS.Sound.play(Application.sound.shock, 0.6, false);
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Aber huch - Die Spardose ist ja leer!");
         // change elises pose to shocked
         await Application.changePose(Application.characters.elise, "shocked", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Wie leer?");
+        // change elises pose to neutral
+        await Application.changePose(Application.characters.elise, "neutral", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Zeig mal!");
         await Application.ƒS.Speech.tell(Application.characters.elise, "…");
+        // change elises pose to shocked
+        await Application.changePose(Application.characters.elise, "shocked", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Oh Schreck, du hast Recht!");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Das ganze Geld ist weg.");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Das kann doch gar nicht sein.");
+        // change elises pose to pensive
+        await Application.changePose(Application.characters.elise, "pensive", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Jemand muss es gestohlen haben!");
+        // change elises pose to neutral
+        await Application.changePose(Application.characters.elise, "neutral", Application.ƒS.positionPercent(75, 100));
         // change laras pose to suspicious
         await Application.changePose(Application.characters.lara, "suspicious", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Wer hätte das Preisgeld denn aus der Spardose an sich nehmen können?");
@@ -1328,9 +1368,15 @@ var Application;
         await Application.changePose(Application.characters.elise, "pensive", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Heute hatte ich die Spardose den ganzen Morgen lang im Blick.");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Da hat sich ihr niemand genähert.");
+        // change elises pose to grumpy
+        await Application.changePose(Application.characters.elise, "grumpy", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Es muss also gestern Abend gewesen sein.");
+        // change elises pose to pensive
+        await Application.changePose(Application.characters.elise, "pensive", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Wir haben zusammen auf meinen Gewinn angestoßen.");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Das waren Uwe, Wilma, Gabi und ich.");
+        // change elises pose to neutral
+        await Application.changePose(Application.characters.elise, "neutral", Application.ƒS.positionPercent(75, 100));
         // change laras pose to pensive
         await Application.changePose(Application.characters.lara, "pensive", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Dann gibt es also drei Verdächtige.");
@@ -1346,11 +1392,15 @@ var Application;
         // change laras pose to neutral
         await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Magst du mir vielleicht nochmal eine kurze Vorstellung geben?");
+        // change elises pose to laughing
+        await Application.changePose(Application.characters.elise, "laughing", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Na klar!");
         // change elises pose to neutral
         await Application.changePose(Application.characters.elise, "neutral", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Also, zum einen ist da Uwe.");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Ihm gehört die kleine Kneipe der Insel.");
+        // change elises pose to friendly
+        await Application.changePose(Application.characters.elise, "friendly", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Er ist sehr schüchtern und leise.");
         // change elises pose to blushed
         await Application.changePose(Application.characters.elise, "blushed", Application.ƒS.positionPercent(75, 100));
@@ -1412,6 +1462,8 @@ var Application;
         await Application.ƒS.Speech.tell(Application.characters.elise, "Ich bin ja froh, wenn du dich nicht langweilen musst.");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Und heute Abend wollte sowieso etwas besonders zum Essen zaubern.");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Lade gerne alle zum Abendessen hier im Café ein!");
+        // change elises pose to friendly
+        await Application.changePose(Application.characters.elise, "friendly", Application.ƒS.positionPercent(75, 100));
         // change laras pose to laughing
         await Application.changePose(Application.characters.lara, "laughing", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Super, du bist die Beste!");

@@ -18,19 +18,19 @@ namespace Application {
           <td>Carina Spangenberger</td>\
         </tr>\
         <tr>\
-          <td>Musik & Sounds</td>\
-          <td>. . .</td>\
+          <td>Musik</td>\
+          <td>www.bensound.com</td>\
         </tr>\
         <tr>\
-          <td>Transition-Bilder</td>\
-          <td>. . .</td>\
+          <td>Soundeffekte</td>\
+          <td>www.quicksounds.com, www.zapsplat.com</td>\
         </tr>\
         <tr>\
           <td>Programmierung</td>\
           <td>Carina Spangenberger</td>\
         </tr>\
       </table>\
-      <p>Erstellt mit FUDGE Story\
+      <p><br>Erstellt mit FUDGE Story\
       ";
     ƒS.Text.print(credits);
   }

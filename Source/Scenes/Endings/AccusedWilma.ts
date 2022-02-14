@@ -20,6 +20,7 @@ namespace Application {
     // change wilmas pose to grumpy
     await changePose(characters.wilma, "grumpy", ƒS.positionPercent(72, 100));
     await ƒS.Speech.tell(characters.wilma, "Wie kommst du denn darauf?");
+    
     // change wilmas pose to neutral
     await changePose(characters.wilma, "neutral", ƒS.positionPercent(72, 100));
 

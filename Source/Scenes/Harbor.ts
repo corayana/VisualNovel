@@ -14,31 +14,42 @@ namespace Application {
     await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
 
     // show charakter lara
-    await ƒS.Character.show(characters.lara, characters.lara.pose.laughing, ƒS.positionPercent(25, 100));
+    await ƒS.Character.show(characters.lara, characters.lara.pose.friendly, ƒS.positionPercent(25, 100));
     await ƒS.update(1);
 
     // show charakter wilma
     await ƒS.Character.show(characters.wilma, characters.wilma.pose.friendly, ƒS.positionPercent(75, 100));
     await ƒS.update(1);
 
-    // dialog
+    // change laras pose to laughing
+    await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Hallo Wilma!");
 
+    // change wilmas pose to laughing
+    await changePose(characters.wilma, "laughing", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Moin Lara!");
 
+    // change wilmas pose to friendly
+    await changePose(characters.wilma, "friendly", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Schön dich zu sehen!");
 
     // change wilmas pose to laughing
     await changePose(characters.wilma, "laughing", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Elise hat erzählt, dass du für ein paar Tage zu Besuch kommst.");
+
+    // change wilmas pose to friendly
+    await changePose(characters.wilma, "friendly", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Wie geht es dir?");
 
     // change wilmas pose to neutral
     await changePose(characters.wilma, "neutral", ƒS.positionPercent(75, 100));
 
+    // change laras pose to laughing
+    await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
+    await ƒS.Speech.tell(characters.lara, "Danke, ich kann mich nicht beklagen!");
+
     // change laras pose to friendly
     await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
-    await ƒS.Speech.tell(characters.lara, "Danke, ich kann mich nicht beklagen!");
     await ƒS.Speech.tell(characters.lara, "Wie geht es dir? Was macht die Fischerei?");
 
     // change laras pose to neutral
@@ -48,26 +59,40 @@ namespace Application {
     await changePose(characters.wilma, "friendly", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Ach, ich kann mich ebenfalls nicht beklagen.");
 
+    // change wilmas pose to pensive
+    await changePose(characters.wilma, "pensive", ƒS.positionPercent(75, 100));
+    await ƒS.Speech.tell(characters.wilma, "Zurzeit ist natürlich ein bisschen weniger los, da die Touristen fehlen.");
+
     // change wilmas pose to neutral
     await changePose(characters.wilma, "neutral", ƒS.positionPercent(75, 100));
-    await ƒS.Speech.tell(characters.wilma, "Zurzeit ist natürlich ein bisschen weniger los, da die Touristen fehlen.");
     await ƒS.Speech.tell(characters.wilma, "Aber ich komme gut über die Runden.");
 
-    // change laras pose to surprisex
+    // change laras pose to shocked
     await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Hast du es schon gehört?");
     await ƒS.Speech.tell(characters.lara, "Gestern wurde das Preisgeld aus der Spardose von Tante Elise geklaut.");
+
+    // change laras pose to neutral
+    await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
 
     // change wilmas pose to shocked
     await changePose(characters.wilma, "shocked", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Wirklich? Das ganze Geld ist weg?");
 
+    // change laras pose to shocked
+    await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Ja, wir haben die leere Spardose heute früh bei meiner Ankunft bemerkt.");
+
+    // change laras pose to pensive
+    await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Jemand muss das Geld gestern Abend an sich genommen haben.");
 
     // change laras pose to suspicious
     await changePose(characters.lara, "suspicious", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Hast du eine Ahnung, wer es gestohlen haben könnte?");
+
+    // change laras pose to neutral
+    await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
 
     // change wilmas pose to pensive
     await changePose(characters.wilma, "pensive", ƒS.positionPercent(75, 100));
@@ -76,7 +101,13 @@ namespace Application {
     // change wilmas pose to neutral
     await changePose(characters.wilma, "neutral", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Meine Mama Gabi braucht das Geld bestimmt nicht.");
+
+    // change wilmas pose to pensive
+    await changePose(characters.wilma, "pensive", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Sie lebt sehr sparsam und leistet sich nicht viel.");
+
+    // change wilmas pose to friendly
+    await changePose(characters.wilma, "friendly", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Obwohl sie nicht viel verdient, kommt sie alleine gut über die Runden.");
 
     // change laras pose to pensive
@@ -109,7 +140,13 @@ namespace Application {
     await changePose(characters.wilma, "neutral", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Natürlich hat sie das nicht erwähnt.");
     await ƒS.Speech.tell(characters.wilma, "Ich glaube auch nicht, dass sie das wirklich tun möchte.");
+
+    // change wilmas pose to shocked
+    await changePose(characters.wilma, "shocked", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Elise hat gestern aus heiterem Himmel verkündet, das Preisgeld zu nutzen, um die Insel zu verlassen.");
+
+    // change wilmas pose to neutral
+    await changePose(characters.wilma, "neutral", ƒS.positionPercent(75, 100));
 
     // change laras pose to shocked
     await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
@@ -121,6 +158,9 @@ namespace Application {
     // change wilmas pose to friendly
     await changePose(characters.wilma, "friendly", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Weißt du, die beiden sind schon lange ineinander verliebt.");
+
+    // change wilmas pose to grumpy
+    await changePose(characters.wilma, "grumpy", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Aber Uwe ist einfach viel zu schüchtern und hat regelrecht Angst davor, ihr es zu gestehen.");
 
     // change wilmas pose to pensive
@@ -134,6 +174,9 @@ namespace Application {
     // change laras pose to suspicious
     await changePose(characters.lara, "suspicious", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Und was hat das mit dem Diebstahl zu tun?");
+
+    // change wilmas pose to shocked
+    await changePose(characters.wilma, "shocked", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Ich glaube, dass die Ansage eher nach hinten losgegangen ist.");
 
     // change wilmas pose to pensive
@@ -152,8 +195,6 @@ namespace Application {
 
     // change wilmas pose to laughing
     await changePose(characters.wilma, "laughing", ƒS.positionPercent(75, 100));
-
-    // dialog
     await ƒS.Speech.tell(characters.wilma, "Und obendrauf hat sie dir so direkt eine Freude bereitet, weil du in dem Fall ermitteln kannst.");
     await ƒS.Speech.tell(characters.wilma, "Sie macht sich doch immer Sorgen, dass du dich hier langweilen könntest.");
 
@@ -251,6 +292,10 @@ namespace Application {
         // transition //TODO
         ƒS.Speech.clear();
         ƒS.Speech.hide();
+
+        // sound ticking clock
+        ƒS.Sound.play(sound.tickingClockShort, 1, false);
+
         await ƒS.update(transitions.timefiller.duration, transitions.timefiller.alpha, transitions.timefiller.edge);
         break;
     }
@@ -313,6 +358,6 @@ namespace Application {
 
     //choose next location
     return "NextLocationChoice";
-    
+
   }
 }

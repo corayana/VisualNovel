@@ -53,71 +53,10 @@ declare namespace Application {
      *     }
      *   },
      */
-    let characters: {
-        narrator: {
-            name: string;
-        };
-        lara: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
-                neutral: string;
-                friendly: string;
-                laughing: string;
-                pensive: string;
-                shocked: string;
-                suspicious: string;
-            };
-        };
-        elise: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
-                neutral: string;
-                friendly: string;
-                laughing: string;
-                grumpy: string;
-                pensive: string;
-                shocked: string;
-                blushed: string;
-            };
-        };
-        wilma: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
-                neutral: string;
-                friendly: string;
-                grumpy: string;
-                pensive: string;
-                laughing: string;
-                shocked: string;
-            };
-        };
-        uwe: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
-                neutral: string;
-                friendly: string;
-                pensive: string;
-                shocked: string;
-                blushed: string;
-            };
-        };
-        gabi: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
-                neutral: string;
-                friendly: string;
-                sad: string;
-                pensive: string;
-                shocked: string;
-                grumpy: string;
-            };
-        };
-    };
+    interface CharacterDefinitions {
+        [id: string]: ƒS.CharacterDefinition;
+    }
+    let characters: CharacterDefinitions;
     function changePose(character: ƒS.CharacterDefinition, pose: string, position: ƒ.Vector2): Promise<void>;
 }
 declare namespace Application {

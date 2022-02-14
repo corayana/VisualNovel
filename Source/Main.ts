@@ -61,13 +61,15 @@ namespace Application {
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
     dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
 
-    Object.keys(characters).forEach(characterName => {
-      if (typeof characters[characterName].pose !== "undefined") {
+    function preloadCharacterPoses() {
+      Object.keys(characters).forEach((characterName: string) => {
         Object.keys(characters[characterName].pose).forEach(characterPose => {
           ƒS.Character.get(characters[characterName]).getPose(characters[characterName].pose[characterPose]);
-        }
-      },
-    });
+        });
+      });
+    };
+
+    preloadCharacterPoses();
 
     // start the sequence
     ƒS.Progress.go(scenes);

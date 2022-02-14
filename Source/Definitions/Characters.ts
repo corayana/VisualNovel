@@ -10,11 +10,18 @@ namespace Application {
    *     }
    *   },
    */
-  
-  export let characters = {
+
+  export interface CharacterDefinitions {
+    [id: string]: ƒS.CharacterDefinition;
+  }
+
+  export let characters: CharacterDefinitions = {
 
     narrator: {
       name: "",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      pose: {
+      }
     },
 
     lara: {
@@ -68,7 +75,7 @@ namespace Application {
         blushed: "./Assets/Characters/uwe_blushed.png",
       },
     },
-    
+
     gabi: {
       name: "Gabi",
       origin: ƒS.ORIGIN.BOTTOMCENTER,

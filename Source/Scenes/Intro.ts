@@ -24,8 +24,6 @@ namespace Application {
     await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
     await ƒS.update(0.5);
 
-    await ƒS.Character.get(characters.elise).getPose(characters.elise.pose.pensive);
-
     await ƒS.Speech.tell(characters.lara, "Hallo Tante Elise!");
 
     // change laras pose to friendly

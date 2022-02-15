@@ -16,8 +16,6 @@ Die Visual Novel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einf
 
 ## Bewertungskriterien
 
-© Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU
-
 **Alle Hintergründe und Charaktere wurden selbst erstellt.**
 
 | Nr | Bezeichnung           | Beschreibung | Erfüllt |

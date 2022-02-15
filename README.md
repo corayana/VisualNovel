@@ -1,10 +1,9 @@
-# Visual Novel
+# Visual Novel: "Ein rätselhafter Diebstahl"
 
 "Ein rätselhafter Diebstahl" ist eine interaktive Geschichte für Kinder. 
 
-Die aufgeweckte Lara verbringt ihre Herbstferien auf einer kleiner Insel bei ihrer Tante Elise. Als Elise bemerkt, dass ihr eine große Menge Geld geklaut wurde, macht sich Lara auf den Weg, um den Dingen auf den Grund zu gehen. Nach und nach befragt sie die Verdächtigen und sammelt Hinweise. Doch schnell zeigt sich, dass sich unter dem oberflächlichen Schein mehr Geheimnisse verstecken, als auf den ersten Blick erkennbar. 
-
-Hilfst du ihr, denn Fall aufzuklären und den Dieb zu überführen?
+## Kurzbeschreibung
+Die aufgeweckte Lara verbringt ihre Herbstferien auf einer kleiner Insel bei ihrer Tante Elise. Als Elise bemerkt, dass ihr eine große Menge Geld geklaut wurde, macht sich Lara auf den Weg, um den Dingen auf den Grund zu gehen. Nach und nach befragt sie die Verdächtigen und sammelt Hinweise. Doch schnell zeigt sich, dass sich unter dem oberflächlichen Schein mehr Geheimnisse verstecken, als auf den ersten Blick erkennbar. Hilfst du ihr, denn Fall aufzuklären und den Dieb zu überführen?
 
 ## Links
 - [Link zum Spiel](https://corayana.github.io/VisualNovel/)

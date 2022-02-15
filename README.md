@@ -1,12 +1,17 @@
 # Visual Novel
 
-"Diebstahl auf der Insel: Geheimniskrämerei und falsche Anschuldigungen" ist eine interaktive Geschichte für Kinder. 
+"Ein rätselhafter Diebstahl" ist eine interaktive Geschichte für Kinder. 
 
 Die aufgeweckte Lara verbringt ihre Herbstferien auf einer kleiner Insel bei ihrer Tante Elise. Als Elise bemerkt, dass ihr eine große Menge Geld geklaut wurde, macht sich Lara auf den Weg, um den Dingen auf den Grund zu gehen. Nach und nach befragt sie die Verdächtigen und sammelt Hinweise. Doch schnell zeigt sich, dass sich unter dem oberflächlichen Schein mehr Geheimnisse verstecken, als auf den ersten Blick erkennbar. 
 
 Hilfst du ihr, denn Fall aufzuklären und den Dieb zu überführen?
 
 [Hier spielen](https://corayana.github.io/VisualNovel/)
+
+## Links
+- [Link zum Spiel](https://corayana.github.io/VisualNovel/)
+- [Link zum Konzept](https://github.com/corayana/VisualNovel/tree/main/Konzept)
+- [Link zum Code](https://github.com/corayana/VisualNovel/tree/main/Source)
 
 ## FUDGE Story
 
@@ -15,6 +20,8 @@ Die Visual Novel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einf
 ## Bewertungskriterien
 
 © Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU
+
+**Alle Hintergründe und Charaktere wurden selbst erstellt.**
 
 | Nr | Bezeichnung           | Beschreibung | Erfüllt |
 |---:|:----------------------|:-------------|:--------|
@@ -33,4 +40,3 @@ Die Visual Novel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einf
 | 13 | Styling               | Alle relevanten Elemente wurden mithilfe von CSS gestylt. | :heavy_check_mark: |          
 | 14 | Enden                 | Es wurden vier verschiedene Spielenden eingebaut. | :heavy_check_mark: |
 
-**Alle Hintergründe und Charaktere wurden selbst erstellt.**

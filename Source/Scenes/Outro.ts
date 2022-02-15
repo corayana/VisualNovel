@@ -75,7 +75,10 @@ namespace Application {
       await ƒS.Speech.tell(characters.lara, "Und nun werde ich offenbaren, wer von euch das Geld an sich genommen hat!");
 
     }
-    else { }
+
+    // show background
+    await ƒS.Location.show(locations.outro);
+    await ƒS.update(0);
 
     // hide elements
     ƒS.Speech.clear();

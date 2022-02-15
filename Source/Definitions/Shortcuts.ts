@@ -14,10 +14,6 @@ namespace Application {
           <td>Menü öffnen und schließen</td>\
         </tr>\
         <tr>\
-          <td>I</td>\
-          <td>Inventar öffnen und schließen</td>\
-        </tr>\
-        <tr>\
           <td>F8</td>\
           <td>Szene speichern</td>\
         </tr>\

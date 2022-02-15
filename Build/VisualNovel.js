@@ -1,15 +1,6 @@
 "use strict";
 var Application;
 (function (Application) {
-    /**
-     * TODO
-     * - favicon
-     * - Transitions: screen size fix
-     * - focused buton
-     * - Vorschaubild (Köpfe in Kreisen?)
-     * - Name für VN
-     * - Sound/Musik
-     * */
     Application.ƒ = FudgeCore;
     Application.ƒS = FudgeStory;
     Application.dataForSave = {
@@ -477,10 +468,6 @@ var Application;
           <td>Menü öffnen und schließen</td>\
         </tr>\
         <tr>\
-          <td>I</td>\
-          <td>Inventar öffnen und schließen</td>\
-        </tr>\
-        <tr>\
           <td>F8</td>\
           <td>Szene speichern</td>\
         </tr>\
@@ -581,7 +568,7 @@ var Application;
         await Application.ƒS.Speech.tell(Application.characters.lara, "Danke, bis auf die Fahrt mit dem Schiff war es super langweilig.");
         // change laras pose to laughing
         await Application.changePose(Application.characters.lara, "laughing", Application.ƒS.positionPercent(25, 100));
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Aber dafür war meine Ankunft war direkt sehr spannend!");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Aber dafür war meine Ankunft direkt sehr spannend!");
         // change laras pose to shocked
         await Application.changePose(Application.characters.lara, "shocked", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Das Preisgeld von Tante Elise wurde nämlich geklaut.");
@@ -743,7 +730,7 @@ var Application;
                 await codeInput();
                 async function codeInput() {
                     await Application.ƒS.Speech.tell(Application.characters.narrator, "Code eingeben: ", false);
-                    let code = await Application.ƒS.Speech.getInput();
+                    let code = await (await Application.ƒS.Speech.getInput()).trim();
                     if (code == "1469") {
                         await Application.ƒS.Sound.play(Application.sound.barOpenSafe, 0.5, false);
                         await Application.ƒS.Speech.tell(Application.characters.lara, "Na also.");
@@ -1055,7 +1042,7 @@ var Application;
         // change wilmas pose to pensive
         await Application.changePose(Application.characters.wilma, "pensive", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Elise hat den plötzlichen Umzug bestimmt nur angekündigt, damit Uwe endlich den Schritt wagt, und ihr seine Gefühle offen gesteht, um sie nicht zu verlieren.");
-        await Application.ƒS.Speech.tell(Application.characters.wilma, "Sie hat ihn quasi vor die Wahl gestellt: Entweder er springt, oder sie geht.");
+        await Application.ƒS.Speech.tell(Application.characters.wilma, "Sie hat ihn quasi vor die Wahl gestellt: Entweder er springt über seinen Schattten, oder sie geht.");
         // change wilmas pose to neutral
         await Application.changePose(Application.characters.wilma, "neutral", Application.ƒS.positionPercent(75, 100));
         // change laras pose to suspicious
@@ -1498,7 +1485,7 @@ var Application;
         // show background
         await Application.ƒS.Location.show(Application.locations.library);
         // sound
-        Application.ƒS.Sound.fade(Application.sound.backgroundLibrary, 1, 1, true);
+        Application.ƒS.Sound.fade(Application.sound.backgroundLibrary, 0.2, 1, true);
         // transition
         await Application.ƒS.update(Application.transitions.wave.duration, Application.transitions.wave.alpha, Application.transitions.wave.edge);
         // show charakter lara
@@ -1512,7 +1499,7 @@ var Application;
         await Application.ƒS.Speech.tell(Application.characters.lara, "Im Nebenraum höre ich jemanden leise telefonieren.");
         // change laras pose to pensive
         await Application.changePose(Application.characters.lara, "pensive", Application.ƒS.positionPercent(25, 100));
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?"); /*  */
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
@@ -1832,7 +1819,9 @@ var Application;
             await Application.changePose(Application.characters.lara, "laughing", Application.ƒS.positionPercent(15, 100));
             await Application.ƒS.Speech.tell(Application.characters.lara, "Und nun werde ich offenbaren, wer von euch das Geld an sich genommen hat!");
         }
-        else { }
+        // show background
+        await Application.ƒS.Location.show(Application.locations.outro);
+        await Application.ƒS.update(0);
         // hide elements
         Application.ƒS.Speech.clear();
         Application.ƒS.Speech.hide();
@@ -1874,7 +1863,7 @@ var Application;
         await Application.ƒS.Text.print("Moment mal!<br>\
       Wir sind hier doch nicht im Orient Express!<br>\
       Diese Anschuldigung ist doch etwas weit her geholt.<br>\
-      Probiere dass besser noch einmal.\
+      Probiere das besser noch einmal.\
       ");
         return "Outro";
     }

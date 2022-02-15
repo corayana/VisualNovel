@@ -1,15 +1,5 @@
 namespace Application {
 
-  /**
-   * TODO
-   * - favicon
-   * - Transitions: screen size fix
-   * - focused buton
-   * - Vorschaubild (Köpfe in Kreisen?)
-   * - Name für VN
-   * - Sound/Musik
-   * */
-
   export import ƒ = FudgeCore;
   export import ƒS = FudgeStory;
 
@@ -20,7 +10,6 @@ namespace Application {
     visitedHarbor: false,
     triedToAccuseAll: false,
   };
-
 
   window.addEventListener("load", start);
 
@@ -45,7 +34,7 @@ namespace Application {
       { id: "Kneipe", scene: Bar, name: "Kneipe" },
       { id: "Bücherei", scene: Library, name: "Bücherei" },
       { id: "Hafen", scene: Harbor, name: "Hafen" },
-      { id: "Café", scene: Cafe, name: "Café" },
+      { id: "Café", scene: Cafe, name: "Café" }, 
 
       { id: "Outro", scene: Outro, name: "Outro" },
 
@@ -61,7 +50,7 @@ namespace Application {
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
     dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
 
-    function preloadCharacterPoses() {
+   function preloadCharacterPoses() {
       Object.keys(characters).forEach((characterName: string) => {
         Object.keys(characters[characterName].pose).forEach(characterPose => {
           ƒS.Character.get(characters[characterName]).getPose(characters[characterName].pose[characterPose]);

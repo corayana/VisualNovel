@@ -166,7 +166,7 @@ namespace Application {
     // change wilmas pose to pensive
     await changePose(characters.wilma, "pensive", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Elise hat den plötzlichen Umzug bestimmt nur angekündigt, damit Uwe endlich den Schritt wagt, und ihr seine Gefühle offen gesteht, um sie nicht zu verlieren.");
-    await ƒS.Speech.tell(characters.wilma, "Sie hat ihn quasi vor die Wahl gestellt: Entweder er springt, oder sie geht.");
+    await ƒS.Speech.tell(characters.wilma, "Sie hat ihn quasi vor die Wahl gestellt: Entweder er springt über seinen Schattten, oder sie geht.");
 
     // change wilmas pose to neutral
     await changePose(characters.wilma, "neutral", ƒS.positionPercent(75, 100));

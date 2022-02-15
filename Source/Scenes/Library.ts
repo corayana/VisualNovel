@@ -8,7 +8,7 @@ namespace Application {
     await ƒS.Location.show(locations.library);
 
     // sound
-    ƒS.Sound.fade(sound.backgroundLibrary, 1, 1, true);
+    ƒS.Sound.fade(sound.backgroundLibrary, 0.2, 1, true);
 
     // transition
     await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
@@ -27,7 +27,7 @@ namespace Application {
 
     // change laras pose to pensive
     await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
-    await ƒS.Speech.tell(characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?");
+    await ƒS.Speech.tell(characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?");/*  */
 
      // hide elements
      ƒS.Speech.clear();

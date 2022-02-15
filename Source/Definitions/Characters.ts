@@ -95,4 +95,5 @@ namespace Application {
     await ƒS.Character.show(character, character.pose[pose], position);
     await ƒS.update(0.2);
   };
+  
 }

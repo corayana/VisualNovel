@@ -35,7 +35,7 @@ namespace Application {
 
     // change laras pose to laughing
     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
-    await ƒS.Speech.tell(characters.lara, "Aber dafür war meine Ankunft war direkt sehr spannend!");
+    await ƒS.Speech.tell(characters.lara, "Aber dafür war meine Ankunft direkt sehr spannend!");
 
     // change laras pose to shocked
     await changePose(characters.lara, "shocked", ƒS.positionPercent(25, 100));
@@ -247,7 +247,7 @@ namespace Application {
         await codeInput();
         async function codeInput(): Promise<void> {
           await ƒS.Speech.tell(characters.narrator, "Code eingeben: ", false);
-          let code: string = await ƒS.Speech.getInput();
+          let code: string = await (await ƒS.Speech.getInput()).trim();
           if (code == "1469") {
             await ƒS.Sound.play(sound.barOpenSafe, 0.5, false);
             await ƒS.Speech.tell(characters.lara, "Na also.");

@@ -6,8 +6,6 @@ Die aufgeweckte Lara verbringt ihre Herbstferien auf einer kleiner Insel bei ihr
 
 Hilfst du ihr, denn Fall aufzuklären und den Dieb zu überführen?
 
-[Hier spielen](https://corayana.github.io/VisualNovel/)
-
 ## Links
 - [Link zum Spiel](https://corayana.github.io/VisualNovel/)
 - [Link zum Konzept](https://github.com/corayana/VisualNovel/tree/main/Konzept)

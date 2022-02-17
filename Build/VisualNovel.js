@@ -18,7 +18,7 @@ var Application;
         Application.gameMenu = Application.ƒS.Menu.create(Application.gameMenuOptions, Application.buttonFunctionalities, "gameMenu");
         // scenes and ids: { id: "Id", scene: Scene, name: "Scene" } -> here: except for intro non-linear: order is given by id
         let scenes = [
-            //{ scene: Intro, name: "Intro" },
+            { scene: Application.Intro, name: "Intro" },
             { id: "NextLocationChoice", scene: Application.NextLocationChoice, name: "" },
             { id: "Kneipe", scene: Application.Bar, name: "Kneipe" },
             { id: "Bücherei", scene: Application.Library, name: "Bücherei" },

@@ -10,6 +10,8 @@ Die aufgeweckte Lara verbringt ihre Herbstferien auf einer kleiner Insel bei ihr
 - [Link zum Konzept](https://github.com/corayana/VisualNovel/tree/main/Konzept)
 - [Link zum Code](https://github.com/corayana/VisualNovel/tree/main/Source)
 
+*Desktop-Ansicht sowie Verwendung eines Chromium-basierte Browsers empfohlen*
+
 ## FUDGE Story
 
 Die Visual Novel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einfache Entwicklung interaktiver Geschichten, visueller Romane und einfacher Abenteuerspiele.
@@ -28,10 +30,10 @@ Die Visual Novel wurde mit FUDGE Story erstellt, einem FUDGE-Modul für die einf
 |  6 | Novel-Pages           | Novel-Pages blenden weitere Textelemente ein. | :heavy_check_mark: |
 |  7 | Audio                 | Verschiedene Sounds unterstützen oder ermöglichen die Wahrnehmung der Aktionen. Bestimmte Ereignisse werden durch Geräusche akustisch unterstützt und durch Musik atmosphärisch untermalt. | :heavy_check_mark: |
 |  8 | GUI                   | Ein grafisches Interface gibt dem Nutzer die Möglichkeit, Einstellungen beim Programmstart oder während des Programmlaufs vorzunehmen. | :heavy_check_mark: |
-|  9 | Input-Feld(er)        | Input-Felder bieten dem Spieler die Option, mithilfe einer Eingabe interne Zustände zu verändern. | :heavy_check_mark: |
-| 10 | Punkteverteilungssystem     | Ein Punktesystem kann vom Verhalten des Spielers beeinflusst werden. | :x: | 
-| 11 | Inventory- und Item-System  | Ein Inventar managet Items, die im Laufe des Spiels erworben werden können.  | :x: |
-| 12 | Animation             | Animationen wurden selbst definiert und auf Charaktere angewendet. | :heavy_check_mark: |
+|  9 | Input-Feld(er)        | Ein Input-Feld bietet dem Spieler die Option, mithilfe einer Eingabe interne Zustände zu verändern. | :heavy_check_mark: |
+| 10 | Punkteverteilungssystem     | -/- | :x: | 
+| 11 | Inventory- und Item-System  | -/- | :x: |
+| 12 | Animation             | Selbst definierte Animationen wurden auf Charaktere angewendet. | :heavy_check_mark: |
 | 13 | Styling               | Alle relevanten Elemente wurden mithilfe von CSS gestylt. | :heavy_check_mark: |          
 | 14 | Enden                 | Es wurden vier verschiedene Spielenden eingebaut. | :heavy_check_mark: |
 

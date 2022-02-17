@@ -14,7 +14,7 @@ namespace Application {
     ƒS.Sound.fade(sound.backgroundIntroHappy, 0.2, 3, true);
 
     // transition
-    await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
+    await ƒS.update(transitions.beginning.duration, transitions.beginning.alpha, transitions.beginning.edge);
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.friendly, ƒS.positionPercent(25, 100));
@@ -110,6 +110,8 @@ namespace Application {
 
     await ƒS.Speech.tell(characters.lara, "Oh ja, sehr gerne!");
 
+    await ƒS.Character.show(items.cupcake, items.cupcake.pose.default, ƒS.positionPercent(38, 100));
+
     await ƒS.Speech.tell(characters.elise, "Bitteschön.");
 
     // change laras pose to laughing
@@ -126,7 +128,7 @@ namespace Application {
 
     // change elises pose to friendly
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
-    await ƒS.Speech.tell(characters.elise, "Stell dir vor, ich habe dafür gestern tatsächlich einen Preis auf der kleinen Nachbarsinsel gewonnen.");
+    await ƒS.Speech.tell(characters.elise, "Stell dir vor, ich habe dafür gestern tatsächlich einen Preis auf der kleinen Nachbarinsel gewonnen.");
     await ƒS.Speech.tell(characters.elise, "„Bester Cupcake der Inselgruppe“ – Moment, ich hole ihn schnell.");
 
     // hide elements
@@ -152,16 +154,33 @@ namespace Application {
     await ƒS.update(0.5);
 
     // show cupcake money box 
-    await ƒS.Character.show(items.cupcake, items.cupcake.pose.default, ƒS.positionPercent(50, 50));
+    await ƒS.Character.show(items.cupcakeBox, items.cupcakeBox.pose.default, ƒS.positionPercent(50, 50));
     await ƒS.update(1);
 
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     // hide cupcake money box
-    await ƒS.Character.hide(items.cupcake);
+    await ƒS.Character.hide(items.cupcakeBox);
     await ƒS.update(0.5);
 
-    // show charakter lara
+    // show drink
+    switch (chooseDrink) {
+      case chooseDrinkOptions.water:
+        await ƒS.Character.show(items.drink, items.drink.pose.water, ƒS.positionPercent(40, 100));
+        break;
+      case chooseDrinkOptions.tea:
+        await ƒS.Character.show(items.drink, items.drink.pose.tea, ƒS.positionPercent(40, 100));
+        break;
+      case chooseDrinkOptions.applejuice:
+        await ƒS.Character.show(items.drink, items.drink.pose.applejuice, ƒS.positionPercent(40, 100));
+        break;
+      case chooseDrinkOptions.hotChocolate:
+        await ƒS.Character.show(items.drink, items.drink.pose.hotchocolate, ƒS.positionPercent(40, 100));
+        break;
+    }
+
+    // show charakters and items
+    await ƒS.Character.show(items.cupcake, items.cupcake.pose.default, ƒS.positionPercent(38, 100));
     await ƒS.Character.show(characters.lara, characters.lara.pose.shocked, ƒS.positionPercent(25, 100));
     await ƒS.Character.show(characters.elise, characters.elise.pose.friendly, ƒS.positionPercent(75, 100));
     await ƒS.update(0.5);
@@ -342,7 +361,7 @@ namespace Application {
     await changePose(characters.elise, "friendly", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.elise, "Naja, wieso eigentlich nicht.");
     await ƒS.Speech.tell(characters.elise, "Ich bin ja froh, wenn du dich nicht langweilen musst.");
-    await ƒS.Speech.tell(characters.elise, "Und heute Abend wollte sowieso etwas besonders zum Essen zaubern.");
+    await ƒS.Speech.tell(characters.elise, "Und heute Abend wollte ich sowieso etwas besonders zum Essen zaubern.");
 
     await ƒS.Speech.tell(characters.elise, "Lade gerne alle zum Abendessen hier im Café ein!");
 

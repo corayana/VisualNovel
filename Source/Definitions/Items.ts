@@ -28,6 +28,14 @@ namespace Application {
     },
 
     cupcake: {
+      name: "Cupcake",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      pose: {
+        default: "./Assets/Items/cupcake.png",
+      }
+    },
+
+    cupcakeBox: {
       name: "Cupcake-Spardose",
       origin: ƒS.ORIGIN.CENTER,
       pose: {

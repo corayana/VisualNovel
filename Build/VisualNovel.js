@@ -18,7 +18,7 @@ var Application;
         Application.gameMenu = Application.ƒS.Menu.create(Application.gameMenuOptions, Application.buttonFunctionalities, "gameMenu");
         // scenes and ids: { id: "Id", scene: Scene, name: "Scene" } -> here: except for intro non-linear: order is given by id
         let scenes = [
-            { scene: Application.Intro, name: "Intro" },
+            //{ scene: Intro, name: "Intro" },
             { id: "NextLocationChoice", scene: Application.NextLocationChoice, name: "" },
             { id: "Kneipe", scene: Application.Bar, name: "Kneipe" },
             { id: "Bücherei", scene: Application.Library, name: "Bücherei" },
@@ -70,7 +70,7 @@ var Application;
             end: {
                 translation: Application.ƒS.positionPercent(90, 100),
             },
-            duration: 2,
+            duration: 1.5,
             playmode: Application.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
@@ -83,7 +83,7 @@ var Application;
             end: {
                 translation: Application.ƒS.positionPercent(75, 100),
             },
-            duration: 2,
+            duration: 1.5,
             playmode: Application.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
@@ -96,7 +96,7 @@ var Application;
             end: {
                 translation: Application.ƒS.positionPercent(120, 100),
             },
-            duration: 2,
+            duration: 3,
             playmode: Application.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
@@ -109,7 +109,7 @@ var Application;
             end: {
                 translation: Application.ƒS.positionPercent(75, 100),
             },
-            duration: 2,
+            duration: 3,
             playmode: Application.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
@@ -122,7 +122,7 @@ var Application;
             end: {
                 translation: Application.ƒS.positionPercent(40, 100),
             },
-            duration: 2,
+            duration: 1.5,
             playmode: Application.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
@@ -135,7 +135,7 @@ var Application;
             end: {
                 translation: Application.ƒS.positionPercent(25, 100),
             },
-            duration: 2,
+            duration: 1.5,
             playmode: Application.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
@@ -148,7 +148,7 @@ var Application;
             end: {
                 translation: Application.ƒS.positionPercent(80, 100),
             },
-            duration: 2,
+            duration: 5.5,
             playmode: Application.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
@@ -161,7 +161,7 @@ var Application;
             end: {
                 translation: Application.ƒS.positionPercent(25, 100),
             },
-            duration: 2,
+            duration: 5.5,
             playmode: Application.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
@@ -318,6 +318,13 @@ var Application;
             }
         },
         cupcake: {
+            name: "Cupcake",
+            origin: Application.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                default: "./Assets/Items/cupcake.png",
+            }
+        },
+        cupcakeBox: {
             name: "Cupcake-Spardose",
             origin: Application.ƒS.ORIGIN.CENTER,
             pose: {
@@ -392,11 +399,30 @@ var Application;
     Application.menuOpen = true;
     Application.inventoryOpen = false;
     Application.CreditsOpen = false;
+    // volume 
+    /* xeport let volume: number = 1.0;
+  
+    export function incrementSound(): void {
+      if (volume >= 100)
+        return;
+      volume += 0.2;
+      ƒS.Sound.setMasterVolume(volume);
+    }
+  
+    export function decrementSound(): void {
+      if (volume <= 0)
+        return;
+      volume -= 0.2;
+      ƒS.Sound.setMasterVolume(volume);
+    }
+   */
     Application.gameMenuOptions = {
         save: "Speichern",
         load: "Laden",
         shortcuts: "Shortcuts",
         credits: "Credits",
+        /* turnUpVolume: "+",
+        turnDownVolume: "-" */
     };
     async function buttonFunctionalities(_option) {
         console.log(_option);
@@ -413,6 +439,12 @@ var Application;
             case Application.gameMenuOptions.shortcuts:
                 Application.showShortcuts();
                 break;
+            /* case gameMenuOptions.turnUpVolume:
+              incrementSound();
+              break;
+            case gameMenuOptions.turnDownVolume:
+              decrementSound();
+              break; */
         }
     }
     Application.buttonFunctionalities = buttonFunctionalities;
@@ -431,21 +463,21 @@ var Application;
                 }
                 break;
             case Application.ƒ.KEYBOARD_CODE.F8:
-                console.log("Save");
+                console.log("save");
                 await Application.ƒS.Progress.save();
                 break;
             case Application.ƒ.KEYBOARD_CODE.F9:
-                console.log("Load");
+                console.log("load");
                 await Application.ƒS.Progress.load();
                 break;
             case Application.ƒ.KEYBOARD_CODE.ESC:
                 if (Application.menuOpen) {
-                    console.log("open menu");
+                    console.log("close menu");
                     Application.gameMenu.close();
                     Application.menuOpen = false;
                 }
                 else {
-                    console.log("Öffnen");
+                    console.log("open menu");
                     Application.gameMenu.open();
                     Application.menuOpen = true;
                 }
@@ -488,6 +520,8 @@ var Application;
         backgroundIntroHappy: "./Assets/Sound/bensound-littleidea.mp3",
         backgroundIntroMysterious: "./Assets/Sound/bensound-enigmatic.mp3",
         shock: "./Assets/Sound/freesound-shock.wav",
+        // transition
+        transition: "./Assets/Sound/zapsplat-waveTransition.mp3",
         // bar
         backgroundBar: "./Assets/Sound/bensound-thelounge.mp3",
         barFootstepsFadeOut: "./Assets/Sound/quicksounds-footstepsInteriorCementFadeOut.mp3",
@@ -528,9 +562,14 @@ var Application;
      *   }
      */
     Application.transitions = {
-        wave: {
+        beginning: {
             duration: 2,
-            alpha: "./Assets/Transitions/Untitled_Artwork.png",
+            alpha: "./Assets/Transitions/beginning.png",
+            edge: 0.2,
+        },
+        open: {
+            duration: 2,
+            alpha: "./Assets/Transitions/painting.jpg",
             edge: 0.2,
         },
         timefiller: {
@@ -547,10 +586,12 @@ var Application;
         Application.dataForSave.visitedBar = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.bar);
-        // sound
+        // transition sound
+        Application.ƒS.Sound.play(Application.sound.transition, 0.5, false);
+        // fade background sound
         Application.ƒS.Sound.fade(Application.sound.backgroundBar, 0.2, 3, true);
         // background transition
-        await Application.ƒS.update(Application.transitions.wave.duration, Application.transitions.wave.alpha, Application.transitions.wave.edge);
+        await Application.ƒS.update(Application.transitions.open.duration, Application.transitions.open.alpha, Application.transitions.open.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.update(1);
@@ -565,7 +606,7 @@ var Application;
         await Application.ƒS.Speech.tell(Application.characters.uwe, "Hallo Lara!");
         await Application.ƒS.Speech.tell(Application.characters.uwe, "Lang nicht gesehen.");
         await Application.ƒS.Speech.tell(Application.characters.uwe, "Wie war deine Reise?");
-        await Application.ƒS.Speech.tell(Application.characters.lara, "Danke, bis auf die Fahrt mit dem Schiff war es super langweilig.");
+        await Application.ƒS.Speech.tell(Application.characters.lara, "Bis auf die Fahrt mit dem Schiff super langweilig.");
         // change laras pose to laughing
         await Application.changePose(Application.characters.lara, "laughing", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Aber dafür war meine Ankunft direkt sehr spannend!");
@@ -650,6 +691,8 @@ var Application;
         // change laras pose to pensive
         await Application.changePose(Application.characters.lara, "pensive", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Ja, sie ist immer so fröhlich und unbeschwert.");
+        // change laras pose to neutral
+        await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
         // change uwes pose to friendly
         await Application.changePose(Application.characters.uwe, "friendly", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.uwe, "Sei nicht traurig.");
@@ -696,6 +739,9 @@ var Application;
                 await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Ich will versuchen, einen Blick hineinzuwerfen.");
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Schließlich ermittle ich gerade.");
+                // hide speech
+                Application.ƒS.Speech.clear();
+                Application.ƒS.Speech.hide();
                 // animate lara going to the safe
                 await Application.ƒS.Character.animate(Application.characters.lara, Application.characters.lara.pose.neutral, Application.from25To40());
                 // change laras pose to pensive
@@ -756,6 +802,9 @@ var Application;
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Und jetzt den Tresor noch verschließen.");
                 await Application.ƒS.Speech.tell(Application.characters.lara, ". . .");
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Ohh und da kommt Uwe auch schon wieder.");
+                // hide speech
+                Application.ƒS.Speech.clear();
+                Application.ƒS.Speech.hide();
                 // animate lara going back
                 await Application.ƒS.Character.animate(Application.characters.lara, Application.characters.lara.pose.neutral, Application.from40To25());
                 break;
@@ -778,7 +827,7 @@ var Application;
         // sound footsteps
         Application.ƒS.Sound.play(Application.sound.barFootstepsFadeIn, 0.8, false);
         // animate uwe coming back
-        Application.ƒS.Character.animate(Application.characters.uwe, Application.characters.uwe.pose.neutral, Application.fromOutsideTo75());
+        await Application.ƒS.Character.animate(Application.characters.uwe, Application.characters.uwe.pose.neutral, Application.fromOutsideTo75());
         await Application.ƒS.Speech.tell(Application.characters.uwe, "Soo, endlich habe ich die doofe klemmende Türe des Kühlfaches aufbekommen!");
         // change uwes pose to friendly
         await Application.changePose(Application.characters.uwe, "friendly", Application.ƒS.positionPercent(75, 100));
@@ -821,11 +870,13 @@ var Application;
         Application.dataForSave.visitedCafe = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.cafe);
-        // sound
-        Application.ƒS.Sound.fade(Application.sound.backgroundMusicCafe, 0.02, 3, true);
+        // transition sound
+        Application.ƒS.Sound.play(Application.sound.transition, 0.5, false);
+        // fade background sound
+        Application.ƒS.Sound.fade(Application.sound.backgroundMusicCafe, 0.05, 3, true);
         Application.ƒS.Sound.fade(Application.sound.backgroundSoundCafe, 1, 3, true);
         // background transition
-        await Application.ƒS.update(Application.transitions.wave.duration, Application.transitions.wave.alpha, Application.transitions.wave.edge);
+        await Application.ƒS.update(Application.transitions.open.duration, Application.transitions.open.alpha, Application.transitions.open.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.friendly, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.update(1);
@@ -923,10 +974,12 @@ var Application;
         Application.dataForSave.visitedHarbor = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.harbor);
+        // transition sound
+        Application.ƒS.Sound.play(Application.sound.transition, 0.5, false);
         // fade background sound
         Application.ƒS.Sound.fade(Application.sound.backgroundHarbor, 0.8, 1, true);
         // background transition
-        await Application.ƒS.update(Application.transitions.wave.duration, Application.transitions.wave.alpha, Application.transitions.wave.edge);
+        await Application.ƒS.update(Application.transitions.open.duration, Application.transitions.open.alpha, Application.transitions.open.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.friendly, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.update(1);
@@ -936,6 +989,8 @@ var Application;
         // change laras pose to laughing
         await Application.changePose(Application.characters.lara, "laughing", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Hallo Wilma!");
+        // change laras pose to friendly
+        await Application.changePose(Application.characters.lara, "friendly", Application.ƒS.positionPercent(25, 100));
         // change wilmas pose to laughing
         await Application.changePose(Application.characters.wilma, "laughing", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Moin Lara!");
@@ -1002,6 +1057,8 @@ var Application;
         // change laras pose to pensive
         await Application.changePose(Application.characters.lara, "pensive", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Könnte Uwe das Geld genommen haben?");
+        // change laras pose to neutral
+        await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
         // change wilmas pose to pensive
         await Application.changePose(Application.characters.wilma, "pensive", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Uwes Kneipe läuft sehr gut.");
@@ -1019,6 +1076,8 @@ var Application;
         await Application.changePose(Application.characters.lara, "suspicious", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Wie meinst du das?");
         await Application.ƒS.Speech.tell(Application.characters.lara, "Davon hat sie mir gegenüber nichts erwähnt.");
+        // change laras pose to neutral
+        await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
         // change wilmas pose to neutral
         await Application.changePose(Application.characters.wilma, "neutral", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Natürlich hat sie das nicht erwähnt.");
@@ -1048,6 +1107,8 @@ var Application;
         // change laras pose to suspicious
         await Application.changePose(Application.characters.lara, "suspicious", Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Speech.tell(Application.characters.lara, "Und was hat das mit dem Diebstahl zu tun?");
+        // change laras pose to neutral
+        await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
         // change wilmas pose to shocked
         await Application.changePose(Application.characters.wilma, "shocked", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Ich glaube, dass die Ansage eher nach hinten losgegangen ist.");
@@ -1074,6 +1135,9 @@ var Application;
         // change wilmas pose to neutral
         await Application.changePose(Application.characters.wilma, "neutral", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.wilma, "Moment, den Anruf muss ich kurz annehmen. Kannst du hier kurz aufpassen?");
+        // hide speech
+        Application.ƒS.Speech.clear();
+        Application.ƒS.Speech.hide();
         // sound footsteps
         Application.ƒS.Sound.play(Application.sound.harborFootstepsFadeOut, 0.8, false);
         // animation wilma leaving
@@ -1104,6 +1168,9 @@ var Application;
                 // change laras pose to pensive
                 await Application.changePose(Application.characters.lara, "pensive", Application.ƒS.positionPercent(25, 100));
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Es schadet bestimmt nicht, wenn ich einen schnellen Blick auf die Papiere werfe, solange Wilma beschäftigt ist.");
+                // hide speech
+                Application.ƒS.Speech.clear();
+                Application.ƒS.Speech.hide();
                 // animation lara to center
                 await Application.ƒS.Character.hide(Application.characters.lara);
                 await Application.ƒS.Character.animate(Application.characters.lara, Application.characters.lara.pose.neutral, Application.from25To40());
@@ -1114,7 +1181,6 @@ var Application;
                 await Application.ƒS.Character.show(Application.items.bills, Application.items.bills.pose.default, Application.ƒS.positionPercent(50, 50));
                 await Application.ƒS.update(1);
                 // dialog
-                await Application.ƒS.Speech.tell(Application.characters.lara, ". . .");
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Ohha, scheinbar hat Wilma ziemliche Geldprobleme.");
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Das Preisgeld von Elise wäre ihr sicher sehr gelegen gekommen.");
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Ob sie das Geld aus der Spardose geklaut hat, um ihre Schulden zu begleichen?");
@@ -1127,6 +1193,9 @@ var Application;
                 // change laras pose to neutral
                 await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(40, 100));
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Und jetzt nichts anmerken lassen.");
+                // hide speech
+                Application.ƒS.Speech.clear();
+                Application.ƒS.Speech.hide();
                 // animation lara back to 25
                 await Application.ƒS.Character.animate(Application.characters.lara, Application.characters.lara.pose.neutral, Application.from40To25());
                 break;
@@ -1206,7 +1275,7 @@ var Application;
         // start happy background music
         Application.ƒS.Sound.fade(Application.sound.backgroundIntroHappy, 0.2, 3, true);
         // transition
-        await Application.ƒS.update(Application.transitions.wave.duration, Application.transitions.wave.alpha, Application.transitions.wave.edge);
+        await Application.ƒS.update(Application.transitions.beginning.duration, Application.transitions.beginning.alpha, Application.transitions.beginning.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.friendly, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.update(0.5);
@@ -1282,6 +1351,7 @@ var Application;
         // dialog
         await Application.ƒS.Speech.tell(Application.characters.elise, "Möchtest du auch einen Cupcake?");
         await Application.ƒS.Speech.tell(Application.characters.lara, "Oh ja, sehr gerne!");
+        await Application.ƒS.Character.show(Application.items.cupcake, Application.items.cupcake.pose.default, Application.ƒS.positionPercent(38, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Bitteschön.");
         // change laras pose to laughing
         await Application.changePose(Application.characters.lara, "laughing", Application.ƒS.positionPercent(25, 100));
@@ -1294,7 +1364,7 @@ var Application;
         await Application.ƒS.Speech.tell(Application.characters.elise, "Haha, das ist lieb!");
         // change elises pose to friendly
         await Application.changePose(Application.characters.elise, "friendly", Application.ƒS.positionPercent(75, 100));
-        await Application.ƒS.Speech.tell(Application.characters.elise, "Stell dir vor, ich habe dafür gestern tatsächlich einen Preis auf der kleinen Nachbarsinsel gewonnen.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Stell dir vor, ich habe dafür gestern tatsächlich einen Preis auf der kleinen Nachbarinsel gewonnen.");
         await Application.ƒS.Speech.tell(Application.characters.elise, "„Bester Cupcake der Inselgruppe“ – Moment, ich hole ihn schnell.");
         // hide elements
         Application.ƒS.Speech.clear();
@@ -1314,13 +1384,29 @@ var Application;
         Application.ƒS.Character.hideAll();
         await Application.ƒS.update(0.5);
         // show cupcake money box 
-        await Application.ƒS.Character.show(Application.items.cupcake, Application.items.cupcake.pose.default, Application.ƒS.positionPercent(50, 50));
+        await Application.ƒS.Character.show(Application.items.cupcakeBox, Application.items.cupcakeBox.pose.default, Application.ƒS.positionPercent(50, 50));
         await Application.ƒS.update(1);
         await new Promise(resolve => setTimeout(resolve, 3000));
         // hide cupcake money box
-        await Application.ƒS.Character.hide(Application.items.cupcake);
+        await Application.ƒS.Character.hide(Application.items.cupcakeBox);
         await Application.ƒS.update(0.5);
-        // show charakter lara
+        // show drink
+        switch (chooseDrink) {
+            case chooseDrinkOptions.water:
+                await Application.ƒS.Character.show(Application.items.drink, Application.items.drink.pose.water, Application.ƒS.positionPercent(40, 100));
+                break;
+            case chooseDrinkOptions.tea:
+                await Application.ƒS.Character.show(Application.items.drink, Application.items.drink.pose.tea, Application.ƒS.positionPercent(40, 100));
+                break;
+            case chooseDrinkOptions.applejuice:
+                await Application.ƒS.Character.show(Application.items.drink, Application.items.drink.pose.applejuice, Application.ƒS.positionPercent(40, 100));
+                break;
+            case chooseDrinkOptions.hotChocolate:
+                await Application.ƒS.Character.show(Application.items.drink, Application.items.drink.pose.hotchocolate, Application.ƒS.positionPercent(40, 100));
+                break;
+        }
+        // show charakters and items
+        await Application.ƒS.Character.show(Application.items.cupcake, Application.items.cupcake.pose.default, Application.ƒS.positionPercent(38, 100));
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.shocked, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.Character.show(Application.characters.elise, Application.characters.elise.pose.friendly, Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.update(0.5);
@@ -1458,7 +1544,7 @@ var Application;
         await Application.changePose(Application.characters.elise, "friendly", Application.ƒS.positionPercent(75, 100));
         await Application.ƒS.Speech.tell(Application.characters.elise, "Naja, wieso eigentlich nicht.");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Ich bin ja froh, wenn du dich nicht langweilen musst.");
-        await Application.ƒS.Speech.tell(Application.characters.elise, "Und heute Abend wollte sowieso etwas besonders zum Essen zaubern.");
+        await Application.ƒS.Speech.tell(Application.characters.elise, "Und heute Abend wollte ich sowieso etwas besonders zum Essen zaubern.");
         await Application.ƒS.Speech.tell(Application.characters.elise, "Lade gerne alle zum Abendessen hier im Café ein!");
         // change elises pose to friendly
         await Application.changePose(Application.characters.elise, "friendly", Application.ƒS.positionPercent(75, 100));
@@ -1484,10 +1570,12 @@ var Application;
         Application.dataForSave.visitedLibrary = true;
         // show background
         await Application.ƒS.Location.show(Application.locations.library);
-        // sound
-        Application.ƒS.Sound.fade(Application.sound.backgroundLibrary, 0.2, 1, true);
+        // transition sound
+        Application.ƒS.Sound.play(Application.sound.transition, 0.5, false);
+        // fade background sound
+        Application.ƒS.Sound.fade(Application.sound.backgroundLibrary, 0.4, 1, true);
         // transition
-        await Application.ƒS.update(Application.transitions.wave.duration, Application.transitions.wave.alpha, Application.transitions.wave.edge);
+        await Application.ƒS.update(Application.transitions.open.duration, Application.transitions.open.alpha, Application.transitions.open.edge);
         // show charakter lara
         await Application.ƒS.Character.show(Application.characters.lara, Application.characters.lara.pose.neutral, Application.ƒS.positionPercent(25, 100));
         await Application.ƒS.update(1);
@@ -1516,6 +1604,9 @@ var Application;
                 await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Ein kleines bisschen lauschen hat noch niemandem geschadet.");
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Und vielleicht bekomme ich ja ein paar Hinweise zum Diebstahl.");
+                // hide speech
+                Application.ƒS.Speech.clear();
+                Application.ƒS.Speech.hide();
                 // animate lara going to the door
                 await Application.ƒS.Character.animate(Application.characters.lara, Application.characters.lara.pose.neutral, Application.from25To80());
                 await Application.ƒS.Speech.tell(Application.characters.gabi, ". . . Ja ja, ich werde das Geld so schnell wie möglich bezahlen . . .");
@@ -1532,6 +1623,9 @@ var Application;
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Hat sie etwa Geldprobleme?");
                 // change laras pose to neutral
                 await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(80, 100));
+                // hide speech
+                Application.ƒS.Speech.clear();
+                Application.ƒS.Speech.hide();
                 // animate lara going back
                 await Application.ƒS.Character.animate(Application.characters.lara, Application.characters.lara.pose.neutral, Application.from80To25());
                 break;

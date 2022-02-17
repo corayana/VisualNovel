@@ -7,11 +7,14 @@ namespace Application {
     // show background
     await ƒS.Location.show(locations.library);
 
-    // sound
-    ƒS.Sound.fade(sound.backgroundLibrary, 0.2, 1, true);
+    // transition sound
+    ƒS.Sound.play(sound.transition, 0.5, false);
+
+    // fade background sound
+    ƒS.Sound.fade(sound.backgroundLibrary, 0.4, 1, true);
 
     // transition
-    await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
+    await ƒS.update(transitions.open.duration, transitions.open.alpha, transitions.open.edge);
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(25, 100));
@@ -29,9 +32,9 @@ namespace Application {
     await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Sollte ich lauschen oder mich lieber bemerkbar machen?");/*  */
 
-     // hide elements
-     ƒS.Speech.clear();
-     ƒS.Speech.hide();
+    // hide elements
+    ƒS.Speech.clear();
+    ƒS.Speech.hide();
 
     // COHICE listen to phone call
     let chooseActionOptions = {
@@ -47,6 +50,10 @@ namespace Application {
         await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
         await ƒS.Speech.tell(characters.lara, "Ein kleines bisschen lauschen hat noch niemandem geschadet.");
         await ƒS.Speech.tell(characters.lara, "Und vielleicht bekomme ich ja ein paar Hinweise zum Diebstahl.");
+
+        // hide speech
+        ƒS.Speech.clear();
+        ƒS.Speech.hide();
 
         // animate lara going to the door
         await ƒS.Character.animate(characters.lara, characters.lara.pose.neutral, from25To80());
@@ -68,6 +75,10 @@ namespace Application {
 
         // change laras pose to neutral
         await changePose(characters.lara, "neutral", ƒS.positionPercent(80, 100));
+
+        // hide speech
+        ƒS.Speech.clear();
+        ƒS.Speech.hide();
 
         // animate lara going back
         await ƒS.Character.animate(characters.lara, characters.lara.pose.neutral, from80To25());

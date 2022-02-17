@@ -7,11 +7,14 @@ namespace Application {
     // show background
     await ƒS.Location.show(locations.harbor);
 
+    // transition sound
+    ƒS.Sound.play(sound.transition, 0.5, false);
+
     // fade background sound
     ƒS.Sound.fade(sound.backgroundHarbor, 0.8, 1, true);
 
     // background transition
-    await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
+    await ƒS.update(transitions.open.duration, transitions.open.alpha, transitions.open.edge);
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.friendly, ƒS.positionPercent(25, 100));
@@ -24,6 +27,9 @@ namespace Application {
     // change laras pose to laughing
     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Hallo Wilma!");
+
+    // change laras pose to friendly
+    await changePose(characters.lara, "friendly", ƒS.positionPercent(25, 100));
 
     // change wilmas pose to laughing
     await changePose(characters.wilma, "laughing", ƒS.positionPercent(75, 100));
@@ -114,6 +120,9 @@ namespace Application {
     await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Könnte Uwe das Geld genommen haben?");
 
+    // change laras pose to neutral
+    await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
+
     // change wilmas pose to pensive
     await changePose(characters.wilma, "pensive", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Uwes Kneipe läuft sehr gut.");
@@ -135,6 +144,9 @@ namespace Application {
     await changePose(characters.lara, "suspicious", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Wie meinst du das?");
     await ƒS.Speech.tell(characters.lara, "Davon hat sie mir gegenüber nichts erwähnt.");
+
+    // change laras pose to neutral
+    await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
 
     // change wilmas pose to neutral
     await changePose(characters.wilma, "neutral", ƒS.positionPercent(75, 100));
@@ -175,6 +187,9 @@ namespace Application {
     await changePose(characters.lara, "suspicious", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Und was hat das mit dem Diebstahl zu tun?");
 
+    // change laras pose to neutral
+    await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
+
     // change wilmas pose to shocked
     await changePose(characters.wilma, "shocked", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Ich glaube, dass die Ansage eher nach hinten losgegangen ist.");
@@ -208,6 +223,10 @@ namespace Application {
     // change wilmas pose to neutral
     await changePose(characters.wilma, "neutral", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.wilma, "Moment, den Anruf muss ich kurz annehmen. Kannst du hier kurz aufpassen?");
+
+    // hide speech
+    ƒS.Speech.clear();
+    ƒS.Speech.hide();
 
     // sound footsteps
     ƒS.Sound.play(sound.harborFootstepsFadeOut, 0.8, false);
@@ -247,6 +266,10 @@ namespace Application {
         await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
         await ƒS.Speech.tell(characters.lara, "Es schadet bestimmt nicht, wenn ich einen schnellen Blick auf die Papiere werfe, solange Wilma beschäftigt ist.");
 
+        // hide speech
+        ƒS.Speech.clear();
+        ƒS.Speech.hide();
+
         // animation lara to center
         await ƒS.Character.hide(characters.lara);
         await ƒS.Character.animate(characters.lara, characters.lara.pose.neutral, from25To40());
@@ -260,7 +283,6 @@ namespace Application {
         await ƒS.update(1);
 
         // dialog
-        await ƒS.Speech.tell(characters.lara, ". . .");
         await ƒS.Speech.tell(characters.lara, "Ohha, scheinbar hat Wilma ziemliche Geldprobleme.");
         await ƒS.Speech.tell(characters.lara, "Das Preisgeld von Elise wäre ihr sicher sehr gelegen gekommen.");
         await ƒS.Speech.tell(characters.lara, "Ob sie das Geld aus der Spardose geklaut hat, um ihre Schulden zu begleichen?");
@@ -275,6 +297,10 @@ namespace Application {
         // change laras pose to neutral
         await changePose(characters.lara, "neutral", ƒS.positionPercent(40, 100));
         await ƒS.Speech.tell(characters.lara, "Und jetzt nichts anmerken lassen.");
+
+        // hide speech
+        ƒS.Speech.clear();
+        ƒS.Speech.hide();
 
         // animation lara back to 25
         await ƒS.Character.animate(characters.lara, characters.lara.pose.neutral, from40To25());

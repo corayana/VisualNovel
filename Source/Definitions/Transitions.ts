@@ -9,9 +9,15 @@ namespace Application {
 
   export let transitions = {
 
-    wave: {
+    beginning: {
       duration: 2,
-      alpha: "./Assets/Transitions/Untitled_Artwork.png",
+      alpha: "./Assets/Transitions/beginning.png",
+      edge: 0.2,
+    },
+
+    open: {
+      duration: 2,
+      alpha: "./Assets/Transitions/painting.jpg",
       edge: 0.2,
     },
 

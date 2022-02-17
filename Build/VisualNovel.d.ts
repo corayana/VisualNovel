@@ -84,6 +84,13 @@ declare namespace Application {
                 default: string;
             };
         };
+        cupcakeBox: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                default: string;
+            };
+        };
         drink: {
             name: string;
             origin: ƒ.ORIGIN2D;
@@ -166,6 +173,7 @@ declare namespace Application {
         backgroundIntroHappy: string;
         backgroundIntroMysterious: string;
         shock: string;
+        transition: string;
         backgroundBar: string;
         barFootstepsFadeOut: string;
         barFootstepsFadeIn: string;
@@ -196,7 +204,12 @@ declare namespace Application {
      *   }
      */
     let transitions: {
-        wave: {
+        beginning: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        open: {
             duration: number;
             alpha: string;
             edge: number;

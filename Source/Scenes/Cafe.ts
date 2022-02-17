@@ -7,12 +7,15 @@ namespace Application {
     // show background
     await ƒS.Location.show(locations.cafe);
 
-    // sound
-    ƒS.Sound.fade(sound.backgroundMusicCafe, 0.02, 3, true);
+    // transition sound
+    ƒS.Sound.play(sound.transition, 0.5, false);
+
+    // fade background sound
+    ƒS.Sound.fade(sound.backgroundMusicCafe, 0.05, 3, true);
     ƒS.Sound.fade(sound.backgroundSoundCafe, 1, 3, true);
 
     // background transition
-    await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
+    await ƒS.update(transitions.open.duration, transitions.open.alpha, transitions.open.edge);
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.friendly, ƒS.positionPercent(25, 100));

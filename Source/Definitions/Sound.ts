@@ -7,6 +7,9 @@ namespace Application {
     backgroundIntroMysterious: "./Assets/Sound/bensound-enigmatic.mp3",
     shock: "./Assets/Sound/freesound-shock.wav",
 
+    // transition
+    transition: "./Assets/Sound/zapsplat-waveTransition.mp3",
+
     // bar
     backgroundBar: "./Assets/Sound/bensound-thelounge.mp3",
     barFootstepsFadeOut: "./Assets/Sound/quicksounds-footstepsInteriorCementFadeOut.mp3",

@@ -22,7 +22,7 @@ namespace Application {
       end: {
         translation: ƒS.positionPercent(90, 100),
       },
-      duration: 2,
+      duration: 1.5,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
@@ -35,7 +35,7 @@ namespace Application {
       end: {
         translation: ƒS.positionPercent(75, 100),
       },
-      duration: 2,
+      duration: 1.5,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
@@ -48,7 +48,7 @@ namespace Application {
       end: {
         translation: ƒS.positionPercent(120, 100),
       },
-      duration: 2,
+      duration: 3,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
@@ -61,7 +61,7 @@ namespace Application {
       end: {
         translation: ƒS.positionPercent(75, 100),
       },
-      duration: 2,
+      duration: 3,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
@@ -74,7 +74,7 @@ namespace Application {
       end: {
         translation: ƒS.positionPercent(40, 100),
       },
-      duration: 2,
+      duration: 1.5,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
@@ -87,7 +87,7 @@ namespace Application {
       end: {
         translation: ƒS.positionPercent(25, 100),
       },
-      duration: 2,
+      duration: 1.5,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
@@ -100,7 +100,7 @@ namespace Application {
       end: {
         translation: ƒS.positionPercent(80, 100),
       },
-      duration: 2,
+      duration: 5.5,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
@@ -113,7 +113,7 @@ namespace Application {
       end: {
         translation: ƒS.positionPercent(25, 100),
       },
-      duration: 2,
+      duration: 5.5,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }

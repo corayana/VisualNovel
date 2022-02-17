@@ -7,11 +7,14 @@ namespace Application {
     // show background
     await ƒS.Location.show(locations.bar);
 
-    // sound
+    // transition sound
+    ƒS.Sound.play(sound.transition, 0.5, false);
+
+    // fade background sound
     ƒS.Sound.fade(sound.backgroundBar, 0.2, 3, true);
 
     // background transition
-    await ƒS.update(transitions.wave.duration, transitions.wave.alpha, transitions.wave.edge);
+    await ƒS.update(transitions.open.duration, transitions.open.alpha, transitions.open.edge);
 
     // show charakter lara
     await ƒS.Character.show(characters.lara, characters.lara.pose.neutral, ƒS.positionPercent(25, 100));
@@ -31,7 +34,7 @@ namespace Application {
     await ƒS.Speech.tell(characters.uwe, "Lang nicht gesehen.");
     await ƒS.Speech.tell(characters.uwe, "Wie war deine Reise?");
 
-    await ƒS.Speech.tell(characters.lara, "Danke, bis auf die Fahrt mit dem Schiff war es super langweilig.");
+    await ƒS.Speech.tell(characters.lara, "Bis auf die Fahrt mit dem Schiff super langweilig.");
 
     // change laras pose to laughing
     await changePose(characters.lara, "laughing", ƒS.positionPercent(25, 100));
@@ -144,6 +147,9 @@ namespace Application {
     await changePose(characters.lara, "pensive", ƒS.positionPercent(25, 100));
     await ƒS.Speech.tell(characters.lara, "Ja, sie ist immer so fröhlich und unbeschwert.");
 
+    // change laras pose to neutral
+    await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
+
     // change uwes pose to friendly
     await changePose(characters.uwe, "friendly", ƒS.positionPercent(75, 100));
     await ƒS.Speech.tell(characters.uwe, "Sei nicht traurig.");
@@ -202,6 +208,10 @@ namespace Application {
         await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
         await ƒS.Speech.tell(characters.lara, "Ich will versuchen, einen Blick hineinzuwerfen.");
         await ƒS.Speech.tell(characters.lara, "Schließlich ermittle ich gerade.");
+
+        // hide speech
+        ƒS.Speech.clear();
+        ƒS.Speech.hide();
 
         // animate lara going to the safe
         await ƒS.Character.animate(characters.lara, characters.lara.pose.neutral, from25To40());
@@ -279,6 +289,10 @@ namespace Application {
         await ƒS.Speech.tell(characters.lara, ". . .");
         await ƒS.Speech.tell(characters.lara, "Ohh und da kommt Uwe auch schon wieder.");
 
+        // hide speech
+        ƒS.Speech.clear();
+        ƒS.Speech.hide();
+
         // animate lara going back
         await ƒS.Character.animate(characters.lara, characters.lara.pose.neutral, from40To25());
 
@@ -309,7 +323,7 @@ namespace Application {
     ƒS.Sound.play(sound.barFootstepsFadeIn, 0.8, false);
 
     // animate uwe coming back
-    ƒS.Character.animate(characters.uwe, characters.uwe.pose.neutral, fromOutsideTo75());
+    await ƒS.Character.animate(characters.uwe, characters.uwe.pose.neutral, fromOutsideTo75());
     await ƒS.Speech.tell(characters.uwe, "Soo, endlich habe ich die doofe klemmende Türe des Kühlfaches aufbekommen!");
 
     // change uwes pose to friendly

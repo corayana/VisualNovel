@@ -1637,6 +1637,9 @@ var Application;
                 await Application.changePose(Application.characters.lara, "neutral", Application.ƒS.positionPercent(25, 100));
                 await Application.ƒS.Speech.tell(Application.characters.lara, "Ich mache mich lieber bemerkbar.");
                 await Application.ƒS.Speech.tell(Application.characters.lara, "HAAALLOOO! Gabi, bist du da?");
+                // hide elements
+                Application.ƒS.Speech.clear();
+                Application.ƒS.Speech.hide();
                 break;
         }
         // play sound footsteps

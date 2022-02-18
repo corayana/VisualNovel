@@ -93,6 +93,11 @@ namespace Application {
         await changePose(characters.lara, "neutral", ƒS.positionPercent(25, 100));
         await ƒS.Speech.tell(characters.lara, "Ich mache mich lieber bemerkbar.");
         await ƒS.Speech.tell(characters.lara, "HAAALLOOO! Gabi, bist du da?");
+
+        // hide elements
+        ƒS.Speech.clear();
+        ƒS.Speech.hide();
+
         break;
     }
 
